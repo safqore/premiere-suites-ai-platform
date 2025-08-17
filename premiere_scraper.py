@@ -205,6 +205,12 @@ class PremiereSuitesScraper:
             # Combine and deduplicate amenities
             all_amenities = list(set(container_amenities + page_amenities))
             
+            # Extract suite features from both container and full page
+            container_suite_features = self.extract_suite_features(container_text)
+            page_suite_features = self.extract_suite_features(full_page_text)
+            # Combine and deduplicate suite features
+            all_suite_features = list(set(container_suite_features + page_suite_features))
+            
             # Extract image URL
             image_url = self.extract_image_url(container)
             
@@ -243,7 +249,7 @@ class PremiereSuitesScraper:
                 raw_html=str(container),
                 property_id=property_id,
                 building_type="Apartment Building",
-                suite_features=[]
+                suite_features=all_suite_features
             )
             
             logger.debug(f"Successfully created property data for: {property_name}")
@@ -346,6 +352,35 @@ class PremiereSuitesScraper:
         if img_elem and img_elem.get('src'):
             return img_elem.get('src')
         return None
+
+    def extract_suite_features(self, text: str) -> List[str]:
+        """Extract suite-specific features from text content"""
+        suite_features = []
+        suite_feature_keywords = [
+            'Fully Furnished', 'Furnished', 'Unfurnished', 'Partially Furnished',
+            'Kitchen', 'Full Kitchen', 'Kitchenette', 'Kitchen Appliances',
+            'Dishwasher', 'Microwave', 'Stove', 'Oven', 'Refrigerator',
+            'In-suite Laundry', 'Washer', 'Dryer', 'Laundry Hookups',
+            'Balcony', 'Terrace', 'Patio', 'Private Balcony',
+            'Walk-in Closet', 'Storage', 'Built-in Storage',
+            'Hardwood Floors', 'Carpeted', 'Tile Floors',
+            'Air Conditioning', 'Central Air', 'Heating',
+            'Walk-in Shower', 'Tub', 'Ensuite Bathroom',
+            'Queen Bed', 'King Bed', 'Double Bed', 'Single Bed',
+            'Sofa Bed', 'Pull-out Couch', 'Dining Table',
+            'Work Desk', 'Office Space', 'Study Area',
+            'City View', 'Mountain View', 'Water View', 'Garden View',
+            'Corner Unit', 'End Unit', 'Top Floor', 'Penthouse',
+            'Newly Renovated', 'Updated', 'Modern', 'Contemporary',
+            'Luxury', 'Premium', 'High-end', 'Designer'
+        ]
+        
+        text_lower = text.lower()
+        for keyword in suite_feature_keywords:
+            if keyword.lower() in text_lower:
+                suite_features.append(keyword)
+        
+        return suite_features
 
 
     def scrape_with_requests(self) -> List[PropertyData]:

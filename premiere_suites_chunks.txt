@@ -1,147 +1,156 @@
 # Premiere Suites Property Database - Chunked for Vector Embedding
-# Generated: 2025-08-17T06:16:08.344367
+# Generated: 2025-08-17T06:18:40.619831
 # Total Properties: 61
 # Chunk Size: 1000 characters
 
 --- CHUNK 1 ---
-Property 1: 107 Nadia Drive | Location: Dartmouth | Rating: 4.5/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: 107 Nadia Drive Dartmouth 4.5 | Building Type: Apartment Building
+Property 1: City Of Lougheed | Location: Burnaby | Rating: 4.5/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: City Of Lougheed Burnaby 4.5 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
-Property 2: Beechwood Village | Location: Ottawa | Rating: 4.3/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Beechwood Village Ottawa 4.3 | Building Type: Apartment Building
-
-Property 3: Mondeo Drive | Location: Scarborough | Rating: 3.5/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Mondeo Drive Scarborough 3.5 | Building Type: Apartment Building
+Property 2: Harmonie | Location: Pointe Claire | Rating: 4.3/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Harmonie Pointe Claire 4.3 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
 --- CHUNK 2 ---
-Property 4: The Deveraux | Location: Regina | Rating: 5.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: The Deveraux Regina 5.0 | Building Type: Apartment Building
+Property 3: Solaire | Location: Calgary | Rating: 3.5/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Solaire Calgary 3.5 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
-Property 5: The Duet | Location: Victoria | Rating: 4.5/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: The Duet Victoria 4.5 | Building Type: Apartment Building
-
-Property 6: Cargill Path | Location: Milton | Rating: 5.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Cargill Path Milton 5.0 | Building Type: Apartment Building
+Property 4: 200 Central | Location: Langley | Rating: 5.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: 200 Central Langley 5.0 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
 --- CHUNK 3 ---
-Property 7: Icon Bay Halifax Suites | Location: Halifax | Rating: 4.4/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Icon Bay Halifax Suites Halifax 4.4 | Building Type: Apartment Building
+Property 5: Imperial Metrotown | Location: Burnaby | Rating: 4.5/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Imperial Metrotown Burnaby 4.5 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
-Property 8: Ecentral | Location: Toronto   Midtown | Rating: 5.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Ecentral Toronto   Midtown 5.0 | Building Type: Apartment Building
-
-Property 9: Pendrell | Location: Vancouver | Rating: 4.8/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Pendrell Vancouver 4.8 | Building Type: Apartment Building
+Property 6: The Lofts On Bannatyne | Location: Winnipeg | Rating: 5.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: The Lofts On Bannatyne Winnipeg 5.0 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
 --- CHUNK 4 ---
-Property 10: Halton Terrace | Location: Kanata | Rating: 5.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Halton Terrace Kanata 5.0 | Building Type: Apartment Building
+Property 7: The View | Location: Edmonton | Rating: 4.4/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: The View Edmonton 4.4 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
-Property 11: Century Park Regent 3 | Location: Edmonton | Rating: 4.7/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Century Park Regent 3 Edmonton 4.7 | Building Type: Apartment Building
-
-Property 12: The Lofts On Bannatyne | Location: Winnipeg | Rating: 5.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: The Lofts On Bannatyne Winnipeg 5.0 | Building Type: Apartment Building
+Property 8: 300 Front | Location: Toronto | Rating: 5.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: 300 Front Toronto 5.0 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
 --- CHUNK 5 ---
-Property 13: University Meadows   Iron Gate Street | Location: Kitchener | Rating: 4.6/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: University Meadows   Iron Gate Street Kitchener 4.6 | Building Type: Apartment Building
+Property 9: Century Park Regent 3 | Location: Edmonton | Rating: 4.8/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Century Park Regent 3 Edmonton 4.8 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
-Property 14: 300 Front | Location: Toronto | Rating: 4.6/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: 300 Front Toronto 4.6 | Building Type: Apartment Building
-
-Property 15: Bellagio Terrace | Location: Regina | Rating: 4.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Bellagio Terrace Regina 4.0 | Building Type: Apartment Building
+Property 10: Residences Telus Sky | Location: Calgary | Rating: 5.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Residences Telus Sky Calgary 5.0 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
 --- CHUNK 6 ---
-Property 16: Creighton Apartments | Location: Fredericton | Rating: 5.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Creighton Apartments Fredericton 5.0 | Building Type: Apartment Building
+Property 11: Hudson | Location: Vancouver | Rating: 4.7/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Hudson Vancouver 4.7 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
-Property 17: Solaire | Location: Calgary | Rating: 3.6/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Solaire Calgary 3.6 | Building Type: Apartment Building
+Property 12: Kinross Pvt | Location: Kanata | Rating: 5.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Kinross Pvt Kanata 5.0 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
-Property 18: The Gallery | Location: Vancouver | Rating: 4.3/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: The Gallery Vancouver 4.3 | Building Type: Apartment Building
+Property 13: Aspen House | Location: Calgary | Rating: 4.6/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Aspen House Calgary 4.6 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
 --- CHUNK 7 ---
-Property 19: Dockside Green   Balance A | Location: Victoria | Rating: 5.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Dockside Green   Balance A Victoria 5.0 | Building Type: Apartment Building
+Property 14: Greystones | Location: Halifax | Rating: 4.6/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Greystones Halifax 4.6 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
-Property 20: Citescape | Location: Calgary | Rating: 3.3/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Citescape Calgary 3.3 | Building Type: Apartment Building
-
-Property 21: Versus Living | Location: Calgary | Rating: 4.2/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Versus Living Calgary 4.2 | Building Type: Apartment Building
+Property 15: Trio At Atria | Location: North York | Rating: 4.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Trio At Atria North York 4.0 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
 --- CHUNK 8 ---
-Property 22: Ice Condos Ii | Location: Toronto | Rating: 5.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Ice Condos Ii Toronto 5.0 | Building Type: Apartment Building
+Property 16: 360 At The City Centre | Location: Scarborough | Rating: 5.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: 360 At The City Centre Scarborough 5.0 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
-Property 23: Fancamp Drive | Location: Maple | Rating: 4.2/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Fancamp Drive Maple 4.2 | Building Type: Apartment Building
-
-Property 24: Waterfront | Location: Calgary | Rating: 4.5/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Waterfront Calgary 4.5 | Building Type: Apartment Building
+Property 17: Bellagio Terrace | Location: Regina | Rating: 3.6/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Bellagio Terrace Regina 3.6 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
 --- CHUNK 9 ---
-Property 25: 200 Central | Location: Langley | Rating: 4.3/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: 200 Central Langley 4.3 | Building Type: Apartment Building
+Property 18: Encore Residences | Location: Moncton | Rating: 4.3/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Encore Residences Moncton 4.3 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
-Property 26: The Wetmore House | Location: Fredericton | Rating: 4.7/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: The Wetmore House Fredericton 4.7 | Building Type: Apartment Building
-
-Property 27: The Excelsior 290 | Location: Winnipeg | Rating: 5.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: The Excelsior 290 Winnipeg 5.0 | Building Type: Apartment Building
+Property 19: The Louvre | Location: Edmonton | Rating: 5.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: The Louvre Edmonton 5.0 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
 --- CHUNK 10 ---
-Property 28: Imperial Metrotown | Location: Burnaby | Rating: 4.7/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Imperial Metrotown Burnaby 4.7 | Building Type: Apartment Building
+Property 20: Circa 2 | Location: Markham | Rating: 3.3/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Circa 2 Markham 3.3 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
-Property 29: Amici Terrace | Location: Kanata | Rating: 4.7/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Amici Terrace Kanata 4.7 | Building Type: Apartment Building
-
-Property 30: 57 Harvey Road | Location: St  John S | Rating: 3.9/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: 57 Harvey Road St  John S 3.9 | Building Type: Apartment Building
+Property 21: 25 Colliers Lane | Location: St John S | Rating: 4.2/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: 25 Colliers Lane St John S 4.2 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
 --- CHUNK 11 ---
-Property 31: Four Season Garden Condos | Location: Richmond Hill | Rating: 5.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Four Season Garden Condos Richmond Hill 5.0 | Building Type: Apartment Building
+Property 22: Halton Terrace | Location: Kanata | Rating: 5.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Halton Terrace Kanata 5.0 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
-Property 32: Maple Commercial | Location: Halifax | Rating: 4.5/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Maple Commercial Halifax 4.5 | Building Type: Apartment Building
-
-Property 33: Kleinburg Centre | Location: Kleinburg | Rating: 4.8/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Kleinburg Centre Kleinburg 4.8 | Building Type: Apartment Building
+Property 23: Creighton Apartments | Location: Fredericton | Rating: 4.2/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Creighton Apartments Fredericton 4.2 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
 --- CHUNK 12 ---
-Property 34: Kinross Pvt | Location: Kanata | Rating: 5.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Kinross Pvt Kanata 5.0 | Building Type: Apartment Building
+Property 24: Via123 | Location: North York | Rating: 4.5/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Via123 North York 4.5 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
-Property 35: Circa 2 | Location: Markham | Rating: 3.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Circa 2 Markham 3.0 | Building Type: Apartment Building
-
-Property 36: City Of Lougheed | Location: Burnaby | Rating: 4.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: City Of Lougheed Burnaby 4.0 | Building Type: Apartment Building
+Property 25: The Anchorage | Location: Dartmouth | Rating: 4.3/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: The Anchorage Dartmouth 4.3 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
 --- CHUNK 13 ---
-Property 37: Hudson | Location: Vancouver | Rating: 4.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Hudson Vancouver 4.0 | Building Type: Apartment Building
+Property 26: Le Encore | Location: Montreal | Rating: 4.7/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Le Encore Montreal 4.7 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
-Property 38: Five West | Location: Calgary | Rating: 4.5/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Five West Calgary 4.5 | Building Type: Apartment Building
-
-Property 39: Encore Residences | Location: Moncton | Rating: 4.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Encore Residences Moncton 4.0 | Building Type: Apartment Building
+Property 27: The Deveraux | Location: Regina | Rating: 5.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: The Deveraux Regina 5.0 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
 --- CHUNK 14 ---
-Property 40: Skymark | Location: Mississauga | Rating: 4.3/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Skymark Mississauga 4.3 | Building Type: Apartment Building
+Property 28: Bishop S Landing 1475 | Location: Halifax | Rating: 4.7/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Bishop S Landing 1475 Halifax 4.7 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
-Property 41: Corazon | Location: Victoria | Rating: 5.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Corazon Victoria 5.0 | Building Type: Apartment Building
-
-Property 42: Greystones | Location: Halifax | Rating: 4.6/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Greystones Halifax 4.6 | Building Type: Apartment Building
+Property 29: The Duet | Location: Victoria | Rating: 4.7/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: The Duet Victoria 4.7 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
 --- CHUNK 15 ---
-Property 43: Telus Garden | Location: Vancouver | Rating: 4.2/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Telus Garden Vancouver 4.2 | Building Type: Apartment Building
+Property 30: Parkside Ii | Location: Calgary | Rating: 3.9/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Parkside Ii Calgary 3.9 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
-Property 44: Metro Place | Location: Burnaby | Rating: 4.5/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Metro Place Burnaby 4.5 | Building Type: Apartment Building
-
-Property 45: Parkside Ii | Location: Calgary | Rating: 4.4/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Parkside Ii Calgary 4.4 | Building Type: Apartment Building
+Property 31: The Excelsior 290 | Location: Winnipeg | Rating: 5.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: The Excelsior 290 Winnipeg 5.0 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
 --- CHUNK 16 ---
-Property 46: Harmonie | Location: Pointe Claire | Rating: 4.3/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Harmonie Pointe Claire 4.3 | Building Type: Apartment Building
+Property 32: Corazon | Location: Victoria | Rating: 4.5/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Corazon Victoria 4.5 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
-Property 47: 25 Colliers Lane | Location: St John S | Rating: 4.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: 25 Colliers Lane St John S 4.0 | Building Type: Apartment Building
-
-Property 48: The Louvre | Location: Edmonton | Rating: 4.5/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: The Louvre Edmonton 4.5 | Building Type: Apartment Building
+Property 33: Dockside Green   Balance A | Location: Victoria | Rating: 4.8/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Dockside Green   Balance A Victoria 4.8 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
 --- CHUNK 17 ---
-Property 49: Bishop S Landing 1475 | Location: Halifax | Rating: 1.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Bishop S Landing 1475 Halifax 1.0 | Building Type: Apartment Building
+Property 34: Boutique Lumeo | Location: Brossard | Rating: 5.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Boutique Lumeo Brossard 5.0 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
-Property 50: Aspen House | Location: Calgary | Rating: 4.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Aspen House Calgary 4.0 | Building Type: Apartment Building
-
-Property 51: The Anchorage | Location: Dartmouth | Rating: 3.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: The Anchorage Dartmouth 3.0 | Building Type: Apartment Building
+Property 35: Four Season Garden Condos | Location: Richmond Hill | Rating: 3.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Four Season Garden Condos Richmond Hill 3.0 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
 --- CHUNK 18 ---
-Property 52: Orchard Uptown | Location: Burlington | Rating: 4.4/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Orchard Uptown Burlington 4.4 | Building Type: Apartment Building
+Property 36: Amici Terrace | Location: Kanata | Rating: 4.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Amici Terrace Kanata 4.0 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
-Property 53: Via123 | Location: North York | Rating: 4.5/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Via123 North York 4.5 | Building Type: Apartment Building
-
-Property 54: Aspen Townhouse | Location: Calgary | Rating: 4.7/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Aspen Townhouse Calgary 4.7 | Building Type: Apartment Building
+Property 37: Ecentral | Location: Toronto   Midtown | Rating: 4.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Ecentral Toronto   Midtown 4.0 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
 --- CHUNK 19 ---
-Property 55: Trio At Atria | Location: North York | Rating: 4.5/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Trio At Atria North York 4.5 | Building Type: Apartment Building
+Property 38: Orchard Uptown | Location: Burlington | Rating: 4.5/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Orchard Uptown Burlington 4.5 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
-Property 56: The Avery | Location: Dartmouth | Rating: 4.6/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: The Avery Dartmouth 4.6 | Building Type: Apartment Building
-
-Property 57: 360 At The City Centre | Location: Scarborough | Rating: 4.9/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: 360 At The City Centre Scarborough 4.9 | Building Type: Apartment Building
+Property 39: The Wetmore House | Location: Fredericton | Rating: 4.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: The Wetmore House Fredericton 4.0 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
 --- CHUNK 20 ---
-Property 58: Boutique Lumeo | Location: Brossard | Rating: 4.3/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Boutique Lumeo Brossard 4.3 | Building Type: Apartment Building
+Property 40: 107 Nadia Drive | Location: Dartmouth | Rating: 4.3/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: 107 Nadia Drive Dartmouth 4.3 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
-Property 59: Le Encore | Location: Montreal | Rating: 4.7/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Le Encore Montreal 4.7 | Building Type: Apartment Building
-
-Property 60: The View | Location: Edmonton | Rating: 4.9/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: The View Edmonton 4.9 | Building Type: Apartment Building
+Property 41: Telus Garden | Location: Vancouver | Rating: 5.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Telus Garden Vancouver 5.0 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
 
 --- CHUNK 21 ---
-Property 61: Residences Telus Sky | Location: Calgary | Rating: 3.7/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Terrace, Garden, Pet Friendly, Pool, Gym, Parking, In-suite Laundry, Laundry | Description: Residences Telus Sky Calgary 3.7 | Building Type: Apartment Building
+Property 42: Five West | Location: Calgary | Rating: 4.6/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Five West Calgary 4.6 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
+
+Property 43: Ice Condos Ii | Location: Toronto | Rating: 4.2/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Ice Condos Ii Toronto 4.2 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
+
+--- CHUNK 22 ---
+Property 44: Skymark | Location: Mississauga | Rating: 4.5/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Skymark Mississauga 4.5 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
+
+Property 45: Pendrell | Location: Vancouver | Rating: 4.4/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Pendrell Vancouver 4.4 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
+
+Property 46: Cargill Path | Location: Milton | Rating: 4.3/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Cargill Path Milton 4.3 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
+
+--- CHUNK 23 ---
+Property 47: The Avery | Location: Dartmouth | Rating: 4.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: The Avery Dartmouth 4.0 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
+
+Property 48: University Meadows   Iron Gate Street | Location: Kitchener | Rating: 4.5/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: University Meadows   Iron Gate Street Kitchener 4.5 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
+
+--- CHUNK 24 ---
+Property 49: Aspen Townhouse | Location: Calgary | Rating: 1.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Aspen Townhouse Calgary 1.0 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
+
+Property 50: Versus Living | Location: Calgary | Rating: 4.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Versus Living Calgary 4.0 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
+
+--- CHUNK 25 ---
+Property 51: 57 Harvey Road | Location: St  John S | Rating: 3.0/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: 57 Harvey Road St  John S 3.0 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
+
+Property 52: Citescape | Location: Calgary | Rating: 4.4/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Citescape Calgary 4.4 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
+
+--- CHUNK 26 ---
+Property 53: Metro Place | Location: Burnaby | Rating: 4.5/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Metro Place Burnaby 4.5 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
+
+Property 54: Waterfront | Location: Calgary | Rating: 4.7/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Waterfront Calgary 4.7 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
+
+--- CHUNK 27 ---
+Property 55: Kleinburg Centre | Location: Kleinburg | Rating: 4.5/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Kleinburg Centre Kleinburg 4.5 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
+
+Property 56: Fancamp Drive | Location: Maple | Rating: 4.6/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Fancamp Drive Maple 4.6 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
+
+--- CHUNK 28 ---
+Property 57: Mondeo Drive | Location: Scarborough | Rating: 4.9/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Mondeo Drive Scarborough 4.9 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
+
+Property 58: Beechwood Village | Location: Ottawa | Rating: 4.3/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Beechwood Village Ottawa 4.3 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
+
+--- CHUNK 29 ---
+Property 59: Maple Commercial | Location: Halifax | Rating: 4.7/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Maple Commercial Halifax 4.7 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
+
+Property 60: The Gallery | Location: Vancouver | Rating: 4.9/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: The Gallery Vancouver 4.9 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
+
+--- CHUNK 30 ---
+Property 61: Icon Bay Halifax Suites | Location: Halifax | Rating: 3.7/5.0 | Bedrooms: 1 | Room Type: Suite | Pet Friendly: Yes | Amenities: Garden, Parking, Laundry, In-suite Laundry, Terrace, Pool, Pet Friendly, Gym | Description: Icon Bay Halifax Suites Halifax 3.7 | Building Type: Apartment Building | Suite Features: In-suite Laundry, Terrace, Kitchen
