@@ -54,7 +54,7 @@ def search_faqs(vdb: PremiereSuitesVectorDB,
         # Perform search
         results = vdb.client.search(
             collection_name=vdb.collection_name,
-            query_vector=vdb.model.encode([query])[0].tolist(),
+            query_vector=vdb.generate_query_embedding(query),
             limit=limit,
             query_filter=filter_condition,
             score_threshold=min_score
@@ -217,11 +217,15 @@ def main():
                 qdrant_url=qdrant_url,
                 qdrant_api_key=qdrant_api_key,
                 collection_name=args.collection,
+                embedding_model=os.getenv("EMBEDDING_MODEL", "all-MiniLM-L6-v2"),
                 use_cloud=True
             )
         else:
             print("✅ Using local Qdrant instance")
-            vdb = PremiereSuitesVectorDB(collection_name=args.collection)
+            vdb = PremiereSuitesVectorDB(
+                collection_name=args.collection,
+                embedding_model=os.getenv("EMBEDDING_MODEL", "all-MiniLM-L6-v2")
+            )
         
         # Check if collection exists
         try:

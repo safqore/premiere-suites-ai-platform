@@ -16,6 +16,7 @@ from datetime import datetime
 import numpy as np
 from sentence_transformers import SentenceTransformer
 from qdrant_client import QdrantClient
+import openai
 from qdrant_client.models import (
     Distance, VectorParams, PointStruct, 
     FieldCondition, MatchValue, Filter,
@@ -36,7 +37,7 @@ class PremiereSuitesVectorDB:
                  qdrant_host: str = "localhost", 
                  qdrant_port: int = 6333,
                  collection_name: str = "premiere_suites_properties",
-                 embedding_model: str = "all-MiniLM-L6-v2",
+                 embedding_model: Optional[str] = None,
                  use_cloud: bool = False):
         """
         Initialize the vector database manager.
@@ -51,7 +52,16 @@ class PremiereSuitesVectorDB:
             use_cloud: Whether to use Qdrant Cloud (if True, qdrant_url and qdrant_api_key are required)
         """
         self.collection_name = collection_name
-        self.embedding_model = embedding_model
+        
+        # Get embedding model from environment or use default
+        if embedding_model is None:
+            self.embedding_model = os.getenv("EMBEDDING_MODEL", "all-MiniLM-L6-v2")
+        else:
+            self.embedding_model = embedding_model
+        
+        # Ensure embedding_model is not None
+        if self.embedding_model is None:
+            self.embedding_model = "all-MiniLM-L6-v2"
         
         # Initialize Qdrant client
         if use_cloud:
@@ -63,10 +73,34 @@ class PremiereSuitesVectorDB:
             logger.info(f"Connecting to local Qdrant: {qdrant_host}:{qdrant_port}")
             self.client = QdrantClient(host=qdrant_host, port=qdrant_port)
         
-        # Initialize sentence transformer
+        # Initialize embedding model
         logger.info(f"Loading embedding model: {embedding_model}")
-        self.model = SentenceTransformer(embedding_model)
-        self.vector_size = self.model.get_sentence_embedding_dimension()
+        
+        # Check if it's an OpenAI model
+        if embedding_model.startswith('text-embedding-'):
+            # Use OpenAI embeddings
+            openai_api_key = os.getenv("OPENAI_API_KEY")
+            if not openai_api_key:
+                raise ValueError("OPENAI_API_KEY environment variable is required for OpenAI embedding models")
+            
+            openai.api_key = openai_api_key
+            self.model = None
+            self.use_openai = True
+            self.openai_model = embedding_model
+            
+            # OpenAI text-embedding-3-small has 1536 dimensions
+            if embedding_model == "text-embedding-3-small":
+                self.vector_size = 1536
+            elif embedding_model == "text-embedding-3-large":
+                self.vector_size = 3072
+            else:
+                # Default to 1536 for other OpenAI models
+                self.vector_size = 1536
+        else:
+            # Use sentence transformers
+            self.model = SentenceTransformer(embedding_model)
+            self.vector_size = self.model.get_sentence_embedding_dimension()
+            self.use_openai = False
         
         logger.info(f"Vector dimension: {self.vector_size}")
     
@@ -205,8 +239,52 @@ class PremiereSuitesVectorDB:
             Numpy array of embeddings
         """
         logger.info(f"Generating embeddings for {len(texts)} texts")
-        embeddings = self.model.encode(texts, show_progress_bar=True)
-        return embeddings
+        
+        if self.use_openai:
+            # Use OpenAI embeddings
+            embeddings = []
+            for text in texts:
+                try:
+                    response = openai.embeddings.create(
+                        input=text,
+                        model=self.openai_model
+                    )
+                    embeddings.append(response.data[0].embedding)
+                except Exception as e:
+                    logger.error(f"Error generating OpenAI embedding: {e}")
+                    raise
+            
+            return np.array(embeddings)
+        else:
+            # Use sentence transformers
+            embeddings = self.model.encode(texts, show_progress_bar=True)
+            return embeddings
+    
+    def generate_query_embedding(self, query: str) -> List[float]:
+        """
+        Generate embedding for a single query text.
+        
+        Args:
+            query: Query text to embed
+            
+        Returns:
+            List of embedding values
+        """
+        if self.use_openai:
+            # Use OpenAI embeddings
+            try:
+                response = openai.embeddings.create(
+                    input=query,
+                    model=self.openai_model
+                )
+                return response.data[0].embedding
+            except Exception as e:
+                logger.error(f"Error generating OpenAI embedding: {e}")
+                raise
+        else:
+            # Use sentence transformers
+            embedding = self.model.encode([query])[0]
+            return embedding.tolist()
     
     def prepare_points(self, properties: List[Dict[str, Any]]) -> List[PointStruct]:
         """
@@ -365,15 +443,13 @@ class PremiereSuitesVectorDB:
         try:
             info = self.client.get_collection(self.collection_name)
             return {
-                "name": info.name,
+                "name": self.collection_name,  # Use the collection name we know
                 "vectors_count": info.vectors_count,
                 "points_count": info.points_count,
                 "segments_count": info.segments_count,
-                "config": {
-                    "vector_size": info.config.params.vectors.size,
-                    "distance": info.config.params.vectors.distance,
-                    "on_disk": info.config.params.vectors.on_disk
-                }
+                "vector_size": info.config.params.vectors.size,
+                "distance": info.config.params.vectors.distance,
+                "on_disk": info.config.params.vectors.on_disk
             }
         except Exception as e:
             logger.error(f"Error getting collection info: {e}")

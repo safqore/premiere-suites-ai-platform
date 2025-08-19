@@ -58,12 +58,13 @@ def load_faq_data(file_path: str = "premiere_suites_faq_data.jsonl") -> List[Dic
         logger.error(f"Error loading FAQ data: {e}")
         raise
 
-def prepare_faq_points(faqs: List[Dict[str, Any]]) -> List[Any]:
+def prepare_faq_points(faqs: List[Dict[str, Any]], vdb: PremiereSuitesVectorDB) -> List[Any]:
     """
     Prepare FAQ data for insertion into Qdrant.
     
     Args:
         faqs: List of FAQ dictionaries
+        vdb: Vector database instance to use for embeddings
         
     Returns:
         List of PointStruct objects
@@ -74,10 +75,7 @@ def prepare_faq_points(faqs: List[Dict[str, Any]]) -> List[Any]:
     # Extract text chunks for embedding
     texts = [faq.get("text_chunk", "") for faq in faqs]
     
-    # Initialize vector database to generate embeddings
-    vdb = PremiereSuitesVectorDB()
-    
-    # Generate embeddings
+    # Generate embeddings using the provided vector database instance
     logger.info("Generating embeddings for FAQ data...")
     embeddings = vdb.generate_embeddings(texts)
     
@@ -143,11 +141,15 @@ def vectorize_faq_data(collection_name: str = "premiere_suites_faqs",
                 qdrant_url=qdrant_url,
                 qdrant_api_key=qdrant_api_key,
                 collection_name=collection_name,
+                embedding_model=os.getenv("EMBEDDING_MODEL", "all-MiniLM-L6-v2"),
                 use_cloud=True
             )
         else:
             logger.info("Using local Qdrant instance")
-            vdb = PremiereSuitesVectorDB(collection_name=collection_name)
+            vdb = PremiereSuitesVectorDB(
+                collection_name=collection_name,
+                embedding_model=os.getenv("EMBEDDING_MODEL", "all-MiniLM-L6-v2")
+            )
         
         # Create collection
         logger.info(f"Creating collection: {collection_name}")
@@ -163,7 +165,7 @@ def vectorize_faq_data(collection_name: str = "premiere_suites_faqs",
         
         # Prepare points for insertion
         logger.info("Preparing FAQ data for vectorization...")
-        points = prepare_faq_points(faqs)
+        points = prepare_faq_points(faqs, vdb)
         
         # Insert data into vector database
         logger.info("Inserting FAQ data into vector database...")
