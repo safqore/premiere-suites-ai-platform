@@ -190,39 +190,55 @@ class PremiereSuitesScraper:
             # This helps find amenities and other details that might be in different sections
             full_page_text = soup.get_text()
             
-            # Extract additional information from the container and full page
+            # Try to fetch the actual property page for more detailed information
+            property_page_text = ""
+            try:
+                full_url = f"https://premieresuites.com{url}"
+                response = self.session.get(full_url, timeout=10)
+                if response.status_code == 200:
+                    property_soup = BeautifulSoup(response.text, 'html.parser')
+                    property_page_text = property_soup.get_text()
+                    logger.debug(f"Successfully fetched property page for {property_name}")
+            except Exception as e:
+                logger.debug(f"Could not fetch property page for {property_name}: {e}")
+            
+            # Combine all text sources for better extraction
+            all_text = f"{container_text} {full_page_text} {property_page_text}"
+            
+            # Extract additional information from the combined text sources
             # Use rating from the all_ratings list if available
             rating = None
             if index < len(all_ratings):
                 rating = all_ratings[index]
             
-            # Extract room type
-            room_type = self.extract_room_type(container_text)
+            # Extract bedrooms from combined text first
+            bedrooms = self.extract_bedrooms(all_text)
             
-            # Extract amenities from both container and full page
-            container_amenities = self.extract_amenities(container_text)
-            page_amenities = self.extract_amenities(full_page_text)
-            # Combine and deduplicate amenities
-            all_amenities = list(set(container_amenities + page_amenities))
+            # Extract room type from combined text
+            room_type = self.extract_room_type(all_text)
             
-            # Extract suite features from both container and full page
-            container_suite_features = self.extract_suite_features(container_text)
-            page_suite_features = self.extract_suite_features(full_page_text)
-            # Combine and deduplicate suite features
-            all_suite_features = list(set(container_suite_features + page_suite_features))
+            # If we have bedroom count, use it to determine room type
+            if bedrooms:
+                if bedrooms == 1:
+                    room_type = "1 Bedroom"
+                elif bedrooms == 2:
+                    room_type = "2 Bedroom"
+                elif bedrooms == 3:
+                    room_type = "3 Bedroom"
+                elif bedrooms == 4:
+                    room_type = "4 Bedroom"
+            
+            # Extract amenities from combined text
+            all_amenities = self.extract_amenities(all_text)
+            
+            # Extract suite features from combined text
+            all_suite_features = self.extract_suite_features(all_text)
             
             # Extract image URL
             image_url = self.extract_image_url(container)
             
-            # Extract bedrooms from both container and full page
-            container_bedrooms = self.extract_bedrooms(container_text)
-            page_bedrooms = self.extract_bedrooms(full_page_text)
-            bedrooms = container_bedrooms or page_bedrooms
-            
-            # Determine pet friendly status from both container and full page
-            container_pet_friendly = self.is_pet_friendly(container_text)
-            page_pet_friendly = self.is_pet_friendly(full_page_text)
-            pet_friendly = container_pet_friendly or page_pet_friendly
+            # Determine pet friendly status from combined text
+            pet_friendly = self.is_pet_friendly(all_text)
             
             # Generate property ID
             property_id = re.sub(r'[^a-zA-Z0-9]', '', property_name)[:10].upper()
@@ -285,7 +301,33 @@ class PremiereSuitesScraper:
     def extract_room_type(self, text: str) -> str:
         """Extract room type from text content"""
         text_lower = text.lower()
-        if 'kitchen' in text_lower:
+        
+        # Look for specific bedroom patterns - prioritize bedroom information over other terms
+        if re.search(r'\b1\s*(?:bedroom|bed)\b', text_lower):
+            return "1 Bedroom"
+        elif re.search(r'\b2\s*(?:bedroom|bed)\b', text_lower):
+            return "2 Bedroom"
+        elif re.search(r'\b3\s*(?:bedroom|bed)\b', text_lower):
+            return "3 Bedroom"
+        elif re.search(r'\b4\s*(?:bedroom|bed)\b', text_lower):
+            return "4 Bedroom"
+        elif re.search(r'\bone\s*bedroom\b', text_lower):
+            return "1 Bedroom"
+        elif re.search(r'\btwo\s*bedroom\b', text_lower):
+            return "2 Bedroom"
+        elif re.search(r'\bthree\s*bedroom\b', text_lower):
+            return "3 Bedroom"
+        elif re.search(r'\bfour\s*bedroom\b', text_lower):
+            return "4 Bedroom"
+        elif re.search(r'\bstudio\b', text_lower):
+            return "Studio"
+        elif re.search(r'\bpenthouse\b', text_lower):
+            return "Penthouse"
+        elif re.search(r'\bloft\b', text_lower):
+            return "Loft"
+        elif re.search(r'\btownhouse\b', text_lower):
+            return "Townhouse"
+        elif 'kitchen' in text_lower:
             return "Kitchen"
         elif 'living room' in text_lower:
             return "Living Room"
@@ -320,13 +362,29 @@ class PremiereSuitesScraper:
             r'(?:suite|apartment|unit)\s*(?:with\s+)?(\d+)\s*(?:bedroom|bed)',  # "suite with 2 bedroom"
             r'(\d+)\s*(?:BR|BRs)',  # "2BR"
             r'(\d+)\s*(?:bed)',  # "2 bed"
+            r'(\d+)\s*bedrooms?',  # "1 bedrooms"
+            r'(\d+)\s*bed',  # "1 bed"
+            r'one\s*bedroom',  # "one bedroom"
+            r'two\s*bedroom',  # "two bedroom"
+            r'three\s*bedroom',  # "three bedroom"
+            r'four\s*bedroom',  # "four bedroom"
         ]
         
         for pattern in bedroom_patterns:
             bedroom_match = re.search(pattern, text, re.IGNORECASE)
             if bedroom_match:
                 try:
-                    return int(bedroom_match.group(1))
+                    if pattern in ['one\\s*bedroom', 'two\\s*bedroom', 'three\\s*bedroom', 'four\\s*bedroom']:
+                        # Handle word-based numbers
+                        word_to_num = {'one': 1, 'two': 2, 'three': 3, 'four': 4}
+                        for word, num in word_to_num.items():
+                            if re.search(word, bedroom_match.group(0), re.IGNORECASE):
+                                return num
+                    else:
+                        bedroom_count = int(bedroom_match.group(1))
+                        # Validate that the bedroom count is reasonable (1-10)
+                        if 1 <= bedroom_count <= 10:
+                            return bedroom_count
                 except (ValueError, IndexError):
                     continue
         

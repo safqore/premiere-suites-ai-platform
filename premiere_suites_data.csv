@@ -1,428 +1,428 @@
 property_name,city,rating,room_type,amenities,description,url,image_url,price_range,pet_friendly,bedrooms,location_details,raw_html,property_id,building_type,suite_features
-City Of Lougheed,Burnaby,4.5,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",City Of Lougheed Burnaby 4.5,https://premieresuites.com/furnished-apartments/burnaby/city-of-lougheed/,https://premiereweb.premieresuites.com/thumbs/aa62f672-a977-4b33-96bd-05e04a30e8ba_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('6659973b-be49-ed11-8133-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/burnaby/city-of-lougheed/"" title=""City of Lougheed"">
-<img alt=""City of Lougheed - Living Room"" src=""https://premiereweb.premieresuites.com/thumbs/aa62f672-a977-4b33-96bd-05e04a30e8ba_thumbs.jpg""/>
-</a>
-</div>
-</div>",CITYOFLOUG,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Harmonie,Pointe Claire,4.3,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Harmonie Pointe Claire 4.3,https://premieresuites.com/furnished-apartments/pointe-claire/harmonie/,https://premiereweb.premieresuites.com/thumbs/ca756e23-8630-ee11-8142-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('cdfd1c08-87e3-ed11-813d-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/pointe-claire/harmonie/"" title=""Harmonie"">
-<img alt=""Kitchen &amp; Dining Room"" src=""https://premiereweb.premieresuites.com/thumbs/ca756e23-8630-ee11-8142-000d3a6008fd_thumbs.jpg""/>
-</a>
-</div>
-</div>",HARMONIE,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Solaire,Calgary,3.5,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Solaire Calgary 3.5,https://premieresuites.com/furnished-apartments/calgary/solaire/,https://premiereweb.premieresuites.com/thumbs/4046c5e8-a2b9-eb11-811d-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('ebc90caa-f45a-eb11-8117-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/calgary/solaire/"" title=""Solaire"">
-<img alt=""Dining &amp; Kitchen (1002)"" src=""https://premiereweb.premieresuites.com/thumbs/4046c5e8-a2b9-eb11-811d-000d3a6008fd_thumbs.jpg""/>
-</a>
-</div>
-</div>",SOLAIRE,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-200 Central,Langley,5.0,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",200 Central Langley 5.0,https://premieresuites.com/furnished-apartments/langley/200-central/,https://premiereweb.premieresuites.com/thumbs/603f3b59-2f76-4a37-b495-4c49b69887ff_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('1333acbc-c25a-eb11-8117-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/langley/200-central/"" title=""200 Central"">
-<img alt=""200 Central - Kitchen 2"" src=""https://premiereweb.premieresuites.com/thumbs/603f3b59-2f76-4a37-b495-4c49b69887ff_thumbs.jpg""/>
-</a>
-</div>
-</div>",200CENTRAL,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Imperial Metrotown,Burnaby,4.5,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Imperial Metrotown Burnaby 4.5,https://premieresuites.com/furnished-apartments/burnaby/imperial-metrotown/,https://premiereweb.premieresuites.com/thumbs/3fdc6648-44da-451a-89d1-076ab0f21757_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('fe5e20e0-e95a-eb11-8117-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/burnaby/imperial-metrotown/"" title=""Imperial Metrotown"">
-<img alt=""Imperial Metrotown - Living Room"" src=""https://premiereweb.premieresuites.com/thumbs/3fdc6648-44da-451a-89d1-076ab0f21757_thumbs.jpg""/>
-</a>
-</div>
-</div>",IMPERIALME,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-The Lofts On Bannatyne,Winnipeg,5.0,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",The Lofts On Bannatyne Winnipeg 5.0,https://premieresuites.com/furnished-apartments/winnipeg/the-lofts-on-bannatyne/,https://premiereweb.premieresuites.com/thumbs/78662ef9-f95a-eb11-8117-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('77662ef9-f95a-eb11-8117-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/winnipeg/the-lofts-on-bannatyne/"" title=""The Lofts on Bannatyne"">
-<img alt=""LR - BAN602"" src=""https://premiereweb.premieresuites.com/thumbs/78662ef9-f95a-eb11-8117-000d3a6008fd_thumbs.jpg""/>
-</a>
-</div>
-</div>",THELOFTSON,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-The View,Edmonton,4.4,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",The View Edmonton 4.4,https://premieresuites.com/furnished-apartments/edmonton/the-view/,https://premiereweb.premieresuites.com/thumbs/73a8a3ca-a59f-4af9-933d-063701b7167b_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('b444352c-e55a-ed11-8135-000d3a6008fd')"">
+The View,Edmonton,4.3,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'In-suite Laundry', 'Concierge', 'Elevator', 'Balcony', 'Terrace', 'Garden', 'Outdoor Space', 'Storage', 'Bike Storage']",The View Edmonton 4.3,https://premieresuites.com/furnished-apartments/edmonton/the-view/,https://premiereweb.premieresuites.com/thumbs/73a8a3ca-a59f-4af9-933d-063701b7167b_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('b444352c-e55a-ed11-8135-000d3a6008fd')"">
 <div class=""item"">
 <a href=""/furnished-apartments/edmonton/the-view/"" title=""The View"">
 <img alt=""The View 2 - Living Room"" src=""https://premiereweb.premieresuites.com/thumbs/73a8a3ca-a59f-4af9-933d-063701b7167b_thumbs.jpg""/>
 </a>
 </div>
-</div>",THEVIEW,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-300 Front,Toronto,5.0,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",300 Front Toronto 5.0,https://premieresuites.com/furnished-apartments/toronto/300-front/,https://premiereweb.premieresuites.com/thumbs/ed081d24-f6e8-4f01-89b7-57cb36f8217c_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('ac5c3304-c35a-eb11-8117-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/toronto/300-front/"" title=""300 Front"">
-<img alt=""300 Front - Kitchen"" src=""https://premiereweb.premieresuites.com/thumbs/ed081d24-f6e8-4f01-89b7-57cb36f8217c_thumbs.jpg""/>
-</a>
-</div>
-</div>",300FRONT,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Century Park Regent 3,Edmonton,4.8,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Century Park Regent 3 Edmonton 4.8,https://premieresuites.com/furnished-apartments/edmonton/century-park-regent-3/,https://premiereweb.premieresuites.com/thumbs/8f7eaa0e-6afc-413b-b7a3-c0f78c4fa1ce_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('71e17770-e45a-eb11-8117-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/edmonton/century-park-regent-3/"" title=""Century Park Regent"">
-<img alt=""Century Park Regent - Living Room 2"" src=""https://premiereweb.premieresuites.com/thumbs/8f7eaa0e-6afc-413b-b7a3-c0f78c4fa1ce_thumbs.jpg""/>
-</a>
-</div>
-</div>",CENTURYPAR,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Residences Telus Sky,Calgary,5.0,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Residences Telus Sky Calgary 5.0,https://premieresuites.com/furnished-apartments/calgary/residences-telus-sky/,https://premiereweb.premieresuites.com/thumbs/4fa1ba12-afa0-4be1-99ce-15093b2f5291_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('1a829c4c-4d92-eb11-811b-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/calgary/residences-telus-sky/"" title=""Telus Sky Residential"">
-<img alt=""Telus Sky - Living Room 2"" src=""https://premiereweb.premieresuites.com/thumbs/4fa1ba12-afa0-4be1-99ce-15093b2f5291_thumbs.jpg""/>
-</a>
-</div>
-</div>",RESIDENCES,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Hudson,Vancouver,4.7,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Hudson Vancouver 4.7,https://premieresuites.com/furnished-apartments/vancouver/hudson/,https://premiereweb.premieresuites.com/thumbs/242e49bc-6996-eb11-811b-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('af73db24-e95a-eb11-8117-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/vancouver/hudson/"" title=""Hudson"">
-<img alt=""Living Room (2503)"" src=""https://premiereweb.premieresuites.com/thumbs/242e49bc-6996-eb11-811b-000d3a6008fd_thumbs.jpg""/>
-</a>
-</div>
-</div>",HUDSON,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Kinross Pvt,Kanata,5.0,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Kinross Pvt Kanata 5.0,https://premieresuites.com/furnished-apartments/kanata/kinross-pvt/,https://premiereweb.premieresuites.com/thumbs/b87ad774-9941-ec11-8123-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('efd21737-ea5a-eb11-8117-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/kanata/kinross-pvt/"" title=""Kinross Private"">
-<img alt=""Living Room Free WiFi Fully Furnished Apartment Suite Kanata"" src=""https://premiereweb.premieresuites.com/thumbs/b87ad774-9941-ec11-8123-000d3a6008fd_thumbs.jpg""/>
-</a>
-</div>
-</div>",KINROSSPVT,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Aspen House,Calgary,4.6,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Aspen House Calgary 4.6,https://premieresuites.com/furnished-apartments/calgary/aspen-house/,https://premiereweb.premieresuites.com/thumbs/74638074-3ca8-eb11-811c-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('ee432751-df5a-eb11-8117-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/calgary/aspen-house/"" title=""Aspen House"">
-<img alt=""Main Floor"" src=""https://premiereweb.premieresuites.com/thumbs/74638074-3ca8-eb11-811c-000d3a6008fd_thumbs.jpg""/>
-</a>
-</div>
-</div>",ASPENHOUSE,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Greystones,Halifax,4.6,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Greystones Halifax 4.6,https://premieresuites.com/furnished-apartments/halifax/greystones/,https://premiereweb.premieresuites.com/thumbs/d932f3de-4899-eb11-811b-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('3af1ba9c-548b-eb11-8119-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/halifax/greystones/"" title=""Greystones"">
-<img alt=""Living Room Free WiFi Fully Furnished Apartment Suite Halifax NS"" src=""https://premiereweb.premieresuites.com/thumbs/d932f3de-4899-eb11-811b-000d3a6008fd_thumbs.jpg""/>
-</a>
-</div>
-</div>",GREYSTONES,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Trio At Atria,North York,4.0,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Trio At Atria North York 4.0,https://premieresuites.com/furnished-apartments/north-york/trio-at-atria/,https://premiereweb.premieresuites.com/thumbs/b3931624-f549-4f53-84e1-48b2f6e8e7a2_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('eef554b6-fa5a-eb11-8117-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/north-york/trio-at-atria/"" title=""Trio at Atria"">
-<img alt=""Trio at Atria -  Living room"" src=""https://premiereweb.premieresuites.com/thumbs/b3931624-f549-4f53-84e1-48b2f6e8e7a2_thumbs.jpg""/>
-</a>
-</div>
-</div>",TRIOATATRI,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-360 At The City Centre,Scarborough,5.0,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",360 At The City Centre Scarborough 5.0,https://premieresuites.com/furnished-apartments/scarborough/360-at-the-city-centre/,https://premiereweb.premieresuites.com/thumbs/7ff2ac7a-d872-4bb1-b007-84b0df5eeb8e_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('398ace10-c35a-eb11-8117-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/scarborough/360-at-the-city-centre/"" title=""360° at the City Centre"">
-<img alt=""360 at the City Centre - Living room"" src=""https://premiereweb.premieresuites.com/thumbs/7ff2ac7a-d872-4bb1-b007-84b0df5eeb8e_thumbs.jpg""/>
-</a>
-</div>
-</div>",360ATTHECI,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Bellagio Terrace,Regina,3.6,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Bellagio Terrace Regina 3.6,https://premieresuites.com/furnished-apartments/regina/bellagio-terrace/,https://premiereweb.premieresuites.com/thumbs/a3bbe9d4-159c-4759-a341-1ebabb7d4444_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('c5fbde39-e15a-eb11-8117-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/regina/bellagio-terrace/"" title=""Bellagio Terrace"">
-<img alt=""Bellagio Terrace - Living Room"" src=""https://premiereweb.premieresuites.com/thumbs/a3bbe9d4-159c-4759-a341-1ebabb7d4444_thumbs.jpg""/>
-</a>
-</div>
-</div>",BELLAGIOTE,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Encore Residences,Moncton,4.3,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Encore Residences Moncton 4.3,https://premieresuites.com/furnished-apartments/moncton/encore-residences/,https://premiereweb.premieresuites.com/thumbs/df99fb7e-4036-ee11-8142-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('24368a60-6560-ed11-8135-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/moncton/encore-residences/"" title=""Encore Residences"">
-<img alt=""1 Living Room Free WiFi Fully Furnished Residence, Two Bedroom Suite Moncton New Brunswick"" src=""https://premiereweb.premieresuites.com/thumbs/df99fb7e-4036-ee11-8142-000d3a6008fd_thumbs.jpg""/>
-</a>
-</div>
-</div>",ENCORERESI,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-The Louvre,Edmonton,5.0,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",The Louvre Edmonton 5.0,https://premieresuites.com/furnished-apartments/edmonton/the-louvre/,https://premiereweb.premieresuites.com/thumbs/5a1ad6e4-ac0e-4a14-ade9-9ad570079630_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('e0c4adf4-b6ab-ec11-812b-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/edmonton/the-louvre/"" title=""The Louvre"">
-<img alt=""Louvre - Living Room"" src=""https://premiereweb.premieresuites.com/thumbs/5a1ad6e4-ac0e-4a14-ade9-9ad570079630_thumbs.jpg""/>
-</a>
-</div>
-</div>",THELOUVRE,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Circa 2,Markham,3.3,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Circa 2 Markham 3.3,https://premieresuites.com/furnished-apartments/markham/circa-2/,https://premiereweb.premieresuites.com/thumbs/f7ce2fc5-56d7-41ff-af4a-f80900c05e2f_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('7ee5a9ea-e45a-eb11-8117-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/markham/circa-2/"" title=""Circa II"">
-<img alt=""Circa 2 - Living room"" src=""https://premiereweb.premieresuites.com/thumbs/f7ce2fc5-56d7-41ff-af4a-f80900c05e2f_thumbs.jpg""/>
-</a>
-</div>
-</div>",CIRCA2,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-25 Colliers Lane,St John S,4.2,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",25 Colliers Lane St John S 4.2,https://premieresuites.com/furnished-apartments/st-john-s/25-colliers-lane/,https://premiereweb.premieresuites.com/thumbs/571059df-6f97-ed11-8139-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('b3c1eed6-b895-ed11-8139-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/st-john-s/25-colliers-lane/"" title=""25 Colliers Lane"">
-<img alt=""4 Kitchen Fully Equipped Five Appliances Stainless Steel St. John’s Newfoundland"" src=""https://premiereweb.premieresuites.com/thumbs/571059df-6f97-ed11-8139-000d3a6008fd_thumbs.jpg""/>
-</a>
-</div>
-</div>",25COLLIERS,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Halton Terrace,Kanata,5.0,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Halton Terrace Kanata 5.0,https://premieresuites.com/furnished-apartments/kanata/halton-terrace/,https://premiereweb.premieresuites.com/thumbs/fd5fe7a3-ca64-ec11-8129-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('a130a5f4-f75a-eb11-8117-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/kanata/halton-terrace/"" title=""The Halton"">
-<img alt=""Living Room Free WiFi Fully Furnished Apartment Suite Kanata"" src=""https://premiereweb.premieresuites.com/thumbs/fd5fe7a3-ca64-ec11-8129-000d3a6008fd_thumbs.jpg""/>
-</a>
-</div>
-</div>",HALTONTERR,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Creighton Apartments,Fredericton,4.2,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Creighton Apartments Fredericton 4.2,https://premieresuites.com/furnished-apartments/fredericton/creighton-apartments/,https://premiereweb.premieresuites.com/thumbs/f5d71f8d-f55a-eb11-8117-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('e7d71f8d-f55a-eb11-8117-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/fredericton/creighton-apartments/"" title=""The Creighton "">
-<img alt=""D8 living room"" src=""https://premiereweb.premieresuites.com/thumbs/f5d71f8d-f55a-eb11-8117-000d3a6008fd_thumbs.jpg""/>
-</a>
-</div>
-</div>",CREIGHTONA,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Via123,North York,4.5,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Via123 North York 4.5,https://premieresuites.com/furnished-apartments/north-york/via123/,https://premiereweb.premieresuites.com/thumbs/1409762b-6deb-4ed8-bc41-818355f3c3d2_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('9554d59f-fb5a-eb11-8117-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/north-york/via123/"" title=""VIA123"">
-<img alt=""VIA 123 - Living room"" src=""https://premiereweb.premieresuites.com/thumbs/1409762b-6deb-4ed8-bc41-818355f3c3d2_thumbs.jpg""/>
-</a>
-</div>
-</div>",VIA123,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-The Anchorage,Dartmouth,4.3,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",The Anchorage Dartmouth 4.3,https://premieresuites.com/furnished-apartments/dartmouth/the-anchorage/,https://premiereweb.premieresuites.com/thumbs/8d7325a7-2f8e-4fac-a617-8b9a933c9ec0_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('6d2762b8-feec-ee11-8150-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/dartmouth/the-anchorage/"" title=""The Anchorage"">
-<img alt=""Dining Room Living Room Open Concept Kitchen Fully Furnished Apartment Suite Dartmouth NS"" src=""https://premiereweb.premieresuites.com/thumbs/8d7325a7-2f8e-4fac-a617-8b9a933c9ec0_thumbs.jpg""/>
-</a>
-</div>
-</div>",THEANCHORA,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Le Encore,Montreal,4.7,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Le Encore Montreal 4.7,https://premieresuites.com/furnished-apartments/montreal/le-encore/,https://premiereweb.premieresuites.com/thumbs/2355737f-e8eb-eb11-8120-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('79b4d74a-eb5a-eb11-8117-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/montreal/le-encore/"" title=""Encore"">
-<img alt=""4 - Living Space"" src=""https://premiereweb.premieresuites.com/thumbs/2355737f-e8eb-eb11-8120-000d3a6008fd_thumbs.jpg""/>
-</a>
-</div>
-</div>",LEENCORE,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-The Deveraux,Regina,5.0,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",The Deveraux Regina 5.0,https://premieresuites.com/furnished-apartments/regina/the-deveraux/,https://premiereweb.premieresuites.com/thumbs/339e3d3b-c9bc-4542-b2c8-ab6960e15243_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('311daea9-f55a-eb11-8117-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/regina/the-deveraux/"" title=""The Deveraux"">
-<img alt=""The Deveraux - Living Room 3"" src=""https://premiereweb.premieresuites.com/thumbs/339e3d3b-c9bc-4542-b2c8-ab6960e15243_thumbs.jpg""/>
-</a>
-</div>
-</div>",THEDEVERAU,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Bishop S Landing 1475,Halifax,4.7,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Bishop S Landing 1475 Halifax 4.7,https://premieresuites.com/furnished-apartments/halifax/bishop-s-landing-1475/,https://premiereweb.premieresuites.com/thumbs/2ec2ebc9-658b-eb11-8119-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('d2f03cb6-658b-eb11-8119-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/halifax/bishop-s-landing-1475/"" title=""Bishop's Landing LW75"">
-<img alt=""Living Room Free WiFi Fully Furnished Apartment Waterview Suite Halifax NS"" src=""https://premiereweb.premieresuites.com/thumbs/2ec2ebc9-658b-eb11-8119-000d3a6008fd_thumbs.jpg""/>
-</a>
-</div>
-</div>",BISHOPSLAN,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-The Duet,Victoria,4.7,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",The Duet Victoria 4.7,https://premieresuites.com/furnished-apartments/victoria/the-duet/,https://premiereweb.premieresuites.com/thumbs/97743cc7-f55a-eb11-8117-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('289039c1-f55a-eb11-8117-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/victoria/the-duet/"" title=""The Duet"">
-<img alt=""James Bay Duet condo 646 Michigan St Victoria BC"" src=""https://premiereweb.premieresuites.com/thumbs/97743cc7-f55a-eb11-8117-000d3a6008fd_thumbs.jpg""/>
-</a>
-</div>
-</div>",THEDUET,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Parkside Ii,Calgary,3.9,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Parkside Ii Calgary 3.9,https://premieresuites.com/furnished-apartments/calgary/parkside-ii/,https://premiereweb.premieresuites.com/thumbs/03653072-9b53-4fb4-8811-b12fe622c4d0_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('89195027-ef5a-eb11-8117-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/calgary/parkside-ii/"" title=""Parkside II"">
-<img alt=""Parkside 2 - Living Room"" src=""https://premiereweb.premieresuites.com/thumbs/03653072-9b53-4fb4-8811-b12fe622c4d0_thumbs.jpg""/>
-</a>
-</div>
-</div>",PARKSIDEII,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-The Excelsior 290,Winnipeg,5.0,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",The Excelsior 290 Winnipeg 5.0,https://premieresuites.com/furnished-apartments/winnipeg/the-excelsior-290/,https://premiereweb.premieresuites.com/thumbs/07e58fdc-1897-eb11-811b-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('b76f0de7-f55a-eb11-8117-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/winnipeg/the-excelsior-290/"" title=""The Excelsior 290"">
-<img alt=""EXC 290 - Living Room"" src=""https://premiereweb.premieresuites.com/thumbs/07e58fdc-1897-eb11-811b-000d3a6008fd_thumbs.jpg""/>
-</a>
-</div>
-</div>",THEEXCELSI,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Corazon,Victoria,4.5,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Corazon Victoria 4.5,https://premieresuites.com/furnished-apartments/victoria/corazon/,https://premiereweb.premieresuites.com/thumbs/b5482eda-b088-ee11-8149-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('16ef0682-4d93-eb11-811b-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/victoria/corazon/"" title=""The Corazon "">
-<img alt=""Corazon 506 bathroom"" src=""https://premiereweb.premieresuites.com/thumbs/b5482eda-b088-ee11-8149-000d3a6008fd_thumbs.jpg""/>
-</a>
-</div>
-</div>",CORAZON,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Dockside Green   Balance A,Victoria,4.8,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Dockside Green   Balance A Victoria 4.8,https://premieresuites.com/furnished-apartments/victoria/dockside-green---balance-a/,https://premiereweb.premieresuites.com/thumbs/5a7670bf-e55a-eb11-8117-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('597670bf-e55a-eb11-8117-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/victoria/dockside-green---balance-a/"" title=""Dockside Green - Balance A"">
-<img alt=""Water View from Balance 704A"" src=""https://premiereweb.premieresuites.com/thumbs/5a7670bf-e55a-eb11-8117-000d3a6008fd_thumbs.jpg""/>
-</a>
-</div>
-</div>",DOCKSIDEGR,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Boutique Lumeo,Brossard,5.0,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Boutique Lumeo Brossard 5.0,https://premieresuites.com/furnished-apartments/brossard/boutique-lumeo/,https://premiereweb.premieresuites.com/thumbs/64f8ef04-cfb8-eb11-811d-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('5c299251-1092-eb11-811b-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/brossard/boutique-lumeo/"" title=""Boutique Lumeo"">
-<img alt=""3 - Dining + Kitchen"" src=""https://premiereweb.premieresuites.com/thumbs/64f8ef04-cfb8-eb11-811d-000d3a6008fd_thumbs.jpg""/>
-</a>
-</div>
-</div>",BOUTIQUELU,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Four Season Garden Condos,Richmond Hill,3.0,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Four Season Garden Condos Richmond Hill 3.0,https://premieresuites.com/furnished-apartments/richmond-hill/four-season-garden-condos/,https://premiereweb.premieresuites.com/thumbs/ec9ac341-8a54-4936-b05d-6da8c1a08c57_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('76c7cc57-e75a-eb11-8117-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/richmond-hill/four-season-garden-condos/"" title=""Four Season Garden Condos"">
-<img alt=""Four Season Garden Condos 2 - Living room"" src=""https://premiereweb.premieresuites.com/thumbs/ec9ac341-8a54-4936-b05d-6da8c1a08c57_thumbs.jpg""/>
-</a>
-</div>
-</div>",FOURSEASON,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Amici Terrace,Kanata,4.0,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Amici Terrace Kanata 4.0,https://premieresuites.com/furnished-apartments/kanata/amici-terrace/,https://premiereweb.premieresuites.com/thumbs/2a599b5e-cd69-ed11-8137-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('2f12cc51-f55a-eb11-8117-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/kanata/amici-terrace/"" title=""The Amici"">
-<img alt=""Living room"" src=""https://premiereweb.premieresuites.com/thumbs/2a599b5e-cd69-ed11-8137-000d3a6008fd_thumbs.jpg""/>
-</a>
-</div>
-</div>",AMICITERRA,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Ecentral,Toronto   Midtown,4.0,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Ecentral Toronto   Midtown 4.0,https://premieresuites.com/furnished-apartments/toronto---midtown/ecentral/,https://premiereweb.premieresuites.com/thumbs/9f2f0bf0-e55a-eb11-8117-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('d7a9a9e8-e55a-eb11-8117-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/toronto---midtown/ecentral/"" title=""eCentral"">
-<img alt=""Kitchen Fully Equipped Five Appliances Stainless Steel Midtown Toronto"" src=""https://premiereweb.premieresuites.com/thumbs/9f2f0bf0-e55a-eb11-8117-000d3a6008fd_thumbs.jpg""/>
-</a>
-</div>
-</div>",ECENTRAL,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Orchard Uptown,Burlington,4.5,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Orchard Uptown Burlington 4.5,https://premieresuites.com/furnished-apartments/burlington/orchard-uptown/,https://premiereweb.premieresuites.com/thumbs/10cc8b5d-a842-4924-ab81-7a8d14497c6c_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('bf9f8ddd-ee5a-eb11-8117-000d3a6008fd')"">
+</div>",THEVIEW,Apartment Building,"['Furnished', 'Kitchen', 'In-suite Laundry', 'Balcony', 'Terrace', 'Patio', 'Storage', 'Modern', 'Luxury', 'Premium']"
+Orchard Uptown,Burlington,4.0,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'In-suite Laundry', 'Elevator', 'Terrace', 'Garden', 'Outdoor Space']",Orchard Uptown Burlington 4.0,https://premieresuites.com/furnished-apartments/burlington/orchard-uptown/,https://premiereweb.premieresuites.com/thumbs/10cc8b5d-a842-4924-ab81-7a8d14497c6c_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('bf9f8ddd-ee5a-eb11-8117-000d3a6008fd')"">
 <div class=""item"">
 <a href=""/furnished-apartments/burlington/orchard-uptown/"" title=""Orchard Uptown"">
 <img alt=""Dining Room Fully Furnished Apartment Suite Burlington"" src=""https://premiereweb.premieresuites.com/thumbs/10cc8b5d-a842-4924-ab81-7a8d14497c6c_thumbs.jpg""/>
 </a>
 </div>
-</div>",ORCHARDUPT,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-The Wetmore House,Fredericton,4.0,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",The Wetmore House Fredericton 4.0,https://premieresuites.com/furnished-apartments/fredericton/the-wetmore-house/,https://premiereweb.premieresuites.com/thumbs/e511f59e-c9cc-ed11-813b-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('50b69ea8-fa5a-eb11-8117-000d3a6008fd')"">
+</div>",ORCHARDUPT,Apartment Building,"['Furnished', 'Kitchen', 'Kitchenette', 'In-suite Laundry', 'Terrace']"
+Harmonie,Pointe Claire,4.4,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'Fully Furnished', 'In-suite Laundry', 'Elevator', 'Balcony', 'Terrace', 'Garden']",Harmonie Pointe Claire 4.4,https://premieresuites.com/furnished-apartments/pointe-claire/harmonie/,https://premiereweb.premieresuites.com/thumbs/ca756e23-8630-ee11-8142-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('cdfd1c08-87e3-ed11-813d-000d3a6008fd')"">
 <div class=""item"">
-<a href=""/furnished-apartments/fredericton/the-wetmore-house/"" title=""The Wetmore House"">
-<img alt=""Building"" src=""https://premiereweb.premieresuites.com/thumbs/e511f59e-c9cc-ed11-813b-000d3a6008fd_thumbs.jpg""/>
+<a href=""/furnished-apartments/pointe-claire/harmonie/"" title=""Harmonie"">
+<img alt=""Kitchen &amp; Dining Room"" src=""https://premiereweb.premieresuites.com/thumbs/ca756e23-8630-ee11-8142-000d3a6008fd_thumbs.jpg""/>
 </a>
 </div>
-</div>",THEWETMORE,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-107 Nadia Drive,Dartmouth,4.3,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",107 Nadia Drive Dartmouth 4.3,https://premieresuites.com/furnished-apartments/dartmouth/107-nadia-drive/,https://premiereweb.premieresuites.com/thumbs/f20d53df-9daf-ec11-812b-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('5420a182-dda6-ec11-812b-000d3a6008fd')"">
+</div>",HARMONIE,Apartment Building,"['Fully Furnished', 'Furnished', 'Kitchen', 'In-suite Laundry', 'Balcony', 'Terrace', 'Patio', 'Private Balcony', 'City View', 'Modern', 'High-end']"
+Imperial Metrotown,Burnaby,4.0,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'In-suite Laundry', 'Concierge', 'Elevator', 'Terrace', 'Garden', 'Outdoor Space']",Imperial Metrotown Burnaby 4.0,https://premieresuites.com/furnished-apartments/burnaby/imperial-metrotown/,https://premiereweb.premieresuites.com/thumbs/3fdc6648-44da-451a-89d1-076ab0f21757_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('fe5e20e0-e95a-eb11-8117-000d3a6008fd')"">
 <div class=""item"">
-<a href=""/furnished-apartments/dartmouth/107-nadia-drive/"" title=""107 Nadia Drive"">
-<img alt=""1 Living Room Temporary Housing Bedford Fully Furnished Short-Term Rental Townhouse Dartmouth NS"" src=""https://premiereweb.premieresuites.com/thumbs/f20d53df-9daf-ec11-812b-000d3a6008fd_thumbs.jpg""/>
+<a href=""/furnished-apartments/burnaby/imperial-metrotown/"" title=""Imperial Metrotown"">
+<img alt=""Imperial Metrotown - Living Room"" src=""https://premiereweb.premieresuites.com/thumbs/3fdc6648-44da-451a-89d1-076ab0f21757_thumbs.jpg""/>
 </a>
 </div>
-</div>",107NADIADR,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Telus Garden,Vancouver,5.0,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Telus Garden Vancouver 5.0,https://premieresuites.com/furnished-apartments/vancouver/telus-garden/,https://premiereweb.premieresuites.com/thumbs/6c922d40-dc35-ec11-8123-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('9a5e75c6-528a-eb11-8119-000d3a6008fd')"">
+</div>",IMPERIALME,Apartment Building,"['Furnished', 'Kitchen', 'In-suite Laundry', 'Terrace', 'Walk-in Closet', 'Queen Bed', 'Luxury']"
+Bellagio Terrace,Regina,3.0,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'In-suite Laundry', 'Elevator', 'Terrace', 'Garden', 'Storage', 'Bike Storage']",Bellagio Terrace Regina 3.0,https://premieresuites.com/furnished-apartments/regina/bellagio-terrace/,https://premiereweb.premieresuites.com/thumbs/a3bbe9d4-159c-4759-a341-1ebabb7d4444_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('c5fbde39-e15a-eb11-8117-000d3a6008fd')"">
 <div class=""item"">
-<a href=""/furnished-apartments/vancouver/telus-garden/"" title=""Telus Gardens"">
-<img alt=""Kitchen &amp; Living Room (2003)"" src=""https://premiereweb.premieresuites.com/thumbs/6c922d40-dc35-ec11-8123-000d3a6008fd_thumbs.jpg""/>
+<a href=""/furnished-apartments/regina/bellagio-terrace/"" title=""Bellagio Terrace"">
+<img alt=""Bellagio Terrace - Living Room"" src=""https://premiereweb.premieresuites.com/thumbs/a3bbe9d4-159c-4759-a341-1ebabb7d4444_thumbs.jpg""/>
 </a>
 </div>
-</div>",TELUSGARDE,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Five West,Calgary,4.6,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Five West Calgary 4.6,https://premieresuites.com/furnished-apartments/calgary/five-west/,https://premiereweb.premieresuites.com/thumbs/dd31c436-e75a-eb11-8117-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('be713a27-e75a-eb11-8117-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/calgary/five-west/"" title=""Five West"">
-<img alt=""Kitchen &amp; Dining Room (1601)"" src=""https://premiereweb.premieresuites.com/thumbs/dd31c436-e75a-eb11-8117-000d3a6008fd_thumbs.jpg""/>
-</a>
-</div>
-</div>",FIVEWEST,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Ice Condos Ii,Toronto,4.2,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Ice Condos Ii Toronto 4.2,https://premieresuites.com/furnished-apartments/toronto/ice-condos-ii/,https://premiereweb.premieresuites.com/thumbs/c32385f3-a2e0-4c5b-b26d-c2639470792f_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('377f6f3d-e95a-eb11-8117-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/toronto/ice-condos-ii/"" title=""Ice Condos"">
-<img alt=""ICE Condos - Living and Dining Room"" src=""https://premiereweb.premieresuites.com/thumbs/c32385f3-a2e0-4c5b-b26d-c2639470792f_thumbs.jpg""/>
-</a>
-</div>
-</div>",ICECONDOSI,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Skymark,Mississauga,4.5,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Skymark Mississauga 4.5,https://premieresuites.com/furnished-apartments/mississauga/skymark/,https://premiereweb.premieresuites.com/thumbs/6fc76d3b-6ff0-ed11-813d-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('471dab90-f45a-eb11-8117-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/mississauga/skymark/"" title=""Skymark"">
-<img alt=""Living Room Free WiFi Fully Furnished Apartment Suite Mississauga"" src=""https://premiereweb.premieresuites.com/thumbs/6fc76d3b-6ff0-ed11-813d-000d3a6008fd_thumbs.jpg""/>
-</a>
-</div>
-</div>",SKYMARK,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Pendrell,Vancouver,4.4,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Pendrell Vancouver 4.4,https://premieresuites.com/furnished-apartments/vancouver/pendrell/,https://premiereweb.premieresuites.com/thumbs/27257b79-6f96-eb11-811b-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('e0df60a6-528a-eb11-8119-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/vancouver/pendrell/"" title=""1770 Pendrell"">
-<img alt=""Kitchen (706)"" src=""https://premiereweb.premieresuites.com/thumbs/27257b79-6f96-eb11-811b-000d3a6008fd_thumbs.jpg""/>
-</a>
-</div>
-</div>",PENDRELL,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Cargill Path,Milton,4.3,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Cargill Path Milton 4.3,https://premieresuites.com/furnished-apartments/milton/cargill-path/,https://premiereweb.premieresuites.com/thumbs/72a17a35-048d-eb11-8119-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('6ea17a35-048d-eb11-8119-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/milton/cargill-path/"" title=""Cargill Path"">
-<img alt=""Living Room Free WiFi Fully Furnished Apartment Suite Milton"" src=""https://premiereweb.premieresuites.com/thumbs/72a17a35-048d-eb11-8119-000d3a6008fd_thumbs.jpg""/>
-</a>
-</div>
-</div>",CARGILLPAT,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-The Avery,Dartmouth,4.0,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",The Avery Dartmouth 4.0,https://premieresuites.com/furnished-apartments/dartmouth/the-avery/,https://premiereweb.premieresuites.com/thumbs/20325ad9-8490-448a-9ee2-796841d6a439_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('ee93bb1f-e6d8-ef11-815b-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/dartmouth/the-avery/"" title=""The Avery"">
-<img alt=""Open Space Living Room Dining Room Fully Furnished Apartment Suite Dartmouth NS"" src=""https://premiereweb.premieresuites.com/thumbs/20325ad9-8490-448a-9ee2-796841d6a439_thumbs.jpg""/>
-</a>
-</div>
-</div>",THEAVERY,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-University Meadows   Iron Gate Street,Kitchener,4.5,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",University Meadows   Iron Gate Street Kitchener 4.5,https://premieresuites.com/furnished-apartments/kitchener/university-meadows---iron-gate-street/,https://premiereweb.premieresuites.com/thumbs/70b01912-fb5a-eb11-8117-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('6db01912-fb5a-eb11-8117-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/kitchener/university-meadows---iron-gate-street/"" title=""University Meadows - Iron Gate Street"">
-<img alt=""Living Room Free WiFi Fully Furnished Apartment Suite Kitchener"" src=""https://premiereweb.premieresuites.com/thumbs/70b01912-fb5a-eb11-8117-000d3a6008fd_thumbs.jpg""/>
-</a>
-</div>
-</div>",UNIVERSITY,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Aspen Townhouse,Calgary,1.0,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Aspen Townhouse Calgary 1.0,https://premieresuites.com/furnished-apartments/calgary/aspen-townhouse/,https://premiereweb.premieresuites.com/thumbs/282d9faf-fdb6-4cfe-971a-c93430ee8b95_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('f3297381-df5a-eb11-8117-000d3a6008fd')"">
+</div>",BELLAGIOTE,Apartment Building,"['Furnished', 'Kitchen', 'In-suite Laundry', 'Terrace', 'Storage', 'Modern']"
+Aspen Townhouse,Calgary,4.3,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'In-suite Laundry', 'Terrace', 'Garden']",Aspen Townhouse Calgary 4.3,https://premieresuites.com/furnished-apartments/calgary/aspen-townhouse/,https://premiereweb.premieresuites.com/thumbs/282d9faf-fdb6-4cfe-971a-c93430ee8b95_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('f3297381-df5a-eb11-8117-000d3a6008fd')"">
 <div class=""item"">
 <a href=""/furnished-apartments/calgary/aspen-townhouse/"" title=""Aspen Townhouse"">
 <img alt=""Aspen Townhouse - Living Room 5"" src=""https://premiereweb.premieresuites.com/thumbs/282d9faf-fdb6-4cfe-971a-c93430ee8b95_thumbs.jpg""/>
 </a>
 </div>
-</div>",ASPENTOWNH,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Versus Living,Calgary,4.0,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Versus Living Calgary 4.0,https://premieresuites.com/furnished-apartments/calgary/versus-living/,https://premiereweb.premieresuites.com/thumbs/a94402fa-4d00-4949-ad22-349982bad6b7_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('cf966132-fb5a-eb11-8117-000d3a6008fd')"">
+</div>",ASPENTOWNH,Apartment Building,"['Furnished', 'Kitchen', 'In-suite Laundry', 'Terrace', 'Walk-in Closet', 'Hardwood Floors', 'Queen Bed', 'Contemporary']"
+Dockside Green   Balance A,Victoria,4.7,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'In-suite Laundry', 'Terrace', 'Garden']",Dockside Green   Balance A Victoria 4.7,https://premieresuites.com/furnished-apartments/victoria/dockside-green---balance-a/,https://premiereweb.premieresuites.com/thumbs/5a7670bf-e55a-eb11-8117-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('597670bf-e55a-eb11-8117-000d3a6008fd')"">
 <div class=""item"">
-<a href=""/furnished-apartments/calgary/versus-living/"" title=""Versus Living"">
-<img alt=""Versus 2 - Living Room 2"" src=""https://premiereweb.premieresuites.com/thumbs/a94402fa-4d00-4949-ad22-349982bad6b7_thumbs.jpg""/>
+<a href=""/furnished-apartments/victoria/dockside-green---balance-a/"" title=""Dockside Green - Balance A"">
+<img alt=""Water View from Balance 704A"" src=""https://premiereweb.premieresuites.com/thumbs/5a7670bf-e55a-eb11-8117-000d3a6008fd_thumbs.jpg""/>
 </a>
 </div>
-</div>",VERSUSLIVI,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-57 Harvey Road,St  John S,3.0,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",57 Harvey Road St  John S 3.0,https://premieresuites.com/furnished-apartments/st--john-s/57-harvey-road/,https://premiereweb.premieresuites.com/thumbs/8e3d7f46-6a8b-eb11-8119-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('7d78cf1e-6a8b-eb11-8119-000d3a6008fd')"">
+</div>",DOCKSIDEGR,Apartment Building,"['Furnished', 'Kitchen', 'In-suite Laundry', 'Terrace']"
+The Lofts On Bannatyne,Winnipeg,4.2,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'In-suite Laundry', 'Elevator', 'Terrace', 'Garden']",The Lofts On Bannatyne Winnipeg 4.2,https://premieresuites.com/furnished-apartments/winnipeg/the-lofts-on-bannatyne/,https://premiereweb.premieresuites.com/thumbs/78662ef9-f95a-eb11-8117-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('77662ef9-f95a-eb11-8117-000d3a6008fd')"">
 <div class=""item"">
-<a href=""/furnished-apartments/st--john-s/57-harvey-road/"" title=""57 Harvey Road"">
-<img alt=""Executive Fully Furnished Suite 57 Harvey Road St. John's NL"" src=""https://premiereweb.premieresuites.com/thumbs/8e3d7f46-6a8b-eb11-8119-000d3a6008fd_thumbs.jpg""/>
+<a href=""/furnished-apartments/winnipeg/the-lofts-on-bannatyne/"" title=""The Lofts on Bannatyne"">
+<img alt=""LR - BAN602"" src=""https://premiereweb.premieresuites.com/thumbs/78662ef9-f95a-eb11-8117-000d3a6008fd_thumbs.jpg""/>
 </a>
 </div>
-</div>",57HARVEYRO,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Citescape,Calgary,4.4,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Citescape Calgary 4.4,https://premieresuites.com/furnished-apartments/calgary/citescape/,https://premiereweb.premieresuites.com/thumbs/efd8d0fb-d729-4ea1-89ea-17c097bc73d6_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('f4b03bf9-e45a-eb11-8117-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/calgary/citescape/"" title=""Citescape Eau Claire"">
-<img alt=""Living Room 1"" src=""https://premiereweb.premieresuites.com/thumbs/efd8d0fb-d729-4ea1-89ea-17c097bc73d6_thumbs.jpg""/>
-</a>
-</div>
-</div>",CITESCAPE,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Metro Place,Burnaby,4.5,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Metro Place Burnaby 4.5,https://premieresuites.com/furnished-apartments/burnaby/metro-place/,https://premiereweb.premieresuites.com/thumbs/43f5edd0-578f-ec11-812a-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('bd104527-d68d-ec11-812a-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/burnaby/metro-place/"" title=""Metro Place"">
-<img alt=""Kitchen"" src=""https://premiereweb.premieresuites.com/thumbs/43f5edd0-578f-ec11-812a-000d3a6008fd_thumbs.jpg""/>
-</a>
-</div>
-</div>",METROPLACE,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Waterfront,Calgary,4.7,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Waterfront Calgary 4.7,https://premieresuites.com/furnished-apartments/calgary/waterfront/,https://premiereweb.premieresuites.com/thumbs/292cfed3-9b7e-4e99-8686-2c1fcb0c9a87_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('e3d94228-fc5a-eb11-8117-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/calgary/waterfront/"" title=""Waterfront"">
-<img alt=""Waterfront 1 - Living Room"" src=""https://premiereweb.premieresuites.com/thumbs/292cfed3-9b7e-4e99-8686-2c1fcb0c9a87_thumbs.jpg""/>
-</a>
-</div>
-</div>",WATERFRONT,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Kleinburg Centre,Kleinburg,4.5,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Kleinburg Centre Kleinburg 4.5,https://premieresuites.com/furnished-apartments/kleinburg/kleinburg-centre/,https://premiereweb.premieresuites.com/thumbs/12ab7809-0ff2-4cba-97e9-19f75e73a811_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('fdf2d957-ea5a-eb11-8117-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/kleinburg/kleinburg-centre/"" title=""Kleinburg Centre "">
-<img alt=""Kleinburg Centre - Dining room"" src=""https://premiereweb.premieresuites.com/thumbs/12ab7809-0ff2-4cba-97e9-19f75e73a811_thumbs.jpg""/>
-</a>
-</div>
-</div>",KLEINBURGC,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Fancamp Drive,Maple,4.6,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Fancamp Drive Maple 4.6,https://premieresuites.com/furnished-apartments/maple/fancamp-drive/,https://premiereweb.premieresuites.com/thumbs/38d6dd76-f84d-40b6-8ed1-4b151ac07696_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('0b4b9992-e65a-eb11-8117-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/maple/fancamp-drive/"" title=""Fancamp Drive"">
-<img alt=""Fancamp Drive - Living room"" src=""https://premiereweb.premieresuites.com/thumbs/38d6dd76-f84d-40b6-8ed1-4b151ac07696_thumbs.jpg""/>
-</a>
-</div>
-</div>",FANCAMPDRI,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Mondeo Drive,Scarborough,4.9,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Mondeo Drive Scarborough 4.9,https://premieresuites.com/furnished-apartments/scarborough/mondeo-drive/,https://premiereweb.premieresuites.com/thumbs/b3a32585-cdee-4441-9a2c-edffd2788647_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('1a30a980-ee5a-eb11-8117-000d3a6008fd')"">
-<div class=""item"">
-<a href=""/furnished-apartments/scarborough/mondeo-drive/"" title=""Mondeo Drive"">
-<img alt=""Mondeo Drive - Living room"" src=""https://premiereweb.premieresuites.com/thumbs/b3a32585-cdee-4441-9a2c-edffd2788647_thumbs.jpg""/>
-</a>
-</div>
-</div>",MONDEODRIV,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Beechwood Village,Ottawa,4.3,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Beechwood Village Ottawa 4.3,https://premieresuites.com/furnished-apartments/ottawa/beechwood-village/,https://premiereweb.premieresuites.com/thumbs/bd4a2b31-a874-ec11-8129-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('033848f2-e05a-eb11-8117-000d3a6008fd')"">
+</div>",THELOFTSON,Apartment Building,"['Furnished', 'Kitchen', 'In-suite Laundry', 'Terrace', 'Modern', 'Designer']"
+Beechwood Village,Ottawa,4.5,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'In-suite Laundry', 'Terrace', 'Garden', 'Outdoor Space']",Beechwood Village Ottawa 4.5,https://premieresuites.com/furnished-apartments/ottawa/beechwood-village/,https://premiereweb.premieresuites.com/thumbs/bd4a2b31-a874-ec11-8129-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('033848f2-e05a-eb11-8117-000d3a6008fd')"">
 <div class=""item"">
 <a href=""/furnished-apartments/ottawa/beechwood-village/"" title=""Beechwood"">
 <img alt=""Living Room Free WiFi Fully Furnished Apartment Suite Ottawa"" src=""https://premiereweb.premieresuites.com/thumbs/bd4a2b31-a874-ec11-8129-000d3a6008fd_thumbs.jpg""/>
 </a>
 </div>
-</div>",BEECHWOODV,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Maple Commercial,Halifax,4.7,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Maple Commercial Halifax 4.7,https://premieresuites.com/furnished-apartments/halifax/maple-commercial/,https://premiereweb.premieresuites.com/thumbs/763ef7bd-ddc1-4361-8cbe-67012ca77ada_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('846d1942-519e-ed11-813a-000d3a6008fd')"">
+</div>",BEECHWOODV,Apartment Building,"['Furnished', 'Kitchen', 'In-suite Laundry', 'Terrace', 'Modern']"
+Ecentral,Toronto   Midtown,4.5,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'In-suite Laundry', 'Concierge', 'Elevator', 'Terrace', 'Garden', 'BBQ', 'Outdoor Space']",Ecentral Toronto   Midtown 4.5,https://premieresuites.com/furnished-apartments/toronto---midtown/ecentral/,https://premiereweb.premieresuites.com/thumbs/9f2f0bf0-e55a-eb11-8117-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('d7a9a9e8-e55a-eb11-8117-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/toronto---midtown/ecentral/"" title=""eCentral"">
+<img alt=""Kitchen Fully Equipped Five Appliances Stainless Steel Midtown Toronto"" src=""https://premiereweb.premieresuites.com/thumbs/9f2f0bf0-e55a-eb11-8117-000d3a6008fd_thumbs.jpg""/>
+</a>
+</div>
+</div>",ECENTRAL,Apartment Building,"['Furnished', 'Kitchen', 'In-suite Laundry', 'Terrace', 'Modern']"
+Maple Commercial,Halifax,4.0,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'In-suite Laundry', 'Concierge', 'Elevator', 'Terrace', 'Garden']",Maple Commercial Halifax 4.0,https://premieresuites.com/furnished-apartments/halifax/maple-commercial/,https://premiereweb.premieresuites.com/thumbs/763ef7bd-ddc1-4361-8cbe-67012ca77ada_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('846d1942-519e-ed11-813a-000d3a6008fd')"">
 <div class=""item"">
 <a href=""/furnished-apartments/halifax/maple-commercial/"" title=""Maple Commercial"">
 <img alt=""Open Space Living Room Dining Room and Kitchen Fully Furnished Apartment Suite Halifax NS"" src=""https://premiereweb.premieresuites.com/thumbs/763ef7bd-ddc1-4361-8cbe-67012ca77ada_thumbs.jpg""/>
 </a>
 </div>
-</div>",MAPLECOMME,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-The Gallery,Vancouver,4.9,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",The Gallery Vancouver 4.9,https://premieresuites.com/furnished-apartments/vancouver/the-gallery/,https://premiereweb.premieresuites.com/thumbs/b0043928-3c6a-4131-ac09-a4d36cd9a257_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('ed02a1ac-e75a-eb11-8117-000d3a6008fd')"">
+</div>",MAPLECOMME,Apartment Building,"['Furnished', 'Kitchen', 'In-suite Laundry', 'Terrace']"
+Le Encore,Montreal,3.0,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'In-suite Laundry', 'Concierge', 'Elevator', 'Terrace', 'Garden', 'BBQ', 'Storage', 'Bike Storage']",Le Encore Montreal 3.0,https://premieresuites.com/furnished-apartments/montreal/le-encore/,https://premiereweb.premieresuites.com/thumbs/2355737f-e8eb-eb11-8120-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('79b4d74a-eb5a-eb11-8117-000d3a6008fd')"">
 <div class=""item"">
-<a href=""/furnished-apartments/vancouver/the-gallery/"" title=""Gallery"">
-<img alt=""The Gallery - Living Room"" src=""https://premiereweb.premieresuites.com/thumbs/b0043928-3c6a-4131-ac09-a4d36cd9a257_thumbs.jpg""/>
+<a href=""/furnished-apartments/montreal/le-encore/"" title=""Encore"">
+<img alt=""4 - Living Space"" src=""https://premiereweb.premieresuites.com/thumbs/2355737f-e8eb-eb11-8120-000d3a6008fd_thumbs.jpg""/>
 </a>
 </div>
-</div>",THEGALLERY,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
-Icon Bay Halifax Suites,Halifax,3.7,Suite,"['Garden', 'Parking', 'Laundry', 'In-suite Laundry', 'Terrace', 'Pool', 'Pet Friendly', 'Gym']",Icon Bay Halifax Suites Halifax 3.7,https://premieresuites.com/furnished-apartments/halifax/icon-bay-halifax-suites/,https://premiereweb.premieresuites.com/thumbs/b34a9846-528b-eb11-8119-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('6ad69040-528b-eb11-8119-000d3a6008fd')"">
+</div>",LEENCORE,Apartment Building,"['Furnished', 'Kitchen', 'In-suite Laundry', 'Terrace', 'Patio', 'Storage', 'City View', 'Modern', 'Luxury', 'Premium']"
+Mondeo Drive,Scarborough,4.3,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'Fully Furnished', 'In-suite Laundry', 'Terrace', 'Garden', 'Outdoor Space']",Mondeo Drive Scarborough 4.3,https://premieresuites.com/furnished-apartments/scarborough/mondeo-drive/,https://premiereweb.premieresuites.com/thumbs/b3a32585-cdee-4441-9a2c-edffd2788647_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('1a30a980-ee5a-eb11-8117-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/scarborough/mondeo-drive/"" title=""Mondeo Drive"">
+<img alt=""Mondeo Drive - Living room"" src=""https://premiereweb.premieresuites.com/thumbs/b3a32585-cdee-4441-9a2c-edffd2788647_thumbs.jpg""/>
+</a>
+</div>
+</div>",MONDEODRIV,Apartment Building,"['Fully Furnished', 'Furnished', 'Kitchen', 'In-suite Laundry', 'Terrace']"
+Metro Place,Burnaby,4.4,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'In-suite Laundry', 'Concierge', 'Elevator', 'Terrace', 'Garden', 'BBQ', 'Outdoor Space']",Metro Place Burnaby 4.4,https://premieresuites.com/furnished-apartments/burnaby/metro-place/,https://premiereweb.premieresuites.com/thumbs/43f5edd0-578f-ec11-812a-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('bd104527-d68d-ec11-812a-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/burnaby/metro-place/"" title=""Metro Place"">
+<img alt=""Kitchen"" src=""https://premiereweb.premieresuites.com/thumbs/43f5edd0-578f-ec11-812a-000d3a6008fd_thumbs.jpg""/>
+</a>
+</div>
+</div>",METROPLACE,Apartment Building,"['Furnished', 'Kitchen', 'In-suite Laundry', 'Terrace', 'Patio', 'Queen Bed', 'Modern']"
+Amici Terrace,Kanata,4.7,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'In-suite Laundry', 'Terrace', 'Garden', 'Outdoor Space', 'Storage']",Amici Terrace Kanata 4.7,https://premieresuites.com/furnished-apartments/kanata/amici-terrace/,https://premiereweb.premieresuites.com/thumbs/2a599b5e-cd69-ed11-8137-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('2f12cc51-f55a-eb11-8117-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/kanata/amici-terrace/"" title=""The Amici"">
+<img alt=""Living room"" src=""https://premiereweb.premieresuites.com/thumbs/2a599b5e-cd69-ed11-8137-000d3a6008fd_thumbs.jpg""/>
+</a>
+</div>
+</div>",AMICITERRA,Apartment Building,"['Furnished', 'Kitchen', 'In-suite Laundry', 'Terrace', 'Storage', 'Ensuite Bathroom']"
+Trio At Atria,North York,4.9,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'In-suite Laundry', 'Concierge', 'Elevator', 'Terrace', 'Garden', 'Outdoor Space']",Trio At Atria North York 4.9,https://premieresuites.com/furnished-apartments/north-york/trio-at-atria/,https://premiereweb.premieresuites.com/thumbs/b3931624-f549-4f53-84e1-48b2f6e8e7a2_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('eef554b6-fa5a-eb11-8117-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/north-york/trio-at-atria/"" title=""Trio at Atria"">
+<img alt=""Trio at Atria -  Living room"" src=""https://premiereweb.premieresuites.com/thumbs/b3931624-f549-4f53-84e1-48b2f6e8e7a2_thumbs.jpg""/>
+</a>
+</div>
+</div>",TRIOATATRI,Apartment Building,"['Furnished', 'Kitchen', 'In-suite Laundry', 'Terrace', 'Tub', 'City View', 'Modern', 'Premium']"
+Skymark,Mississauga,4.9,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'WiFi', 'Furnished', 'Pet Friendly', 'Fully Furnished', 'In-suite Laundry', 'Concierge', 'Elevator', 'Balcony', 'Terrace', 'Garden']",Skymark Mississauga 4.9,https://premieresuites.com/furnished-apartments/mississauga/skymark/,https://premiereweb.premieresuites.com/thumbs/6fc76d3b-6ff0-ed11-813d-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('471dab90-f45a-eb11-8117-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/mississauga/skymark/"" title=""Skymark"">
+<img alt=""Living Room Free WiFi Fully Furnished Apartment Suite Mississauga"" src=""https://premiereweb.premieresuites.com/thumbs/6fc76d3b-6ff0-ed11-813d-000d3a6008fd_thumbs.jpg""/>
+</a>
+</div>
+</div>",SKYMARK,Apartment Building,"['Fully Furnished', 'Furnished', 'Kitchen', 'In-suite Laundry', 'Balcony', 'Terrace', 'Private Balcony', 'Tub', 'Luxury']"
+Greystones,Halifax,4.0,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'Fully Furnished', 'In-suite Laundry', 'Elevator', 'Terrace', 'Garden']",Greystones Halifax 4.0,https://premieresuites.com/furnished-apartments/halifax/greystones/,https://premiereweb.premieresuites.com/thumbs/d932f3de-4899-eb11-811b-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('3af1ba9c-548b-eb11-8119-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/halifax/greystones/"" title=""Greystones"">
+<img alt=""Living Room Free WiFi Fully Furnished Apartment Suite Halifax NS"" src=""https://premiereweb.premieresuites.com/thumbs/d932f3de-4899-eb11-811b-000d3a6008fd_thumbs.jpg""/>
+</a>
+</div>
+</div>",GREYSTONES,Apartment Building,"['Fully Furnished', 'Furnished', 'Kitchen', 'In-suite Laundry', 'Terrace', 'Hardwood Floors', 'Modern', 'Contemporary']"
+Via123,North York,3.5,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'In-suite Laundry', 'Elevator', 'Balcony', 'Terrace', 'Garden', 'Outdoor Space']",Via123 North York 3.5,https://premieresuites.com/furnished-apartments/north-york/via123/,https://premiereweb.premieresuites.com/thumbs/1409762b-6deb-4ed8-bc41-818355f3c3d2_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('9554d59f-fb5a-eb11-8117-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/north-york/via123/"" title=""VIA123"">
+<img alt=""VIA 123 - Living room"" src=""https://premiereweb.premieresuites.com/thumbs/1409762b-6deb-4ed8-bc41-818355f3c3d2_thumbs.jpg""/>
+</a>
+</div>
+</div>",VIA123,Apartment Building,"['Furnished', 'Kitchen', 'In-suite Laundry', 'Balcony', 'Terrace', 'Private Balcony', 'Modern']"
+Century Park Regent 3,Edmonton,4.6,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'In-suite Laundry', 'Elevator', 'Terrace', 'Garden', 'Outdoor Space']",Century Park Regent 3 Edmonton 4.6,https://premieresuites.com/furnished-apartments/edmonton/century-park-regent-3/,https://premiereweb.premieresuites.com/thumbs/8f7eaa0e-6afc-413b-b7a3-c0f78c4fa1ce_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('71e17770-e45a-eb11-8117-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/edmonton/century-park-regent-3/"" title=""Century Park Regent"">
+<img alt=""Century Park Regent - Living Room 2"" src=""https://premiereweb.premieresuites.com/thumbs/8f7eaa0e-6afc-413b-b7a3-c0f78c4fa1ce_thumbs.jpg""/>
+</a>
+</div>
+</div>",CENTURYPAR,Apartment Building,"['Furnished', 'Kitchen', 'In-suite Laundry', 'Terrace', 'Modern', 'Luxury']"
+57 Harvey Road,St  John S,4.5,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'Fully Furnished', 'In-suite Laundry', 'Elevator', 'Terrace', 'Garden', 'Storage', 'Bike Storage']",57 Harvey Road St  John S 4.5,https://premieresuites.com/furnished-apartments/st--john-s/57-harvey-road/,https://premiereweb.premieresuites.com/thumbs/8e3d7f46-6a8b-eb11-8119-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('7d78cf1e-6a8b-eb11-8119-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/st--john-s/57-harvey-road/"" title=""57 Harvey Road"">
+<img alt=""Executive Fully Furnished Suite 57 Harvey Road St. John's NL"" src=""https://premiereweb.premieresuites.com/thumbs/8e3d7f46-6a8b-eb11-8119-000d3a6008fd_thumbs.jpg""/>
+</a>
+</div>
+</div>",57HARVEYRO,Apartment Building,"['Fully Furnished', 'Furnished', 'Kitchen', 'Full Kitchen', 'In-suite Laundry', 'Terrace', 'Patio', 'Storage', 'Modern']"
+Fancamp Drive,Maple,4.2,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'Fully Furnished', 'In-suite Laundry', 'Terrace', 'Garden', 'Outdoor Space']",Fancamp Drive Maple 4.2,https://premieresuites.com/furnished-apartments/maple/fancamp-drive/,https://premiereweb.premieresuites.com/thumbs/38d6dd76-f84d-40b6-8ed1-4b151ac07696_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('0b4b9992-e65a-eb11-8117-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/maple/fancamp-drive/"" title=""Fancamp Drive"">
+<img alt=""Fancamp Drive - Living room"" src=""https://premiereweb.premieresuites.com/thumbs/38d6dd76-f84d-40b6-8ed1-4b151ac07696_thumbs.jpg""/>
+</a>
+</div>
+</div>",FANCAMPDRI,Apartment Building,"['Fully Furnished', 'Furnished', 'Kitchen', 'In-suite Laundry', 'Terrace']"
+The Louvre,Edmonton,4.7,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'In-suite Laundry', 'Concierge', 'Elevator', 'Balcony', 'Terrace', 'Garden', 'Outdoor Space', 'Storage', 'Bike Storage']",The Louvre Edmonton 4.7,https://premieresuites.com/furnished-apartments/edmonton/the-louvre/,https://premiereweb.premieresuites.com/thumbs/5a1ad6e4-ac0e-4a14-ade9-9ad570079630_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('e0c4adf4-b6ab-ec11-812b-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/edmonton/the-louvre/"" title=""The Louvre"">
+<img alt=""Louvre - Living Room"" src=""https://premiereweb.premieresuites.com/thumbs/5a1ad6e4-ac0e-4a14-ade9-9ad570079630_thumbs.jpg""/>
+</a>
+</div>
+</div>",THELOUVRE,Apartment Building,"['Furnished', 'Kitchen', 'In-suite Laundry', 'Balcony', 'Terrace', 'Private Balcony', 'Storage', 'Modern', 'Contemporary']"
+Icon Bay Halifax Suites,Halifax,4.5,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'Fully Furnished', 'In-suite Laundry', 'Elevator', 'Terrace', 'Garden']",Icon Bay Halifax Suites Halifax 4.5,https://premieresuites.com/furnished-apartments/halifax/icon-bay-halifax-suites/,https://premiereweb.premieresuites.com/thumbs/b34a9846-528b-eb11-8119-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('6ad69040-528b-eb11-8119-000d3a6008fd')"">
 <div class=""item"">
 <a href=""/furnished-apartments/halifax/icon-bay-halifax-suites/"" title=""Icon Bay"">
 <img alt=""Living Room Free WiFi Fully Furnished Apartment Waterview Suite Halifax NS"" src=""https://premiereweb.premieresuites.com/thumbs/b34a9846-528b-eb11-8119-000d3a6008fd_thumbs.jpg""/>
 </a>
 </div>
-</div>",ICONBAYHAL,Apartment Building,"['In-suite Laundry', 'Terrace', 'Kitchen']"
+</div>",ICONBAYHAL,Apartment Building,"['Fully Furnished', 'Furnished', 'Kitchen', 'In-suite Laundry', 'Terrace', 'Patio', 'City View', 'Contemporary', 'Luxury']"
+Parkside Ii,Calgary,5.0,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'In-suite Laundry', 'Concierge', 'Elevator', 'Balcony', 'Terrace', 'Garden', 'Storage', 'Bike Storage']",Parkside Ii Calgary 5.0,https://premieresuites.com/furnished-apartments/calgary/parkside-ii/,https://premiereweb.premieresuites.com/thumbs/03653072-9b53-4fb4-8811-b12fe622c4d0_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('89195027-ef5a-eb11-8117-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/calgary/parkside-ii/"" title=""Parkside II"">
+<img alt=""Parkside 2 - Living Room"" src=""https://premiereweb.premieresuites.com/thumbs/03653072-9b53-4fb4-8811-b12fe622c4d0_thumbs.jpg""/>
+</a>
+</div>
+</div>",PARKSIDEII,Apartment Building,"['Furnished', 'Kitchen', 'Stove', 'In-suite Laundry', 'Washer', 'Dryer', 'Balcony', 'Terrace', 'Private Balcony', 'Storage', 'Tub', 'Modern', 'Premium']"
+The Deveraux,Regina,3.7,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'Fully Furnished', 'In-suite Laundry', 'Elevator', 'Balcony', 'Terrace', 'Garden']",The Deveraux Regina 3.7,https://premieresuites.com/furnished-apartments/regina/the-deveraux/,https://premiereweb.premieresuites.com/thumbs/339e3d3b-c9bc-4542-b2c8-ab6960e15243_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('311daea9-f55a-eb11-8117-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/regina/the-deveraux/"" title=""The Deveraux"">
+<img alt=""The Deveraux - Living Room 3"" src=""https://premiereweb.premieresuites.com/thumbs/339e3d3b-c9bc-4542-b2c8-ab6960e15243_thumbs.jpg""/>
+</a>
+</div>
+</div>",THEDEVERAU,Apartment Building,"['Fully Furnished', 'Furnished', 'Kitchen', 'Kitchenette', 'In-suite Laundry', 'Balcony', 'Terrace', 'Private Balcony', 'Modern']"
+Waterfront,Calgary,4.6,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'Fully Furnished', 'In-suite Laundry', 'Concierge', 'Elevator', 'Terrace', 'Garden', 'Outdoor Space', 'Storage', 'Bike Storage']",Waterfront Calgary 4.6,https://premieresuites.com/furnished-apartments/calgary/waterfront/,https://premiereweb.premieresuites.com/thumbs/292cfed3-9b7e-4e99-8686-2c1fcb0c9a87_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('e3d94228-fc5a-eb11-8117-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/calgary/waterfront/"" title=""Waterfront"">
+<img alt=""Waterfront 1 - Living Room"" src=""https://premiereweb.premieresuites.com/thumbs/292cfed3-9b7e-4e99-8686-2c1fcb0c9a87_thumbs.jpg""/>
+</a>
+</div>
+</div>",WATERFRONT,Apartment Building,"['Fully Furnished', 'Furnished', 'Kitchen', 'In-suite Laundry', 'Terrace', 'Storage', 'Tub', 'Queen Bed', 'Luxury', 'Premium']"
+Solaire,Calgary,4.8,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'Fully Furnished', 'In-suite Laundry', 'Business Center', 'Concierge', 'Elevator', 'Balcony', 'Terrace', 'Garden', 'Storage', 'Bike Storage']",Solaire Calgary 4.8,https://premieresuites.com/furnished-apartments/calgary/solaire/,https://premiereweb.premieresuites.com/thumbs/4046c5e8-a2b9-eb11-811d-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('ebc90caa-f45a-eb11-8117-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/calgary/solaire/"" title=""Solaire"">
+<img alt=""Dining &amp; Kitchen (1002)"" src=""https://premiereweb.premieresuites.com/thumbs/4046c5e8-a2b9-eb11-811d-000d3a6008fd_thumbs.jpg""/>
+</a>
+</div>
+</div>",SOLAIRE,Apartment Building,"['Fully Furnished', 'Furnished', 'Kitchen', 'In-suite Laundry', 'Washer', 'Dryer', 'Balcony', 'Terrace', 'Private Balcony', 'Storage', 'Air Conditioning', 'Central Air', 'Queen Bed', 'Modern', 'Premium', 'High-end']"
+Kinross Pvt,Kanata,4.0,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'In-suite Laundry', 'Terrace', 'Garden', 'Outdoor Space']",Kinross Pvt Kanata 4.0,https://premieresuites.com/furnished-apartments/kanata/kinross-pvt/,https://premiereweb.premieresuites.com/thumbs/b87ad774-9941-ec11-8123-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('efd21737-ea5a-eb11-8117-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/kanata/kinross-pvt/"" title=""Kinross Private"">
+<img alt=""Living Room Free WiFi Fully Furnished Apartment Suite Kanata"" src=""https://premiereweb.premieresuites.com/thumbs/b87ad774-9941-ec11-8123-000d3a6008fd_thumbs.jpg""/>
+</a>
+</div>
+</div>",KINROSSPVT,Apartment Building,"['Furnished', 'Kitchen', 'In-suite Laundry', 'Terrace', 'Patio', 'Hardwood Floors', 'Tub', 'Ensuite Bathroom']"
+The Gallery,Vancouver,4.2,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Pet Friendly', 'In-suite Laundry', 'Elevator', 'Terrace', 'Garden', 'Outdoor Space', 'Storage']",The Gallery Vancouver 4.2,https://premieresuites.com/furnished-apartments/vancouver/the-gallery/,https://premiereweb.premieresuites.com/thumbs/b0043928-3c6a-4131-ac09-a4d36cd9a257_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('ed02a1ac-e75a-eb11-8117-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/vancouver/the-gallery/"" title=""Gallery"">
+<img alt=""The Gallery - Living Room"" src=""https://premiereweb.premieresuites.com/thumbs/b0043928-3c6a-4131-ac09-a4d36cd9a257_thumbs.jpg""/>
+</a>
+</div>
+</div>",THEGALLERY,Apartment Building,"['Kitchen', 'In-suite Laundry', 'Terrace', 'Storage', 'Tub', 'Queen Bed', 'Penthouse', 'Modern', 'Contemporary', 'Luxury']"
+Aspen House,Calgary,4.5,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'Fully Furnished', 'In-suite Laundry', 'Terrace', 'Garden', 'Outdoor Space', 'Storage', 'Bike Storage']",Aspen House Calgary 4.5,https://premieresuites.com/furnished-apartments/calgary/aspen-house/,https://premiereweb.premieresuites.com/thumbs/74638074-3ca8-eb11-811c-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('ee432751-df5a-eb11-8117-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/calgary/aspen-house/"" title=""Aspen House"">
+<img alt=""Main Floor"" src=""https://premiereweb.premieresuites.com/thumbs/74638074-3ca8-eb11-811c-000d3a6008fd_thumbs.jpg""/>
+</a>
+</div>
+</div>",ASPENHOUSE,Apartment Building,"['Fully Furnished', 'Furnished', 'Kitchen', 'In-suite Laundry', 'Terrace', 'Walk-in Closet', 'Storage', 'Tub', 'Luxury']"
+Kleinburg Centre,Kleinburg,4.3,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'Fully Furnished', 'In-suite Laundry', 'Terrace', 'Garden']",Kleinburg Centre Kleinburg 4.3,https://premieresuites.com/furnished-apartments/kleinburg/kleinburg-centre/,https://premiereweb.premieresuites.com/thumbs/12ab7809-0ff2-4cba-97e9-19f75e73a811_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('fdf2d957-ea5a-eb11-8117-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/kleinburg/kleinburg-centre/"" title=""Kleinburg Centre "">
+<img alt=""Kleinburg Centre - Dining room"" src=""https://premiereweb.premieresuites.com/thumbs/12ab7809-0ff2-4cba-97e9-19f75e73a811_thumbs.jpg""/>
+</a>
+</div>
+</div>",KLEINBURGC,Apartment Building,"['Fully Furnished', 'Furnished', 'Kitchen', 'In-suite Laundry', 'Terrace', 'Hardwood Floors']"
+Citescape,Calgary,5.0,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'Fully Furnished', 'In-suite Laundry', 'Elevator', 'Terrace', 'Garden']",Citescape Calgary 5.0,https://premieresuites.com/furnished-apartments/calgary/citescape/,https://premiereweb.premieresuites.com/thumbs/efd8d0fb-d729-4ea1-89ea-17c097bc73d6_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('f4b03bf9-e45a-eb11-8117-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/calgary/citescape/"" title=""Citescape Eau Claire"">
+<img alt=""Living Room 1"" src=""https://premiereweb.premieresuites.com/thumbs/efd8d0fb-d729-4ea1-89ea-17c097bc73d6_thumbs.jpg""/>
+</a>
+</div>
+</div>",CITESCAPE,Apartment Building,"['Fully Furnished', 'Furnished', 'Kitchen', 'In-suite Laundry', 'Terrace', 'Tub', 'Ensuite Bathroom']"
+The Anchorage,Dartmouth,3.6,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'In-suite Laundry', 'Elevator', 'Terrace', 'Garden']",The Anchorage Dartmouth 3.6,https://premieresuites.com/furnished-apartments/dartmouth/the-anchorage/,https://premiereweb.premieresuites.com/thumbs/8d7325a7-2f8e-4fac-a617-8b9a933c9ec0_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('6d2762b8-feec-ee11-8150-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/dartmouth/the-anchorage/"" title=""The Anchorage"">
+<img alt=""Dining Room Living Room Open Concept Kitchen Fully Furnished Apartment Suite Dartmouth NS"" src=""https://premiereweb.premieresuites.com/thumbs/8d7325a7-2f8e-4fac-a617-8b9a933c9ec0_thumbs.jpg""/>
+</a>
+</div>
+</div>",THEANCHORA,Apartment Building,"['Furnished', 'Kitchen', 'In-suite Laundry', 'Terrace', 'Water View']"
+Four Season Garden Condos,Richmond Hill,5.0,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'Fully Furnished', 'In-suite Laundry', 'Concierge', 'Elevator', 'Terrace', 'Garden', 'BBQ']",Four Season Garden Condos Richmond Hill 5.0,https://premieresuites.com/furnished-apartments/richmond-hill/four-season-garden-condos/,https://premiereweb.premieresuites.com/thumbs/ec9ac341-8a54-4936-b05d-6da8c1a08c57_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('76c7cc57-e75a-eb11-8117-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/richmond-hill/four-season-garden-condos/"" title=""Four Season Garden Condos"">
+<img alt=""Four Season Garden Condos 2 - Living room"" src=""https://premiereweb.premieresuites.com/thumbs/ec9ac341-8a54-4936-b05d-6da8c1a08c57_thumbs.jpg""/>
+</a>
+</div>
+</div>",FOURSEASON,Apartment Building,"['Fully Furnished', 'Furnished', 'Kitchen', 'In-suite Laundry', 'Terrace', 'Patio', 'Modern', 'Premium']"
+Creighton Apartments,Fredericton,4.8,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'In-suite Laundry', 'Security', 'Elevator', 'Balcony', 'Terrace', 'Garden', 'Storage']",Creighton Apartments Fredericton 4.8,https://premieresuites.com/furnished-apartments/fredericton/creighton-apartments/,https://premiereweb.premieresuites.com/thumbs/f5d71f8d-f55a-eb11-8117-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('e7d71f8d-f55a-eb11-8117-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/fredericton/creighton-apartments/"" title=""The Creighton "">
+<img alt=""D8 living room"" src=""https://premiereweb.premieresuites.com/thumbs/f5d71f8d-f55a-eb11-8117-000d3a6008fd_thumbs.jpg""/>
+</a>
+</div>
+</div>",CREIGHTONA,Apartment Building,"['Furnished', 'Kitchen', 'In-suite Laundry', 'Balcony', 'Terrace', 'Storage', 'Air Conditioning']"
+107 Nadia Drive,Dartmouth,3.9,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'Fully Furnished', 'In-suite Laundry', 'Terrace', 'Garden', 'Outdoor Space', 'Storage', 'Bike Storage']",107 Nadia Drive Dartmouth 3.9,https://premieresuites.com/furnished-apartments/dartmouth/107-nadia-drive/,https://premiereweb.premieresuites.com/thumbs/f20d53df-9daf-ec11-812b-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('5420a182-dda6-ec11-812b-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/dartmouth/107-nadia-drive/"" title=""107 Nadia Drive"">
+<img alt=""1 Living Room Temporary Housing Bedford Fully Furnished Short-Term Rental Townhouse Dartmouth NS"" src=""https://premiereweb.premieresuites.com/thumbs/f20d53df-9daf-ec11-812b-000d3a6008fd_thumbs.jpg""/>
+</a>
+</div>
+</div>",107NADIADR,Apartment Building,"['Fully Furnished', 'Furnished', 'Kitchen', 'In-suite Laundry', 'Terrace', 'Storage']"
+360 At The City Centre,Scarborough,4.6,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'Fully Furnished', 'In-suite Laundry', 'Concierge', 'Security', 'Elevator', 'Balcony', 'Terrace', 'Garden']",360 At The City Centre Scarborough 4.6,https://premieresuites.com/furnished-apartments/scarborough/360-at-the-city-centre/,https://premiereweb.premieresuites.com/thumbs/7ff2ac7a-d872-4bb1-b007-84b0df5eeb8e_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('398ace10-c35a-eb11-8117-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/scarborough/360-at-the-city-centre/"" title=""360° at the City Centre"">
+<img alt=""360 at the City Centre - Living room"" src=""https://premiereweb.premieresuites.com/thumbs/7ff2ac7a-d872-4bb1-b007-84b0df5eeb8e_thumbs.jpg""/>
+</a>
+</div>
+</div>",360ATTHECI,Apartment Building,"['Fully Furnished', 'Furnished', 'Kitchen', 'In-suite Laundry', 'Balcony', 'Terrace', 'Private Balcony', 'City View', 'Modern']"
+Corazon,Victoria,5.0,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'In-suite Laundry', 'Terrace', 'Garden']",Corazon Victoria 5.0,https://premieresuites.com/furnished-apartments/victoria/corazon/,https://premiereweb.premieresuites.com/thumbs/b5482eda-b088-ee11-8149-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('16ef0682-4d93-eb11-811b-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/victoria/corazon/"" title=""The Corazon "">
+<img alt=""Corazon 506 bathroom"" src=""https://premiereweb.premieresuites.com/thumbs/b5482eda-b088-ee11-8149-000d3a6008fd_thumbs.jpg""/>
+</a>
+</div>
+</div>",CORAZON,Apartment Building,"['Furnished', 'Kitchen', 'In-suite Laundry', 'Terrace']"
+200 Central,Langley,5.0,2 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'In-suite Laundry', 'Elevator', 'Terrace', 'Garden', 'Outdoor Space']",200 Central Langley 5.0,https://premieresuites.com/furnished-apartments/langley/200-central/,https://premiereweb.premieresuites.com/thumbs/603f3b59-2f76-4a37-b495-4c49b69887ff_thumbs.jpg,,True,2,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('1333acbc-c25a-eb11-8117-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/langley/200-central/"" title=""200 Central"">
+<img alt=""200 Central - Kitchen 2"" src=""https://premiereweb.premieresuites.com/thumbs/603f3b59-2f76-4a37-b495-4c49b69887ff_thumbs.jpg""/>
+</a>
+</div>
+</div>",200CENTRAL,Apartment Building,"['Furnished', 'Kitchen', 'In-suite Laundry', 'Terrace', 'Modern']"
+The Duet,Victoria,5.0,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'In-suite Laundry', 'Terrace', 'Garden']",The Duet Victoria 5.0,https://premieresuites.com/furnished-apartments/victoria/the-duet/,https://premiereweb.premieresuites.com/thumbs/97743cc7-f55a-eb11-8117-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('289039c1-f55a-eb11-8117-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/victoria/the-duet/"" title=""The Duet"">
+<img alt=""James Bay Duet condo 646 Michigan St Victoria BC"" src=""https://premiereweb.premieresuites.com/thumbs/97743cc7-f55a-eb11-8117-000d3a6008fd_thumbs.jpg""/>
+</a>
+</div>
+</div>",THEDUET,Apartment Building,"['Furnished', 'Kitchen', 'In-suite Laundry', 'Terrace']"
+300 Front,Toronto,3.3,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'Fully Furnished', 'In-suite Laundry', 'Concierge', 'Elevator', 'Balcony', 'Terrace', 'Garden', 'BBQ', 'Outdoor Space']",300 Front Toronto 3.3,https://premieresuites.com/furnished-apartments/toronto/300-front/,https://premiereweb.premieresuites.com/thumbs/ed081d24-f6e8-4f01-89b7-57cb36f8217c_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('ac5c3304-c35a-eb11-8117-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/toronto/300-front/"" title=""300 Front"">
+<img alt=""300 Front - Kitchen"" src=""https://premiereweb.premieresuites.com/thumbs/ed081d24-f6e8-4f01-89b7-57cb36f8217c_thumbs.jpg""/>
+</a>
+</div>
+</div>",300FRONT,Apartment Building,"['Fully Furnished', 'Furnished', 'Kitchen', 'In-suite Laundry', 'Balcony', 'Terrace', 'Patio', 'Private Balcony', 'Walk-in Closet', 'Tub', 'City View', 'Modern', 'Luxury']"
+Residences Telus Sky,Calgary,1.0,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'In-suite Laundry', 'Balcony', 'Terrace', 'Garden']",Residences Telus Sky Calgary 1.0,https://premieresuites.com/furnished-apartments/calgary/residences-telus-sky/,https://premiereweb.premieresuites.com/thumbs/4fa1ba12-afa0-4be1-99ce-15093b2f5291_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('1a829c4c-4d92-eb11-811b-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/calgary/residences-telus-sky/"" title=""Telus Sky Residential"">
+<img alt=""Telus Sky - Living Room 2"" src=""https://premiereweb.premieresuites.com/thumbs/4fa1ba12-afa0-4be1-99ce-15093b2f5291_thumbs.jpg""/>
+</a>
+</div>
+</div>",RESIDENCES,Apartment Building,"['Furnished', 'Kitchen', 'In-suite Laundry', 'Balcony', 'Terrace', 'Private Balcony', 'Modern', 'Luxury', 'Premium']"
+Ice Condos Ii,Toronto,4.6,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'In-suite Laundry', 'Concierge', 'Security', 'Elevator', 'Balcony', 'Terrace', 'Garden']",Ice Condos Ii Toronto 4.6,https://premieresuites.com/furnished-apartments/toronto/ice-condos-ii/,https://premiereweb.premieresuites.com/thumbs/c32385f3-a2e0-4c5b-b26d-c2639470792f_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('377f6f3d-e95a-eb11-8117-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/toronto/ice-condos-ii/"" title=""Ice Condos"">
+<img alt=""ICE Condos - Living and Dining Room"" src=""https://premiereweb.premieresuites.com/thumbs/c32385f3-a2e0-4c5b-b26d-c2639470792f_thumbs.jpg""/>
+</a>
+</div>
+</div>",ICECONDOSI,Apartment Building,"['Furnished', 'Kitchen', 'In-suite Laundry', 'Balcony', 'Terrace', 'Private Balcony', 'Tub', 'City View', 'Modern']"
+Circa 2,Markham,4.5,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'Fully Furnished', 'In-suite Laundry', 'Concierge', 'Elevator', 'Balcony', 'Terrace', 'Garden']",Circa 2 Markham 4.5,https://premieresuites.com/furnished-apartments/markham/circa-2/,https://premiereweb.premieresuites.com/thumbs/f7ce2fc5-56d7-41ff-af4a-f80900c05e2f_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('7ee5a9ea-e45a-eb11-8117-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/markham/circa-2/"" title=""Circa II"">
+<img alt=""Circa 2 - Living room"" src=""https://premiereweb.premieresuites.com/thumbs/f7ce2fc5-56d7-41ff-af4a-f80900c05e2f_thumbs.jpg""/>
+</a>
+</div>
+</div>",CIRCA2,Apartment Building,"['Fully Furnished', 'Furnished', 'Kitchen', 'In-suite Laundry', 'Balcony', 'Terrace', 'Private Balcony', 'Tub', 'Luxury', 'Premium']"
+Hudson,Vancouver,4.3,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'In-suite Laundry', 'Concierge', 'Elevator', 'Terrace', 'Garden', 'Outdoor Space']",Hudson Vancouver 4.3,https://premieresuites.com/furnished-apartments/vancouver/hudson/,https://premiereweb.premieresuites.com/thumbs/242e49bc-6996-eb11-811b-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('af73db24-e95a-eb11-8117-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/vancouver/hudson/"" title=""Hudson"">
+<img alt=""Living Room (2503)"" src=""https://premiereweb.premieresuites.com/thumbs/242e49bc-6996-eb11-811b-000d3a6008fd_thumbs.jpg""/>
+</a>
+</div>
+</div>",HUDSON,Apartment Building,"['Furnished', 'Kitchen', 'In-suite Laundry', 'Terrace', 'Patio', 'Queen Bed']"
+Five West,Calgary,5.0,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'Fully Furnished', 'In-suite Laundry', 'Concierge', 'Elevator', 'Balcony', 'Terrace', 'Garden', 'Storage', 'Bike Storage']",Five West Calgary 5.0,https://premieresuites.com/furnished-apartments/calgary/five-west/,https://premiereweb.premieresuites.com/thumbs/dd31c436-e75a-eb11-8117-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('be713a27-e75a-eb11-8117-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/calgary/five-west/"" title=""Five West"">
+<img alt=""Kitchen &amp; Dining Room (1601)"" src=""https://premiereweb.premieresuites.com/thumbs/dd31c436-e75a-eb11-8117-000d3a6008fd_thumbs.jpg""/>
+</a>
+</div>
+</div>",FIVEWEST,Apartment Building,"['Fully Furnished', 'Furnished', 'Kitchen', 'In-suite Laundry', 'Washer', 'Dryer', 'Balcony', 'Terrace', 'Patio', 'Private Balcony', 'Walk-in Closet', 'Storage', 'Tub', 'Queen Bed', 'Modern', 'Premium']"
+Boutique Lumeo,Brossard,5.0,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'Fully Furnished', 'In-suite Laundry', 'Elevator', 'Balcony', 'Terrace', 'Garden', 'BBQ', 'Outdoor Space']",Boutique Lumeo Brossard 5.0,https://premieresuites.com/furnished-apartments/brossard/boutique-lumeo/,https://premiereweb.premieresuites.com/thumbs/64f8ef04-cfb8-eb11-811d-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('5c299251-1092-eb11-811b-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/brossard/boutique-lumeo/"" title=""Boutique Lumeo"">
+<img alt=""3 - Dining + Kitchen"" src=""https://premiereweb.premieresuites.com/thumbs/64f8ef04-cfb8-eb11-811d-000d3a6008fd_thumbs.jpg""/>
+</a>
+</div>
+</div>",BOUTIQUELU,Apartment Building,"['Fully Furnished', 'Furnished', 'Kitchen', 'In-suite Laundry', 'Balcony', 'Terrace', 'Patio', 'Private Balcony', 'City View', 'Modern', 'Luxury', 'Premium']"
+Halton Terrace,Kanata,5.0,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Pet Friendly', 'In-suite Laundry', 'Terrace', 'Garden', 'Outdoor Space']",Halton Terrace Kanata 5.0,https://premieresuites.com/furnished-apartments/kanata/halton-terrace/,https://premiereweb.premieresuites.com/thumbs/fd5fe7a3-ca64-ec11-8129-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('a130a5f4-f75a-eb11-8117-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/kanata/halton-terrace/"" title=""The Halton"">
+<img alt=""Living Room Free WiFi Fully Furnished Apartment Suite Kanata"" src=""https://premiereweb.premieresuites.com/thumbs/fd5fe7a3-ca64-ec11-8129-000d3a6008fd_thumbs.jpg""/>
+</a>
+</div>
+</div>",HALTONTERR,Apartment Building,"['Kitchen', 'In-suite Laundry', 'Terrace', 'Ensuite Bathroom']"
+Cargill Path,Milton,4.5,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'Fully Furnished', 'In-suite Laundry', 'Terrace', 'Garden', 'Outdoor Space']",Cargill Path Milton 4.5,https://premieresuites.com/furnished-apartments/milton/cargill-path/,https://premiereweb.premieresuites.com/thumbs/72a17a35-048d-eb11-8119-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('6ea17a35-048d-eb11-8119-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/milton/cargill-path/"" title=""Cargill Path"">
+<img alt=""Living Room Free WiFi Fully Furnished Apartment Suite Milton"" src=""https://premiereweb.premieresuites.com/thumbs/72a17a35-048d-eb11-8119-000d3a6008fd_thumbs.jpg""/>
+</a>
+</div>
+</div>",CARGILLPAT,Apartment Building,"['Fully Furnished', 'Furnished', 'Kitchen', 'Kitchenette', 'In-suite Laundry', 'Terrace']"
+The Wetmore House,Fredericton,5.0,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Pet Friendly', 'In-suite Laundry', 'Terrace', 'Garden']",The Wetmore House Fredericton 5.0,https://premieresuites.com/furnished-apartments/fredericton/the-wetmore-house/,https://premiereweb.premieresuites.com/thumbs/e511f59e-c9cc-ed11-813b-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('50b69ea8-fa5a-eb11-8117-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/fredericton/the-wetmore-house/"" title=""The Wetmore House"">
+<img alt=""Building"" src=""https://premiereweb.premieresuites.com/thumbs/e511f59e-c9cc-ed11-813b-000d3a6008fd_thumbs.jpg""/>
+</a>
+</div>
+</div>",THEWETMORE,Apartment Building,"['Kitchen', 'In-suite Laundry', 'Terrace']"
+Bishop S Landing 1475,Halifax,4.5,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'WiFi', 'Furnished', 'Pet Friendly', 'Fully Furnished', 'In-suite Laundry', 'Concierge', 'Elevator', 'Balcony', 'Terrace', 'Garden', 'Outdoor Space', 'Storage', 'Bike Storage']",Bishop S Landing 1475 Halifax 4.5,https://premieresuites.com/furnished-apartments/halifax/bishop-s-landing-1475/,https://premiereweb.premieresuites.com/thumbs/2ec2ebc9-658b-eb11-8119-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('d2f03cb6-658b-eb11-8119-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/halifax/bishop-s-landing-1475/"" title=""Bishop's Landing LW75"">
+<img alt=""Living Room Free WiFi Fully Furnished Apartment Waterview Suite Halifax NS"" src=""https://premiereweb.premieresuites.com/thumbs/2ec2ebc9-658b-eb11-8119-000d3a6008fd_thumbs.jpg""/>
+</a>
+</div>
+</div>",BISHOPSLAN,Apartment Building,"['Fully Furnished', 'Furnished', 'Kitchen', 'In-suite Laundry', 'Balcony', 'Terrace', 'Private Balcony', 'Storage', 'Tub', 'Premium']"
+25 Colliers Lane,St John S,4.7,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'Fully Furnished', 'In-suite Laundry', 'Terrace', 'Garden', 'Outdoor Space', 'Storage']",25 Colliers Lane St John S 4.7,https://premieresuites.com/furnished-apartments/st-john-s/25-colliers-lane/,https://premiereweb.premieresuites.com/thumbs/571059df-6f97-ed11-8139-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('b3c1eed6-b895-ed11-8139-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/st-john-s/25-colliers-lane/"" title=""25 Colliers Lane"">
+<img alt=""4 Kitchen Fully Equipped Five Appliances Stainless Steel St. John’s Newfoundland"" src=""https://premiereweb.premieresuites.com/thumbs/571059df-6f97-ed11-8139-000d3a6008fd_thumbs.jpg""/>
+</a>
+</div>
+</div>",25COLLIERS,Apartment Building,"['Fully Furnished', 'Furnished', 'Kitchen', 'Full Kitchen', 'In-suite Laundry', 'Terrace', 'Storage', 'Modern', 'Contemporary']"
+Telus Garden,Vancouver,5.0,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'In-suite Laundry', 'Concierge', 'Elevator', 'Terrace', 'Garden', 'Outdoor Space']",Telus Garden Vancouver 5.0,https://premieresuites.com/furnished-apartments/vancouver/telus-garden/,https://premiereweb.premieresuites.com/thumbs/6c922d40-dc35-ec11-8123-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('9a5e75c6-528a-eb11-8119-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/vancouver/telus-garden/"" title=""Telus Gardens"">
+<img alt=""Kitchen &amp; Living Room (2003)"" src=""https://premiereweb.premieresuites.com/thumbs/6c922d40-dc35-ec11-8123-000d3a6008fd_thumbs.jpg""/>
+</a>
+</div>
+</div>",TELUSGARDE,Apartment Building,"['Furnished', 'Kitchen', 'In-suite Laundry', 'Terrace', 'Patio', 'Tub', 'Luxury']"
+The Excelsior 290,Winnipeg,5.0,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'Fully Furnished', 'In-suite Laundry', 'Elevator', 'Terrace', 'Garden', 'Outdoor Space', 'Storage', 'Bike Storage']",The Excelsior 290 Winnipeg 5.0,https://premieresuites.com/furnished-apartments/winnipeg/the-excelsior-290/,https://premiereweb.premieresuites.com/thumbs/07e58fdc-1897-eb11-811b-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('b76f0de7-f55a-eb11-8117-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/winnipeg/the-excelsior-290/"" title=""The Excelsior 290"">
+<img alt=""EXC 290 - Living Room"" src=""https://premiereweb.premieresuites.com/thumbs/07e58fdc-1897-eb11-811b-000d3a6008fd_thumbs.jpg""/>
+</a>
+</div>
+</div>",THEEXCELSI,Apartment Building,"['Fully Furnished', 'Furnished', 'Kitchen', 'In-suite Laundry', 'Terrace', 'Storage', 'Contemporary']"
+City Of Lougheed,Burnaby,4.7,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'In-suite Laundry', 'Concierge', 'Elevator', 'Balcony', 'Terrace', 'Garden', 'Outdoor Space']",City Of Lougheed Burnaby 4.7,https://premieresuites.com/furnished-apartments/burnaby/city-of-lougheed/,https://premiereweb.premieresuites.com/thumbs/aa62f672-a977-4b33-96bd-05e04a30e8ba_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('6659973b-be49-ed11-8133-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/burnaby/city-of-lougheed/"" title=""City of Lougheed"">
+<img alt=""City of Lougheed - Living Room"" src=""https://premiereweb.premieresuites.com/thumbs/aa62f672-a977-4b33-96bd-05e04a30e8ba_thumbs.jpg""/>
+</a>
+</div>
+</div>",CITYOFLOUG,Apartment Building,"['Furnished', 'Kitchen', 'In-suite Laundry', 'Balcony', 'Terrace']"
+University Meadows   Iron Gate Street,Kitchener,4.3,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'Fully Furnished', 'In-suite Laundry', 'Terrace', 'Garden', 'Outdoor Space']",University Meadows   Iron Gate Street Kitchener 4.3,https://premieresuites.com/furnished-apartments/kitchener/university-meadows---iron-gate-street/,https://premiereweb.premieresuites.com/thumbs/70b01912-fb5a-eb11-8117-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('6db01912-fb5a-eb11-8117-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/kitchener/university-meadows---iron-gate-street/"" title=""University Meadows - Iron Gate Street"">
+<img alt=""Living Room Free WiFi Fully Furnished Apartment Suite Kitchener"" src=""https://premiereweb.premieresuites.com/thumbs/70b01912-fb5a-eb11-8117-000d3a6008fd_thumbs.jpg""/>
+</a>
+</div>
+</div>",UNIVERSITY,Apartment Building,"['Fully Furnished', 'Furnished', 'Kitchen', 'In-suite Laundry', 'Terrace']"
+Versus Living,Calgary,4.5,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'In-suite Laundry', 'Concierge', 'Elevator', 'Terrace', 'Garden', 'BBQ', 'Outdoor Space', 'Storage', 'Bike Storage']",Versus Living Calgary 4.5,https://premieresuites.com/furnished-apartments/calgary/versus-living/,https://premiereweb.premieresuites.com/thumbs/a94402fa-4d00-4949-ad22-349982bad6b7_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('cf966132-fb5a-eb11-8117-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/calgary/versus-living/"" title=""Versus Living"">
+<img alt=""Versus 2 - Living Room 2"" src=""https://premiereweb.premieresuites.com/thumbs/a94402fa-4d00-4949-ad22-349982bad6b7_thumbs.jpg""/>
+</a>
+</div>
+</div>",VERSUSLIVI,Apartment Building,"['Furnished', 'Kitchen', 'In-suite Laundry', 'Terrace', 'Patio', 'Storage', 'Modern', 'Contemporary']"
+The Avery,Dartmouth,4.7,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'Fully Furnished', 'In-suite Laundry', 'Terrace', 'Garden']",The Avery Dartmouth 4.7,https://premieresuites.com/furnished-apartments/dartmouth/the-avery/,https://premiereweb.premieresuites.com/thumbs/20325ad9-8490-448a-9ee2-796841d6a439_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('ee93bb1f-e6d8-ef11-815b-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/dartmouth/the-avery/"" title=""The Avery"">
+<img alt=""Open Space Living Room Dining Room Fully Furnished Apartment Suite Dartmouth NS"" src=""https://premiereweb.premieresuites.com/thumbs/20325ad9-8490-448a-9ee2-796841d6a439_thumbs.jpg""/>
+</a>
+</div>
+</div>",THEAVERY,Apartment Building,"['Fully Furnished', 'Furnished', 'Kitchen', 'In-suite Laundry', 'Terrace', 'Contemporary']"
+Pendrell,Vancouver,4.4,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'In-suite Laundry', 'Elevator', 'Balcony', 'Terrace', 'Garden', 'Outdoor Space', 'Storage', 'Bike Storage']",Pendrell Vancouver 4.4,https://premieresuites.com/furnished-apartments/vancouver/pendrell/,https://premiereweb.premieresuites.com/thumbs/27257b79-6f96-eb11-811b-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('e0df60a6-528a-eb11-8119-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/vancouver/pendrell/"" title=""1770 Pendrell"">
+<img alt=""Kitchen (706)"" src=""https://premiereweb.premieresuites.com/thumbs/27257b79-6f96-eb11-811b-000d3a6008fd_thumbs.jpg""/>
+</a>
+</div>
+</div>",PENDRELL,Apartment Building,"['Furnished', 'Kitchen', 'In-suite Laundry', 'Balcony', 'Terrace', 'Patio', 'Storage', 'Luxury', 'High-end']"
+Encore Residences,Moncton,4.0,1 Bedroom,"['Gym', 'Laundry', 'Parking', 'Pool', 'Furnished', 'Pet Friendly', 'In-suite Laundry', 'Elevator', 'Balcony', 'Terrace', 'Garden', 'Storage', 'Bike Storage']",Encore Residences Moncton 4.0,https://premieresuites.com/furnished-apartments/moncton/encore-residences/,https://premiereweb.premieresuites.com/thumbs/df99fb7e-4036-ee11-8142-000d3a6008fd_thumbs.jpg,,True,1,,"<div class=""owl-stage-outer"" onmouseover=""showMarker('24368a60-6560-ed11-8135-000d3a6008fd')"">
+<div class=""item"">
+<a href=""/furnished-apartments/moncton/encore-residences/"" title=""Encore Residences"">
+<img alt=""1 Living Room Free WiFi Fully Furnished Residence, Two Bedroom Suite Moncton New Brunswick"" src=""https://premiereweb.premieresuites.com/thumbs/df99fb7e-4036-ee11-8142-000d3a6008fd_thumbs.jpg""/>
+</a>
+</div>
+</div>",ENCORERESI,Apartment Building,"['Furnished', 'Kitchen', 'In-suite Laundry', 'Balcony', 'Terrace', 'Patio', 'Private Balcony', 'Storage']"
