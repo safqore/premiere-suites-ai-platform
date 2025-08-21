@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Premiere Suites AI Agent Demo</title>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Premiere Suites Chat</title>
+        <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+        <style>
+            /* Add near top of existing <style> block */
+            :root { --site-max:1920px; } /* adjust to PNG native width */
+
+            /* Replace the existing body rule */
+            body {
+                margin:0;
+                font-family: system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,sans-serif;
+                background:#111; /* gutter color */
+                overflow-x:hidden;
+            }
+
+            /* Add: keep screenshot centered, never upscale beyond native width, avoid stretch */
+            body::before {
+                content:"";
+                position:fixed;
+                inset:0;
+                margin:0;
+                background:
+                    url('./premieresuites_website.png')
+                    top center / 100% auto
+                    no-repeat;
+                left:50%;
+                width: min(var(--site-max), 100vw);
+                transform: translateX(-50%);
+                background-color:#fff;
+                pointer-events:none;
+                z-index:-1;
+            }
+
+            /* Optional: if you want the chat toggle inset relative to image edge */
+            .n8n-chat-toggle-button {
+                bottom:24px;
+                right: calc( max(24px, (100vw - min(var(--site-max), 100vw)) / 2 + 24px) );
+            }
+
+            @media (max-width: 600px) {
+                .n8n-chat-toggle-button {
+                    right:16px;
+                    bottom:16px;
+                }
+            }
+
+            :root {
+                --chat--color-primary:#20B69E;
+                --chat--color-primary-shade-50:#199580;
+                --chat--color-primary-shade-100:#117868;
+                --chat--window--width:420px;
+                --chat--window--height:600px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="n8n-chat"></div>
+
+        <script type="module">
+            import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+            createChat({
+                webhookUrl: 'http://localhost:5678/webhook/simple-concierge-webhook/chat',
+                // All other options left as defaults for simplicity
+                // Uncomment to customize initial messages:
+                // initialMessages: [
+                //   'Hi 👋 I\'m the Premiere Suites AI agent.',
+                //   'Ask a question or share your stay details to begin.'
+                // ]
+            });
+        </script>
+
+        <noscript>Please enable JavaScript to use the chat.</noscript>
+    </body>
+    </html>
