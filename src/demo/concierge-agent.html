@@ -105,12 +105,33 @@
 
             createChat({
                 webhookUrl: 'https://safqore.app.n8n.cloud/webhook/7cd78ada-6718-4b57-bd68-9bb7925e763e/chat',
-                // All other options left as defaults for simplicity
-                // Uncomment to customize initial messages:
-                // initialMessages: [
-                //   'Hi 👋 I\'m the Premiere Suites AI agent.',
-                //   'Ask a question or share your stay details to begin.'
-                // ]
+                webhookConfig: {
+                    method: 'POST',
+                    headers: {}
+                },
+                target: '#n8n-chat',
+                mode: 'window',
+                chatInputKey: 'chatInput',
+                chatSessionKey: 'sessionId',
+                loadPreviousSession: true,
+                metadata: {},
+                showWelcomeScreen: false,
+                defaultLanguage: 'en',
+                initialMessages: [
+                    'Hello, I’m your Premiere Suites AI Agent.',
+                    'I can help you with booking inquiries, property details, availability, and general guest support.',
+                    'Try asking something like ‘Show me available suites in Toronto’ or ‘What amenities are included?’ to get started.'
+                ],
+                i18n: {
+                    en: {
+                        title: '',
+                        subtitle: "",
+                        footer: '',
+                        getStarted: 'New Conversation',
+                        inputPlaceholder: 'Type your question..',
+                    },
+                },
+                enableStreaming: false,
             });
         </script>
 
