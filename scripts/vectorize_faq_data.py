@@ -8,11 +8,15 @@ This script vectorizes the Premiere Suites FAQ data and stores it in a Qdrant ve
 import json
 import logging
 import os
+import sys
 from typing import List, Dict, Any
 from pathlib import Path
 from dotenv import load_dotenv
 
-from .qdrant_setup import PremiereSuitesVectorDB
+# Add the project root to Python path
+sys.path.append(str(Path(__file__).parent.parent))
+
+from src.vector_db.qdrant_setup import PremiereSuitesVectorDB
 
 # Load environment variables from .env file
 load_dotenv()
@@ -75,11 +79,15 @@ def prepare_faq_points(faqs: List[Dict[str, Any]], vdb: PremiereSuitesVectorDB) 
     # Extract text chunks for embedding
     texts = []
     for faq in faqs:
-        text_chunk = faq.get("text_chunk", "")
-        # Ensure we have content for embedding
-        if not text_chunk.strip():
-            text_chunk = f"Q: {faq.get('question', '')}\nA: {faq.get('answer', '')}"
-        texts.append(text_chunk)
+        # Use content if available, otherwise fall back to text_chunk or create from Q&A
+        page_content = faq.get("content", "")
+        if not page_content.strip():
+            text_chunk = faq.get("text_chunk", "")
+            if not text_chunk.strip():
+                page_content = f"Q: {faq.get('question', '')}\nA: {faq.get('answer', '')}"
+            else:
+                page_content = text_chunk
+        texts.append(page_content)
     
     # Generate embeddings using the provided vector database instance
     logger.info("Generating embeddings for FAQ data...")
@@ -110,10 +118,14 @@ def prepare_faq_points(faqs: List[Dict[str, Any]], vdb: PremiereSuitesVectorDB) 
             # Convert other types to integer
             faq_id = abs(hash(str(faq_id))) % (2**63)
         
-        # Ensure we have content for content
+        # Use content if available, otherwise create it
         page_content = faq.get("content", "")
         if not page_content.strip():
-            page_content = f"Q: {faq.get('question', '')}\nA: {faq.get('answer', '')}"
+            text_chunk = faq.get("text_chunk", "")
+            if not text_chunk.strip():
+                page_content = f"Q: {faq.get('question', '')}\nA: {faq.get('answer', '')}"
+            else:
+                page_content = text_chunk
         
         # Create metadata object
         metadata = {
@@ -123,15 +135,15 @@ def prepare_faq_points(faqs: List[Dict[str, Any]], vdb: PremiereSuitesVectorDB) 
             "category": faq.get("category", ""),
             "tags": faq.get("tags", []),
             "source_url": faq.get("source_url", ""),
-            "content": faq.get("content", ""),
+            "content": page_content,  # Include content in metadata
             "ingested_at": datetime.now().isoformat()
         }
         
         point = PointStruct(
-            id=faq_id,  # Use actual FAQ ID instead of index
+            id=faq_id,
             vector=embeddings[i].tolist(),
             payload={
-                "content": page_content,
+                "content": page_content,  # This is the key field for retrieval
                 "metadata": metadata,
                 "id": faq_id,
                 # Also include individual fields for backward compatibility
@@ -141,7 +153,7 @@ def prepare_faq_points(faqs: List[Dict[str, Any]], vdb: PremiereSuitesVectorDB) 
                 "category": faq.get("category", ""),
                 "tags": faq.get("tags", []),
                 "source_url": faq.get("source_url", ""),
-                "content": faq.get("content", ""),
+                "content": page_content,  # Include content in payload
                 "ingested_at": datetime.now().isoformat()
             }
         )

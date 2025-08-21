@@ -17,7 +17,8 @@ premiere_suites_scraper/
 │   ├── vector_db/              # Vector database operations
 │   │   ├── __init__.py         # Vector DB package
 │   │   ├── qdrant_setup.py     # Qdrant database setup
-│   │   ├── vectorize_faq_data.py # FAQ vectorization
+│   │   ├── langchain_qdrant_integration.py # LangChain integration
+│   │   ├── langchain_faq_integration.py # FAQ LangChain integration
 │   │   ├── search_faqs.py      # FAQ search functionality
 │   │   ├── search_properties.py # Property search
 │   │   ├── setup_faq_vectorization.py # FAQ setup
@@ -26,7 +27,10 @@ premiere_suites_scraper/
 │   │   ├── __init__.py         # n8n package
 │   │   ├── n8n_setup.py        # n8n setup and configuration
 │   │   ├── deploy_concierge_workflow.py # Workflow deployment
+│   │   ├── deploy_faq_workflow.py # FAQ workflow deployment
+│   │   ├── faq_to_qdrant_workflow.py # FAQ to Qdrant workflow
 │   │   ├── debug_n8n_issue.py  # Debugging tools
+│   │   ├── test_faq_workflow.py # FAQ workflow testing
 │   │   └── example_cloud_usage.py # Usage examples
 │   └── utils/                  # Utility functions
 │       ├── __init__.py         # Utils package
@@ -38,19 +42,22 @@ premiere_suites_scraper/
 │   ├── test_concierge_faq.py  # FAQ tests
 │   ├── test_n8n_integration.py # n8n integration tests
 │   ├── test_n8n_simulation.py # n8n simulation tests
-│   └── test_search_filters.py # Search filter tests
+│   ├── test_search_filters.py # Search filter tests
+│   ├── test_vectorization_properties.py # Vectorization tests
+│   └── test_langchain_integration.py # LangChain integration tests
 ├── data/                       # Data storage
 │   ├── raw/                   # Raw scraped data
-│   │   └── .gitkeep          # Preserve directory
+│   │   ├── .gitkeep          # Preserve directory
+│   │   ├── premiere_suites_data.pdf
+│   │   ├── premiere_suites_data.csv
+│   │   ├── premiere_suites_data.txt
+│   │   └── premiere_suites_data.md
 │   ├── processed/             # Processed data files
 │   │   ├── .gitkeep          # Preserve directory
 │   │   ├── premiere_suites_data.json
-│   │   ├── premiere_suites_data.csv
-│   │   ├── premiere_suites_data.md
-│   │   ├── premiere_suites_data.pdf
-│   │   ├── premiere_suites_data.txt
 │   │   ├── premiere_suites_data.jsonl
 │   │   ├── premiere_suites_faq_data.jsonl
+│   │   ├── premiere_suites_faq_data.json
 │   │   └── premiere_suites_chunks.txt
 │   └── exports/               # Export files
 │       └── .gitkeep          # Preserve directory
@@ -59,25 +66,38 @@ premiere_suites_scraper/
 │   │   ├── README.md         # Main documentation
 │   │   ├── CONCIERGE_WORKFLOW_GUIDE.md
 │   │   ├── FAQ_VECTORIZATION_GUIDE.md
+│   │   ├── FAQ_TO_QDRANT_WORKFLOW_GUIDE.md
+│   │   ├── IMPORT_WORKFLOW_TO_N8N.md
+│   │   ├── LANGCHAIN_QDRANT_GUIDE.md
+│   │   ├── MANUAL_WORKFLOW_CREATION.md
 │   │   ├── N8N_INTEGRATION_GUIDE.md
 │   │   ├── QDANT_SETUP_GUIDE.md
 │   │   ├── QDRANT_CLOUD_GUIDE.md
 │   │   ├── SUMMARY.md
 │   │   └── VECTOR_DB_GUIDE.md
-│   └── workflows/             # n8n workflow files
-│       ├── n8n_booking_concierge_workflow.json
-│       ├── n8n_debug_workflow.json
-│       ├── n8n_openapi_workflow.json
-│       ├── n8n_simple_concierge_workflow.json
-│       ├── n8n_simple_fixed_workflow.json
-│       ├── n8n_simple_test_workflow.json
-│       ├── n8n_workflow_fixed.json
-│       └── n8n_working_config.json
+│   ├── workflows/             # n8n workflow files
+│   ├── FAQ_DATA_COMPLETION_SUMMARY.md
+│   ├── PROPERTY_DATA_COMPLETION_SUMMARY.md
+│   ├── PAGECONTENT_STANDARDIZATION_SUMMARY.md
+│   ├── FAQ_WORKFLOW_SUMMARY.md
+│   ├── VECTORIZATION_PROPERTIES_GUIDE.md
+│   ├── FAQ_VECTORIZATION_GUIDE.md
+│   └── qdrant_web_interface_guide.md
+├── scripts/                    # Setup and utility scripts
+│   ├── setup.py               # Automated setup script
+│   ├── convert_jsonl_to_json.py # JSONL to JSON converter
+│   ├── check_and_fix_pagecontent.py # Page content checker
+│   ├── vectorize_faq_data.py  # FAQ vectorization script
+│   ├── recreate_collections_with_properties.py # Collection recreation
+│   ├── recreate_collections_langchain.py # LangChain collection recreation
+│   └── start_qdrant_local.py  # Local Qdrant startup
+├── examples/                   # Example usage
+│   ├── faq_workflow_example.py
+│   ├── langchain_faq_example.py
+│   └── langchain_qdrant_example.py
 ├── config/                     # Configuration files
 │   ├── docker-compose.yml     # Docker configuration
 │   └── env.example            # Environment template
-├── scripts/                    # Setup and utility scripts
-│   └── setup.py               # Automated setup script
 ├── logs/                       # Log files
 │   └── .gitkeep              # Preserve directory
 ├── main.py                     # Main entry point

@@ -1,0 +1,402 @@
+{
+  "metadata": {
+    "generated_on": "2025-08-20T13:55:18.026384",
+    "total_faqs": 30,
+    "source_url": "https://premieresuites.com/faq/",
+    "purpose": "vector_database_ingestion",
+    "format": "json",
+    "content_type": "faq"
+  },
+  "summary": {
+    "categories_covered": 4,
+    "total_tags": 25,
+    "categories": [
+      "Booking & Reservations",
+      "General",
+      "Payment & Pricing",
+      "Pet Policies"
+    ],
+    "top_tags": [
+      "amenities",
+      "bedroom",
+      "booking",
+      "cancellation",
+      "check-in",
+      "check-out",
+      "cleaning",
+      "corporate",
+      "deposit",
+      "furnished",
+      "internet",
+      "kitchen",
+      "laundry",
+      "lease",
+      "long-term",
+      "parking",
+      "payment",
+      "pet",
+      "pet-friendly",
+      "pool"
+    ]
+  },
+  "faqs": [
+    {
+      "id": "FQ_1",
+      "question": "Why choose Premiere Suites?",
+      "answer": "As Canada’s largest and most trusted provider of monthly executive rentals, we’ve been setting the standard in fully furnished apartments for over 25 years. Every suite is professionally managed, accredited, audited, insured, and includes everything you need to feel at home. Plus, we’re one of the few companies to offer all-inclusive pricing with housekeeping and 24/7 guest support. Explore the benefits of choosing Premiere Suites for your next stay.",
+      "category": "Payment & Pricing",
+      "tags": [
+        "furnished",
+        "rent"
+      ],
+      "source_url": "https://premieresuites.com/faq/",
+      "text_chunk": "FAQ 1: Why choose Premiere Suites? | Category: Payment & Pricing | Answer: As Canada’s largest and most trusted provider of monthly executive rentals, we’ve been setting the standard in fully furnished apartments for over 25 years. Every suite is professionally managed, accredited, audited, insured, and includes everything you need to feel at home. Plus, we’re one of the few companies to offer all-inclusive pricing with housekeeping and 24/7 guest support. Explore the benefits of choosing Premiere Suites for your next stay. | Tags: furnished, rent"
+    },
+    {
+      "id": "FQ_10",
+      "question": "Do you offer large group rentals?",
+      "answer": "In most instances, we can accommodate group bookings, though not always at the same property. If you are looking to book on behalf of a large group, please contact us and we will help to meet your group’s needs.",
+      "category": "Booking & Reservations",
+      "tags": [
+        "booking",
+        "rent",
+        "lease"
+      ],
+      "source_url": "https://premieresuites.com/faq/",
+      "text_chunk": "FAQ 2: Do you offer large group rentals? | Category: Booking & Reservations | Answer: In most instances, we can accommodate group bookings, though not always at the same property. If you are looking to book on behalf of a large group, please contact us and we will help to meet your group’s needs. | Tags: booking, rent, lease"
+    },
+    {
+      "id": "FQ_11",
+      "question": "What are the check-in/check-out times?",
+      "answer": "Our suite check-in time is after 3:00 p.m. and check-out time is before 10:00 a.m. If you are arriving early or departing late, please contact us and this can be arranged depending on availability. *Additional fees may apply.",
+      "category": "Booking & Reservations",
+      "tags": [
+        "check-in",
+        "check-out",
+        "lease"
+      ],
+      "source_url": "https://premieresuites.com/faq/",
+      "text_chunk": "FAQ 3: What are the check-in/check-out times? | Category: Booking & Reservations | Answer: Our suite check-in time is after 3:00 p.m. and check-out time is before 10:00 a.m. If you are arriving early or departing late, please contact us and this can be arranged depending on availability. *Additional fees may apply. | Tags: check-in, check-out, lease"
+    },
+    {
+      "id": "FQ_12",
+      "question": "Can I cancel my reservation?",
+      "answer": "If you would like to cancel your reservation we must be notified in writing, as soon as possible. To receive a full refund, your cancellation request must be received 15+ nights prior to arrival (an administration fee of $100.00 will be charged). No refund will be made for any associated credit card charges. Cancellation Policy 15+ Nights prior to arrival Full refund – less $100 admin. fee 14 to 1 Night(s) prior to arrival 50% + Tax On arrival (30 Nights reservation or less)100% + Tax On arrival (30+ Nights reservation)30 Nights + Tax * All cancellations must be received in writing.",
+      "category": "Booking & Reservations",
+      "tags": [
+        "reservation",
+        "cancellation"
+      ],
+      "source_url": "https://premieresuites.com/faq/",
+      "text_chunk": "FAQ 4: Can I cancel my reservation? | Category: Booking & Reservations | Answer: If you would like to cancel your reservation we must be notified in writing, as soon as possible. To receive a full refund, your cancellation request must be received 15+ nights prior to arrival (an administration fee of $100.00 will be charged). No refund will be made for any associated credit card charges. Cancellation Policy 15+ Nights prior to arrival Full refund – less $100 admin. fee 14 to 1 Night(s) prior to arrival 50% + Tax On arrival (30 Nights reservation or less)100% + Tax On arrival (30+ Nights reservation)30 Nights + Tax * All cancellations must be received in writing. | Tags: reservation, cancellation"
+    },
+    {
+      "id": "FQ_13",
+      "question": "What method of payment do you accept?",
+      "answer": "We accept Visa, Master Card, American Express, E-Transfer, company cheques, money orders, or bank drafts.",
+      "category": "Payment & Pricing",
+      "tags": [
+        "payment"
+      ],
+      "source_url": "https://premieresuites.com/faq/",
+      "text_chunk": "FAQ 5: What method of payment do you accept? | Category: Payment & Pricing | Answer: We accept Visa, Master Card, American Express, E-Transfer, company cheques, money orders, or bank drafts. | Tags: payment"
+    },
+    {
+      "id": "FQ_14",
+      "question": "Do you require a security deposit?",
+      "answer": "Yes. A security deposit, with an amount not exceeding half a month’s rent, will be held by us for the duration of your stay. The deposit will be returned to you within 10 business days following departure, contingent on if the suite is left in its original condition.",
+      "category": "Payment & Pricing",
+      "tags": [
+        "security",
+        "deposit",
+        "rent"
+      ],
+      "source_url": "https://premieresuites.com/faq/",
+      "text_chunk": "FAQ 6: Do you require a security deposit? | Category: Payment & Pricing | Answer: Yes. A security deposit, with an amount not exceeding half a month’s rent, will be held by us for the duration of your stay. The deposit will be returned to you within 10 business days following departure, contingent on if the suite is left in its original condition. | Tags: security, deposit, rent"
+    },
+    {
+      "id": "FQ_15",
+      "question": "When will I be charged for my reservation?",
+      "answer": "When staying in one of our suites for one month or less the payment is due in full two weeks prior to arrival. Reservations for longer than one month will be processed on a monthly basis after the initial first-month payment.",
+      "category": "Booking & Reservations",
+      "tags": [
+        "reservation",
+        "payment"
+      ],
+      "source_url": "https://premieresuites.com/faq/",
+      "text_chunk": "FAQ 7: When will I be charged for my reservation? | Category: Booking & Reservations | Answer: When staying in one of our suites for one month or less the payment is due in full two weeks prior to arrival. Reservations for longer than one month will be processed on a monthly basis after the initial first-month payment. | Tags: reservation, payment"
+    },
+    {
+      "id": "FQ_16",
+      "question": "Are there any hidden fees?",
+      "answer": "No, our rental rates are all-inclusive with no hidden fees. Though taxes may apply, these will be disclosed by our team at the time of inquiry. However, there may be charges for additional services or requests made by a guest (I.e.: international calling, specialty TV channels, etc.).",
+      "category": "Payment & Pricing",
+      "tags": [
+        "rent"
+      ],
+      "source_url": "https://premieresuites.com/faq/",
+      "text_chunk": "FAQ 8: Are there any hidden fees? | Category: Payment & Pricing | Answer: No, our rental rates are all-inclusive with no hidden fees. Though taxes may apply, these will be disclosed by our team at the time of inquiry. However, there may be charges for additional services or requests made by a guest (I.e.: international calling, specialty TV channels, etc.). | Tags: rent"
+    },
+    {
+      "id": "FQ_17",
+      "question": "What is included in a furnished apartment?",
+      "answer": "Every Premiere Suites rental comes fully furnished and move-in ready. You’ll enjoy a complete kitchen with cookware and dinnerware, fresh linens and towels, Wi-Fi, cable, local phone service, and all utilities included. We even offer complimentary bi-weekly housekeeping, something many others don’t.",
+      "category": "Payment & Pricing",
+      "tags": [
+        "furnished",
+        "utilities",
+        "rent",
+        "kitchen"
+      ],
+      "source_url": "https://premieresuites.com/faq/",
+      "text_chunk": "FAQ 9: What is included in a furnished apartment? | Category: Payment & Pricing | Answer: Every Premiere Suites rental comes fully furnished and move-in ready. You’ll enjoy a complete kitchen with cookware and dinnerware, fresh linens and towels, Wi-Fi, cable, local phone service, and all utilities included. We even offer complimentary bi-weekly housekeeping, something many others don’t. | Tags: furnished, utilities, rent, kitchen"
+    },
+    {
+      "id": "FQ_18",
+      "question": "Do you offer a convenience item starter kit?",
+      "answer": "Yes. A starter kit is also provided in each suite. Convenience items including garbage bags, paper towels, dish soap, dishwasher tablets, kitchen catcher, toilet paper, shampoo, soap, laundry detergent, coffee, tea, and creamer/sugar are only stocked on guest arrival. These are items left to help you settle in more comfortably upon arrival and are not replenished by us during your stay. Should you need more, we ask that you arrange to purchase the items needed with your regular shopping.",
+      "category": "Payment & Pricing",
+      "tags": [
+        "laundry",
+        "kitchen"
+      ],
+      "source_url": "https://premieresuites.com/faq/",
+      "text_chunk": "FAQ 10: Do you offer a convenience item starter kit? | Category: Payment & Pricing | Answer: Yes. A starter kit is also provided in each suite. Convenience items including garbage bags, paper towels, dish soap, dishwasher tablets, kitchen catcher, toilet paper, shampoo, soap, laundry detergent, coffee, tea, and creamer/sugar are only stocked on guest arrival. These are items left to help you settle in more comfortably upon arrival and are not replenished by us during your stay. Should you need more, we ask that you arrange to purchase the items needed with your regular shopping. | Tags: laundry, kitchen"
+    },
+    {
+      "id": "FQ_19",
+      "question": "How do I pick up/drop off the keys to my unit?",
+      "answer": "Once your booking is confirmed, you will receive the pick-up instructions for the keys to your suite via email.",
+      "category": "Booking & Reservations",
+      "tags": [
+        "booking"
+      ],
+      "source_url": "https://premieresuites.com/faq/",
+      "text_chunk": "FAQ 11: How do I pick up/drop off the keys to my unit? | Category: Booking & Reservations | Answer: Once your booking is confirmed, you will receive the pick-up instructions for the keys to your suite via email. | Tags: booking"
+    },
+    {
+      "id": "FQ_2",
+      "question": "How are your short-term and long-term rental rates determined?",
+      "answer": "Each suite is unique in its services and amenities. Our short-term rentals and monthly rentals are priced based on several variables, including the number of bedrooms required, location, amenities offered, duration of your stay, and more. Explore our search properties page to find your ideal suite.",
+      "category": "Payment & Pricing",
+      "tags": [
+        "amenities",
+        "rent",
+        "short-term",
+        "long-term",
+        "bedroom"
+      ],
+      "source_url": "https://premieresuites.com/faq/",
+      "text_chunk": "FAQ 12: How are your short-term and long-term rental rates determined? | Category: Payment & Pricing | Answer: Each suite is unique in its services and amenities. Our short-term rentals and monthly rentals are priced based on several variables, including the number of bedrooms required, location, amenities offered, duration of your stay, and more. Explore our search properties page to find your ideal suite. | Tags: amenities, rent, short-term, long-term, bedroom"
+    },
+    {
+      "id": "FQ_20",
+      "question": "Do you offer housekeeping?",
+      "answer": "Yes. Housekeeping services are included with your stay. We include this service once every two weeks for stays longer than three weeks. More frequent services are available for an additional cost. You are responsible for maintaining the overall cleanliness and condition of the interior of the suites. Refusal of housekeeping services at the door will result in a charge and refunds will not be issued for any declined services.",
+      "category": "Payment & Pricing",
+      "tags": [],
+      "source_url": "https://premieresuites.com/faq/",
+      "text_chunk": "FAQ 13: Do you offer housekeeping? | Category: Payment & Pricing | Answer: Yes. Housekeeping services are included with your stay. We include this service once every two weeks for stays longer than three weeks. More frequent services are available for an additional cost. You are responsible for maintaining the overall cleanliness and condition of the interior of the suites. Refusal of housekeeping services at the door will result in a charge and refunds will not be issued for any declined services."
+    },
+    {
+      "id": "FQ_21",
+      "question": "Do you offer rentals with parking?",
+      "answer": "Parking is available at most of our properties. Depending on the specific property, the cost of parking may be included or available to you at an additional cost. This will be disclosed at the time of inquiry.",
+      "category": "Payment & Pricing",
+      "tags": [
+        "parking",
+        "rent",
+        "parking"
+      ],
+      "source_url": "https://premieresuites.com/faq/",
+      "text_chunk": "FAQ 14: Do you offer rentals with parking? | Category: Payment & Pricing | Answer: Parking is available at most of our properties. Depending on the specific property, the cost of parking may be included or available to you at an additional cost. This will be disclosed at the time of inquiry. | Tags: parking, rent, parking"
+    },
+    {
+      "id": "FQ_22",
+      "question": "Can I use the building amenities?",
+      "answer": "During your stay, select suites will have access to building amenities. Access to the fitness centres and swimming pools is available during the scheduled hours of operation in accordance with building policies. If you wish to use other building amenities that may require booking, please contact our Guest Services Team to help coordinate.",
+      "category": "Booking & Reservations",
+      "tags": [
+        "booking",
+        "amenities",
+        "lease",
+        "pool"
+      ],
+      "source_url": "https://premieresuites.com/faq/",
+      "text_chunk": "FAQ 15: Can I use the building amenities? | Category: Booking & Reservations | Answer: During your stay, select suites will have access to building amenities. Access to the fitness centres and swimming pools is available during the scheduled hours of operation in accordance with building policies. If you wish to use other building amenities that may require booking, please contact our Guest Services Team to help coordinate. | Tags: booking, amenities, lease, pool"
+    },
+    {
+      "id": "FQ_23",
+      "question": "Can I make international phone calls?",
+      "answer": "Yes. International phone calls can be made at an additional charge plus an administration fee. Guests are responsible for all long-distance charges made during their stay. To make an international phone call dial 011 followed by the country code you are calling, the area code, and the number. Local calls are complimentary apart from \"Smart Tone Services\" (i.e.: *calls), and directory assistance.",
+      "category": "Payment & Pricing",
+      "tags": [],
+      "source_url": "https://premieresuites.com/faq/",
+      "text_chunk": "FAQ 16: Can I make international phone calls? | Category: Payment & Pricing | Answer: Yes. International phone calls can be made at an additional charge plus an administration fee. Guests are responsible for all long-distance charges made during their stay. To make an international phone call dial 011 followed by the country code you are calling, the area code, and the number. Local calls are complimentary apart from \"Smart Tone Services\" (i.e.: *calls), and directory assistance."
+    },
+    {
+      "id": "FQ_24",
+      "question": "Can I order extra television channels and movies?",
+      "answer": "We provide basic cable and/or digital television. Any additional services, such as movie rentals or additional channels will incur fees and administration fees. Our team can help provide information on pricing and the availability of channels in your area.",
+      "category": "Payment & Pricing",
+      "tags": [
+        "rent"
+      ],
+      "source_url": "https://premieresuites.com/faq/",
+      "text_chunk": "FAQ 17: Can I order extra television channels and movies? | Category: Payment & Pricing | Answer: We provide basic cable and/or digital television. Any additional services, such as movie rentals or additional channels will incur fees and administration fees. Our team can help provide information on pricing and the availability of channels in your area. | Tags: rent"
+    },
+    {
+      "id": "FQ_25",
+      "question": "How do I log into the WI-FI?",
+      "answer": "The wireless name and password are located in your suite, and they can be found directly on the modem. Each suite is equipped with high-speed internet secured by a WEP key security passcode and NAT using a single internet IP address specifically assigned per suite.",
+      "category": "Pet Policies",
+      "tags": [
+        "internet",
+        "security"
+      ],
+      "source_url": "https://premieresuites.com/faq/",
+      "text_chunk": "FAQ 18: How do I log into the WI-FI? | Category: Pet Policies | Answer: The wireless name and password are located in your suite, and they can be found directly on the modem. Each suite is equipped with high-speed internet secured by a WEP key security passcode and NAT using a single internet IP address specifically assigned per suite. | Tags: internet, security"
+    },
+    {
+      "id": "FQ_26",
+      "question": "Do you offer storage units during my stay?",
+      "answer": "Storage units are based on availability and are subject to a rental fee. If you require a storage unit during your stay, please contact our team.",
+      "category": "Payment & Pricing",
+      "tags": [
+        "rent",
+        "lease"
+      ],
+      "source_url": "https://premieresuites.com/faq/",
+      "text_chunk": "FAQ 19: Do you offer storage units during my stay? | Category: Payment & Pricing | Answer: Storage units are based on availability and are subject to a rental fee. If you require a storage unit during your stay, please contact our team. | Tags: rent, lease"
+    },
+    {
+      "id": "FQ_27",
+      "question": "Do your properties have bike racks or electric car changing?",
+      "answer": "Most of our properties do offer these services, by request only. If you require either of these services, please contact our team and they will be happy to provide these during your stay.",
+      "category": "General",
+      "tags": [
+        "lease"
+      ],
+      "source_url": "https://premieresuites.com/faq/",
+      "text_chunk": "FAQ 20: Do your properties have bike racks or electric car changing? | Category: General | Answer: Most of our properties do offer these services, by request only. If you require either of these services, please contact our team and they will be happy to provide these during your stay. | Tags: lease"
+    },
+    {
+      "id": "FQ_28",
+      "question": "Is smoking allowed in rental units?",
+      "answer": "For the comfort of all guests, we offer a smoke-free environment. Smoking of any substance, lighting candles, and incense burning are strictly forbidden. If any of these activities are detected a minimum $500 cleaning fee will be charged and the reservation agreement will be terminated.",
+      "category": "Booking & Reservations",
+      "tags": [
+        "reservation",
+        "cleaning",
+        "rent"
+      ],
+      "source_url": "https://premieresuites.com/faq/",
+      "text_chunk": "FAQ 21: Is smoking allowed in rental units? | Category: Booking & Reservations | Answer: For the comfort of all guests, we offer a smoke-free environment. Smoking of any substance, lighting candles, and incense burning are strictly forbidden. If any of these activities are detected a minimum $500 cleaning fee will be charged and the reservation agreement will be terminated. | Tags: reservation, cleaning, rent"
+    },
+    {
+      "id": "FQ_29",
+      "question": "Do you offer pet-friendly rentals?",
+      "answer": "We do offer pet-friendly rental options wherever possible. There are, however, a variety of rules and guidelines surrounding pets in our suites (I.e.: your pet’s breed or weight). If your pet will be accompanying you, please get in touch with us and we will be pleased to find you a suitable suite. *Please note that a one-time non-refundable pet sanitation fee will be applied to your stay.",
+      "category": "Payment & Pricing",
+      "tags": [
+        "pet",
+        "pet-friendly",
+        "rent",
+        "lease"
+      ],
+      "source_url": "https://premieresuites.com/faq/",
+      "text_chunk": "FAQ 22: Do you offer pet-friendly rentals? | Category: Payment & Pricing | Answer: We do offer pet-friendly rental options wherever possible. There are, however, a variety of rules and guidelines surrounding pets in our suites (I.e.: your pet’s breed or weight). If your pet will be accompanying you, please get in touch with us and we will be pleased to find you a suitable suite. *Please note that a one-time non-refundable pet sanitation fee will be applied to your stay. | Tags: pet, pet-friendly, rent, lease"
+    },
+    {
+      "id": "FQ_3",
+      "question": "What is Premiere Suites Alliance?",
+      "answer": "Our Alliance program provides a comprehensive solution for extended stays of 30 nights or more, granting access to an expansive portfolio of 10,000+ furnished apartments in 93 locations throughout Canada from 280+ trusted partners. Beyond our core inventory, corporate housing solution expands our reach to major cities, small towns, and remote locations. Let us handle the sourcing for you. Learn more about Premiere Suites Alliance.",
+      "category": "Payment & Pricing",
+      "tags": [
+        "furnished",
+        "corporate"
+      ],
+      "source_url": "https://premieresuites.com/faq/",
+      "text_chunk": "FAQ 23: What is Premiere Suites Alliance? | Category: Payment & Pricing | Answer: Our Alliance program provides a comprehensive solution for extended stays of 30 nights or more, granting access to an expansive portfolio of 10,000+ furnished apartments in 93 locations throughout Canada from 280+ trusted partners. Beyond our core inventory, corporate housing solution expands our reach to major cities, small towns, and remote locations. Let us handle the sourcing for you. Learn more about Premiere Suites Alliance. | Tags: furnished, corporate"
+    },
+    {
+      "id": "FQ_30",
+      "question": "What are your terms and conditions?",
+      "answer": "Click here to view our terms and conditions.",
+      "category": "General",
+      "tags": [],
+      "source_url": "https://premieresuites.com/faq/",
+      "text_chunk": "FAQ 24: What are your terms and conditions? | Category: General | Answer: Click here to view our terms and conditions."
+    },
+    {
+      "id": "FQ_4",
+      "question": "How do I book a reservation",
+      "answer": "Our team will be more than happy to assist in finding the perfect suite for you. You can give us a call at +1-888-575-7808, chat with us on our website, send an inquiry form, or email us at business.solutions@premieresuites.com for corporate rentals or personal.solutions@premieresuites.com for personal inquiries. Visit our Contact Us page for more ways to get in touch.",
+      "category": "Booking & Reservations",
+      "tags": [
+        "reservation",
+        "rent",
+        "corporate"
+      ],
+      "source_url": "https://premieresuites.com/faq/",
+      "text_chunk": "FAQ 25: How do I book a reservation | Category: Booking & Reservations | Answer: Our team will be more than happy to assist in finding the perfect suite for you. You can give us a call at +1-888-575-7808, chat with us on our website, send an inquiry form, or email us at business.solutions@premieresuites.com for corporate rentals or personal.solutions@premieresuites.com for personal inquiries. Visit our Contact Us page for more ways to get in touch. | Tags: reservation, rent, corporate"
+    },
+    {
+      "id": "FQ_5",
+      "question": "Can I book my stay online?",
+      "answer": "We prioritize providing our guests with the best housing solution possible. For this reason, we do not offer online booking on our website. By personally interacting with our guests, we can fully understand their needs and preferences, ensuring a tailored and exceptional experience. Additionally, our flexibility in allowing extensions for stays makes it necessary for us to handle bookings offline. Rest assured, our dedicated team is readily available to assist you with your reservation and ensure a seamless booking process. Visit our Contact Us page to get in touch.",
+      "category": "Booking & Reservations",
+      "tags": [
+        "booking",
+        "reservation"
+      ],
+      "source_url": "https://premieresuites.com/faq/",
+      "text_chunk": "FAQ 26: Can I book my stay online? | Category: Booking & Reservations | Answer: We prioritize providing our guests with the best housing solution possible. For this reason, we do not offer online booking on our website. By personally interacting with our guests, we can fully understand their needs and preferences, ensuring a tailored and exceptional experience. Additionally, our flexibility in allowing extensions for stays makes it necessary for us to handle bookings offline. Rest assured, our dedicated team is readily available to assist you with your reservation and ensure a seamless booking process. Visit our Contact Us page to get in touch. | Tags: booking, reservation"
+    },
+    {
+      "id": "FQ_6",
+      "question": "What is the minimum stay requirement?",
+      "answer": "The minimum requirement for your stay depends on the property itself. Most of our properties require a minimum of 30 nights or longer, though we also offer short-term rentals for shorter stays in Atlantic Canada. You can search our properties on our website and the minimum nights are listed on each property page. Additionally, you can contact us, and we can help you find the perfect property for the number of nights you need.",
+      "category": "Payment & Pricing",
+      "tags": [
+        "rent",
+        "short-term"
+      ],
+      "source_url": "https://premieresuites.com/faq/",
+      "text_chunk": "FAQ 27: What is the minimum stay requirement? | Category: Payment & Pricing | Answer: The minimum requirement for your stay depends on the property itself. Most of our properties require a minimum of 30 nights or longer, though we also offer short-term rentals for shorter stays in Atlantic Canada. You can search our properties on our website and the minimum nights are listed on each property page. Additionally, you can contact us, and we can help you find the perfect property for the number of nights you need. | Tags: rent, short-term"
+    },
+    {
+      "id": "FQ_7",
+      "question": "Can I extend my stay?",
+      "answer": "If you are staying in a suite for 30 nights or longer, a minimum of 14 days’ notice is required to extend your stay. Extension requests made less than 14 days before your scheduled departure will be subject to availability and possible rate changes. Extensions are only subject to availability if your stay is less than 30 nights.",
+      "category": "Payment & Pricing",
+      "tags": [],
+      "source_url": "https://premieresuites.com/faq/",
+      "text_chunk": "FAQ 28: Can I extend my stay? | Category: Payment & Pricing | Answer: If you are staying in a suite for 30 nights or longer, a minimum of 14 days’ notice is required to extend your stay. Extension requests made less than 14 days before your scheduled departure will be subject to availability and possible rate changes. Extensions are only subject to availability if your stay is less than 30 nights."
+    },
+    {
+      "id": "FQ_8",
+      "question": "Do you take advanced reservations?",
+      "answer": "We do accept advanced bookings in some instances, depending on the availability of the suite you’re interested in. Guests who stay 30 nights or longer are given the right to extend their stay (with a minimum of 14 days’ notice). For this reason, we may not be able to confirm the availability of all suites until 14 days ahead of your expected arrival date. However, if you contact us, our team will be able to confirm rates and availabilities for you.",
+      "category": "Booking & Reservations",
+      "tags": [
+        "booking",
+        "reservation"
+      ],
+      "source_url": "https://premieresuites.com/faq/",
+      "text_chunk": "FAQ 29: Do you take advanced reservations? | Category: Booking & Reservations | Answer: We do accept advanced bookings in some instances, depending on the availability of the suite you’re interested in. Guests who stay 30 nights or longer are given the right to extend their stay (with a minimum of 14 days’ notice). For this reason, we may not be able to confirm the availability of all suites until 14 days ahead of your expected arrival date. However, if you contact us, our team will be able to confirm rates and availabilities for you. | Tags: booking, reservation"
+    },
+    {
+      "id": "FQ_9",
+      "question": "Can I receive a lower rate if I stay longer?",
+      "answer": "Please contact our team and they will be able to provide information on the rates for long-term stays.",
+      "category": "Payment & Pricing",
+      "tags": [
+        "lease",
+        "long-term"
+      ],
+      "source_url": "https://premieresuites.com/faq/",
+      "text_chunk": "FAQ 30: Can I receive a lower rate if I stay longer? | Category: Payment & Pricing | Answer: Please contact our team and they will be able to provide information on the rates for long-term stays. | Tags: lease, long-term"
+    }
+  ]
+}

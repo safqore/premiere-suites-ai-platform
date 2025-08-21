@@ -894,6 +894,44 @@ class PremiereSuitesScraper:
         except Exception as e:
             logger.error(f"Error generating chunked text: {e}")
 
+def load_property_data(file_path: str = "premiere_suites_data.jsonl") -> List[Dict[str, Any]]:
+    """
+    Load property data from JSON Lines file.
+    
+    Args:
+        file_path: Path to the JSON Lines file
+        
+    Returns:
+        List of property dictionaries
+    """
+    properties = []
+    
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            for line_num, line in enumerate(f, 1):
+                line = line.strip()
+                if not line:
+                    continue
+                    
+                try:
+                    import json
+                    data = json.loads(line)
+                    if data.get("type") == "property":
+                        properties.append(data)
+                except json.JSONDecodeError as e:
+                    logger.warning(f"Error parsing line {line_num}: {e}")
+                    continue
+                    
+        logger.info(f"Loaded {len(properties)} property entries from {file_path}")
+        return properties
+        
+    except FileNotFoundError:
+        logger.error(f"Property data file not found: {file_path}")
+        raise
+    except Exception as e:
+        logger.error(f"Error loading property data: {e}")
+        raise
+
 def main():
     """Main function to run the scraper"""
     scraper = PremiereSuitesScraper(headless=True)

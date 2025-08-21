@@ -450,6 +450,315 @@ class PremiereSuitesFAQScraper:
         
         return " | ".join(chunks)
 
+    def save_to_json(self, faqs: List[FAQData], filename: str = "premiere_suites_faq_data.json"):
+        """Save FAQ data to JSON format"""
+        try:
+            data = {
+                "metadata": {
+                    "generated_on": datetime.now().isoformat(),
+                    "total_faqs": len(faqs),
+                    "source_url": self.base_url,
+                    "purpose": "vector_database_ingestion",
+                    "format": "json",
+                    "content_type": "faq"
+                },
+                "summary": {
+                    "categories_covered": len(set(faq.category for faq in faqs)),
+                    "total_tags": len(set(tag for faq in faqs for tag in faq.tags)),
+                    "categories": sorted(list(set(faq.category for faq in faqs))),
+                    "top_tags": sorted(list(set(tag for faq in faqs for tag in faq.tags)))[:20]
+                },
+                "faqs": [
+                    {
+                        "id": faq.faq_id,
+                        "question": faq.question,
+                        "answer": faq.answer,
+                        "category": faq.category,
+                        "tags": faq.tags,
+                        "source_url": faq.source_url,
+                        "text_chunk": self.create_text_chunk(faq, i + 1)
+                    }
+                    for i, faq in enumerate(faqs)
+                ]
+            }
+            
+            with open(filename, 'w', encoding='utf-8') as f:
+                json.dump(data, f, indent=2, ensure_ascii=False)
+            
+            logger.info(f"FAQ JSON file generated successfully: {filename}")
+            
+        except Exception as e:
+            logger.error(f"Error generating FAQ JSON: {e}")
+
+    def save_to_csv(self, faqs: List[FAQData], filename: str = "premiere_suites_faq_data.csv"):
+        """Save FAQ data to CSV format"""
+        try:
+            import csv
+            
+            with open(filename, 'w', newline='', encoding='utf-8') as f:
+                writer = csv.writer(f)
+                
+                # Write header
+                writer.writerow([
+                    'ID', 'Question', 'Answer', 'Category', 'Tags', 'Source URL', 'Text Chunk'
+                ])
+                
+                # Write data
+                for i, faq in enumerate(faqs, 1):
+                    writer.writerow([
+                        faq.faq_id,
+                        faq.question,
+                        faq.answer,
+                        faq.category,
+                        ', '.join(faq.tags),
+                        faq.source_url,
+                        self.create_text_chunk(faq, i)
+                    ])
+            
+            logger.info(f"FAQ CSV file generated successfully: {filename}")
+            
+        except Exception as e:
+            logger.error(f"Error generating FAQ CSV: {e}")
+
+    def generate_pdf(self, faqs: List[FAQData], filename: str = "premiere_suites_faq_data.pdf"):
+        """Generate PDF document for FAQ data"""
+        try:
+            from reportlab.lib.pagesizes import letter, A4
+            from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, PageBreak
+            from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+            from reportlab.lib.units import inch
+            from reportlab.lib import colors
+            
+            doc = SimpleDocTemplate(filename, pagesize=A4)
+            styles = getSampleStyleSheet()
+            story = []
+            
+            # Title
+            title_style = ParagraphStyle(
+                'CustomTitle',
+                parent=styles['Heading1'],
+                fontSize=24,
+                spaceAfter=30,
+                alignment=1  # Center alignment
+            )
+            story.append(Paragraph("Premiere Suites FAQ Data", title_style))
+            story.append(Spacer(1, 20))
+            
+            # Metadata
+            metadata_style = ParagraphStyle(
+                'Metadata',
+                parent=styles['Normal'],
+                fontSize=10,
+                textColor=colors.grey
+            )
+            story.append(Paragraph(f"Generated on: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}", metadata_style))
+            story.append(Paragraph(f"Total FAQs: {len(faqs)}", metadata_style))
+            story.append(Paragraph(f"Source: {self.base_url}", metadata_style))
+            story.append(Spacer(1, 20))
+            
+            # Summary
+            categories = set(faq.category for faq in faqs)
+            all_tags = [tag for faq in faqs for tag in faq.tags]
+            unique_tags = list(set(all_tags))
+            
+            summary_style = ParagraphStyle(
+                'Summary',
+                parent=styles['Normal'],
+                fontSize=12,
+                spaceAfter=20
+            )
+            story.append(Paragraph("Summary", styles['Heading2']))
+            story.append(Paragraph(f"Categories covered: {len(categories)}", summary_style))
+            story.append(Paragraph(f"Categories: {', '.join(sorted(categories))}", summary_style))
+            story.append(Paragraph(f"Total unique tags: {len(unique_tags)}", summary_style))
+            story.append(Paragraph(f"Top tags: {', '.join(sorted(unique_tags)[:10])}", summary_style))
+            story.append(Spacer(1, 20))
+            
+            # FAQs by category
+            faqs_by_category = {}
+            for faq in faqs:
+                if faq.category not in faqs_by_category:
+                    faqs_by_category[faq.category] = []
+                faqs_by_category[faq.category].append(faq)
+            
+            for category in sorted(faqs_by_category.keys()):
+                story.append(Paragraph(f"Category: {category}", styles['Heading2']))
+                story.append(Spacer(1, 10))
+                
+                for i, faq in enumerate(faqs_by_category[category], 1):
+                    # Question
+                    question_style = ParagraphStyle(
+                        'Question',
+                        parent=styles['Normal'],
+                        fontSize=12,
+                        fontName='Helvetica-Bold',
+                        spaceAfter=5
+                    )
+                    story.append(Paragraph(f"Q{i}: {faq.question}", question_style))
+                    
+                    # Answer
+                    answer_style = ParagraphStyle(
+                        'Answer',
+                        parent=styles['Normal'],
+                        fontSize=11,
+                        leftIndent=20,
+                        spaceAfter=10
+                    )
+                    story.append(Paragraph(f"A: {faq.answer}", answer_style))
+                    
+                    # Tags
+                    if faq.tags:
+                        tag_style = ParagraphStyle(
+                            'Tags',
+                            parent=styles['Normal'],
+                            fontSize=9,
+                            textColor=colors.blue,
+                            leftIndent=20,
+                            spaceAfter=10
+                        )
+                        story.append(Paragraph(f"Tags: {', '.join(faq.tags)}", tag_style))
+                    
+                    story.append(Spacer(1, 10))
+                
+                story.append(PageBreak())
+            
+            doc.build(story)
+            logger.info(f"FAQ PDF file generated successfully: {filename}")
+            
+        except Exception as e:
+            logger.error(f"Error generating FAQ PDF: {e}")
+
+    def generate_markdown(self, faqs: List[FAQData], filename: str = "premiere_suites_faq_data.md"):
+        """Generate Markdown document for FAQ data"""
+        try:
+            with open(filename, 'w', encoding='utf-8') as f:
+                # Header
+                f.write("# Premiere Suites FAQ Data\n\n")
+                f.write(f"**Generated on:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+                f.write(f"**Total FAQs:** {len(faqs)}\n")
+                f.write(f"**Source:** {self.base_url}\n\n")
+                
+                # Summary
+                categories = set(faq.category for faq in faqs)
+                all_tags = [tag for faq in faqs for tag in faq.tags]
+                unique_tags = list(set(all_tags))
+                
+                f.write("## Summary\n\n")
+                f.write(f"- **Categories covered:** {len(categories)}\n")
+                f.write(f"- **Categories:** {', '.join(sorted(categories))}\n")
+                f.write(f"- **Total unique tags:** {len(unique_tags)}\n")
+                f.write(f"- **Top tags:** {', '.join(sorted(unique_tags)[:10])}\n\n")
+                
+                # FAQs by category
+                faqs_by_category = {}
+                for faq in faqs:
+                    if faq.category not in faqs_by_category:
+                        faqs_by_category[faq.category] = []
+                    faqs_by_category[faq.category].append(faq)
+                
+                for category in sorted(faqs_by_category.keys()):
+                    f.write(f"## {category}\n\n")
+                    
+                    for i, faq in enumerate(faqs_by_category[category], 1):
+                        f.write(f"### Q{i}: {faq.question}\n\n")
+                        f.write(f"{faq.answer}\n\n")
+                        
+                        if faq.tags:
+                            f.write(f"**Tags:** {', '.join(faq.tags)}\n\n")
+                        
+                        f.write("---\n\n")
+            
+            logger.info(f"FAQ Markdown file generated successfully: {filename}")
+            
+        except Exception as e:
+            logger.error(f"Error generating FAQ Markdown: {e}")
+
+    def generate_plain_text(self, faqs: List[FAQData], filename: str = "premiere_suites_faq_data.txt"):
+        """Generate plain text document for FAQ data"""
+        try:
+            with open(filename, 'w', encoding='utf-8') as f:
+                # Header
+                f.write("Premiere Suites FAQ Data\n")
+                f.write("=" * 50 + "\n\n")
+                f.write(f"Generated on: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+                f.write(f"Total FAQs: {len(faqs)}\n")
+                f.write(f"Source: {self.base_url}\n\n")
+                
+                # Summary
+                categories = set(faq.category for faq in faqs)
+                all_tags = [tag for faq in faqs for tag in faq.tags]
+                unique_tags = list(set(all_tags))
+                
+                f.write("SUMMARY\n")
+                f.write("-" * 20 + "\n")
+                f.write(f"Categories covered: {len(categories)}\n")
+                f.write(f"Categories: {', '.join(sorted(categories))}\n")
+                f.write(f"Total unique tags: {len(unique_tags)}\n")
+                f.write(f"Top tags: {', '.join(sorted(unique_tags)[:10])}\n\n")
+                
+                # FAQs by category
+                faqs_by_category = {}
+                for faq in faqs:
+                    if faq.category not in faqs_by_category:
+                        faqs_by_category[faq.category] = []
+                    faqs_by_category[faq.category].append(faq)
+                
+                for category in sorted(faqs_by_category.keys()):
+                    f.write(f"CATEGORY: {category}\n")
+                    f.write("-" * 30 + "\n\n")
+                    
+                    for i, faq in enumerate(faqs_by_category[category], 1):
+                        f.write(f"Q{i}: {faq.question}\n")
+                        f.write(f"A: {faq.answer}\n")
+                        
+                        if faq.tags:
+                            f.write(f"Tags: {', '.join(faq.tags)}\n")
+                        
+                        f.write("\n" + "-" * 50 + "\n\n")
+            
+            logger.info(f"FAQ plain text file generated successfully: {filename}")
+            
+        except Exception as e:
+            logger.error(f"Error generating FAQ plain text: {e}")
+
+    def generate_chunked_text(self, faqs: List[FAQData], filename: str = "premiere_suites_faq_chunks.txt", chunk_size: int = 1000):
+        """Generate chunked text for vector database ingestion"""
+        try:
+            with open(filename, 'w', encoding='utf-8') as f:
+                current_chunk = []
+                current_size = 0
+                chunk_number = 1
+                
+                for i, faq in enumerate(faqs, 1):
+                    text_chunk = self.create_text_chunk(faq, i)
+                    
+                    # Check if adding this FAQ would exceed chunk size
+                    if current_size + len(text_chunk) > chunk_size and current_chunk:
+                        # Write current chunk
+                        f.write(f"--- CHUNK {chunk_number} ---\n")
+                        f.write("\n\n".join(current_chunk))
+                        f.write("\n\n")
+                        
+                        # Start new chunk
+                        current_chunk = [text_chunk]
+                        current_size = len(text_chunk)
+                        chunk_number += 1
+                    else:
+                        # Add to current chunk
+                        current_chunk.append(text_chunk)
+                        current_size += len(text_chunk)
+                
+                # Write final chunk
+                if current_chunk:
+                    f.write(f"--- CHUNK {chunk_number} ---\n")
+                    f.write("\n\n".join(current_chunk))
+                    f.write("\n\n")
+            
+            logger.info(f"FAQ chunked text file generated successfully: {filename}")
+            
+        except Exception as e:
+            logger.error(f"Error generating FAQ chunked text: {e}")
+
 def main():
     """Main function to run the FAQ scraper"""
     scraper = PremiereSuitesFAQScraper(headless=True)
@@ -459,7 +768,13 @@ def main():
         faqs = scraper.scrape_all()
         
         if faqs:
-            # Generate JSONL file
+            # Generate all output formats
+            scraper.save_to_json(faqs)
+            scraper.save_to_csv(faqs)
+            scraper.generate_pdf(faqs)
+            scraper.generate_markdown(faqs)
+            scraper.generate_plain_text(faqs)
+            scraper.generate_chunked_text(faqs)
             scraper.generate_jsonl(faqs)
             
             # Print summary
@@ -480,6 +795,12 @@ def main():
                 print()
             
             print(f"Files generated:")
+            print(f"- premiere_suites_faq_data.json (structured data)")
+            print(f"- premiere_suites_faq_data.csv (tabular format)")
+            print(f"- premiere_suites_faq_data.pdf (for vector database)")
+            print(f"- premiere_suites_faq_data.md (alternative format)")
+            print(f"- premiere_suites_faq_data.txt (plain text)")
+            print(f"- premiere_suites_faq_chunks.txt (chunked for embedding)")
             print(f"- premiere_suites_faq_data.jsonl (for vector database)")
             
         else:
