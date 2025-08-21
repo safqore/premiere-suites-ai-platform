@@ -30,7 +30,7 @@
                 inset:0;
                 margin:0;
                 background:
-                    url('./premieresuites_website.png')
+                    url('./premieresuites-website.png')
                     top center / 100% auto
                     no-repeat;
                 left:50%;
@@ -55,11 +55,45 @@
             }
 
             :root {
-                --chat--color-primary:#20B69E;
-                --chat--color-primary-shade-50:#199580;
-                --chat--color-primary-shade-100:#117868;
-                --chat--window--width:420px;
-                --chat--window--height:600px;
+                --chat--color-primary: #FFD13A;
+                --chat--color-primary-shade-50: #FFD13A;
+                --chat--color-primary-shade-100: #FFD13A;
+                --chat--window--width: 420px;
+                --chat--window--height: 600px;
+
+                --chat--window--border-radius: 0px;
+                --chat--window--box-shadow: none;
+
+                /* Header styles */
+                --chat--header--background: #FFD13A;
+                --chat--header--color: #111;
+                --chat--header--font-size: 1.1rem;
+                --chat--header--font-weight: 700;
+                --chat--header--align: left;
+
+                /* Chat bubble styles */
+                --chat--bubble--border-radius: 8px;
+                --chat--bubble--padding: 12px 16px;
+                --chat--bubble--font-size: 1rem;
+
+                /* Both agent and user bubbles: black bg, white text */
+                --chat--bubble--user--background: #111;
+                --chat--bubble--user--color: #fff;
+                --chat--bubble--agent--background: #111;
+                --chat--bubble--agent--color: #fff;
+
+                /* Input styles */
+                --chat--input--background: #fff;
+                --chat--input--color: #111;
+                --chat--input--border-radius: 8px;
+                --chat--input--border: 1px solid #111;
+                --chat--input--box-shadow: none;
+
+                /* Button styles */
+                --chat--button--background: #FFD13A;
+                --chat--button--color: #111;
+                --chat--button--border-radius: 8px;
+                --chat--button--font-weight: 600;
             }
         </style>
     </head>
@@ -70,7 +104,7 @@
             import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
 
             createChat({
-                webhookUrl: 'http://localhost:5678/webhook/simple-concierge-webhook/chat',
+                webhookUrl: 'https://safqore.app.n8n.cloud/webhook/7cd78ada-6718-4b57-bd68-9bb7925e763e/chat',
                 // All other options left as defaults for simplicity
                 // Uncomment to customize initial messages:
                 // initialMessages: [
