@@ -1,0 +1,95 @@
+{
+  "name": "FAQ to Qdrant Basic",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "faq-to-qdrant",
+        "responseMode": "responseNode"
+      },
+      "id": "webhook_trigger",
+      "name": "Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "filePath": "data/processed/premiere_suites_faq_data.jsonl"
+      },
+      "id": "read_faq_file",
+      "name": "Read FAQ File",
+      "type": "n8n-nodes-base.readBinaryFile",
+      "typeVersion": 1,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Simple test to see if file was read\nconst fileContent = $input.first().json.data;\nreturn [{\n    json: {\n        message: 'File read successfully',\n        fileSize: fileContent.length,\n        timestamp: new Date().toISOString()\n    }\n}];"
+      },
+      "id": "test_parse",
+      "name": "Test Parse",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { status: 'success', message: 'Basic workflow test completed', data: $json, timestamp: new Date().toISOString() } }}"
+      },
+      "id": "response",
+      "name": "Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [900, 300]
+    }
+  ],
+  "connections": {
+    "webhook_trigger": {
+      "main": [
+        [
+          {
+            "node": "read_faq_file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "read_faq_file": {
+      "main": [
+        [
+          {
+            "node": "test_parse",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "test_parse": {
+      "main": [
+        [
+          {
+            "node": "response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "1",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "id": "faq-to-qdrant-basic",
+  "tags": ["faq", "test"]
+}
+
+

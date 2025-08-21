@@ -1,0 +1,158 @@
+{
+  "name": "premiere_suites_simple_test",
+  "nodes": [
+    {
+      "parameters": {
+        "public": true,
+        "initialMessages": "Hi there! 👋\nMy name is Nexa. How can I assist you today?",
+        "options": {}
+      },
+      "id": "chat-trigger",
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [0, 0],
+      "webhookId": "a889d2ae-2159-402f-b326-5f61e90f602e"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Simple input processing\nconst input = $input.first().json;\nconsole.log('Raw input:', JSON.stringify(input, null, 2));\n\n// Extract the message\nconst messageText = input.text || input.message || input.chat_message || input.prompt || input.input || input.chatInput || input.query || '';\nconsole.log('Message text:', messageText);\n\nreturn {\n  json: {\n    chatInput: messageText,\n    text: messageText,\n    message: messageText,\n    query: messageText,\n    scoreThreshold: 0.2, // Very low threshold for testing\n    topK: 5\n  }\n};"
+      },
+      "id": "simple-input",
+      "name": "Simple Input",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [200, 0]
+    },
+    {
+      "parameters": {
+        "description": "{{ $json.chatInput }}",
+        "topK": "{{ $json.topK || 5 }}",
+        "scoreThreshold": "{{ $json.scoreThreshold || 0.2 }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1.1,
+      "position": [400, 0],
+      "id": "vector-store-tool",
+      "name": "Answer questions with a vector store"
+    },
+    {
+      "parameters": {
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "premiere_suites_faqs",
+          "mode": "list",
+          "cachedResultName": "premiere_suites_faqs"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1.3,
+      "position": [200, 200],
+      "id": "qdrant-store",
+      "name": "Qdrant Vector Store",
+      "credentials": {
+        "qdrantApi": {
+          "id": "QXNX5AQMJu9isjNk",
+          "name": "QdrantApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [400, 200],
+      "id": "embeddings",
+      "name": "Embeddings OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "CBfciRQoF1KUjSKg",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Display the results\nconst input = $input.first().json;\nconsole.log('Vector store results:', JSON.stringify(input, null, 2));\n\n// Check if we have results\nconst hasResults = input && Array.isArray(input) && input.length > 0;\n\nif (hasResults) {\n  console.log(`Found ${input.length} results`);\n  input.forEach((result, index) => {\n    console.log(`${index + 1}. Score: ${result.score}, Question: ${result.question}`);\n  });\n} else {\n  console.log('No results found');\n}\n\nreturn {\n  json: {\n    success: hasResults,\n    resultCount: hasResults ? input.length : 0,\n    results: input,\n    message: hasResults ? `Found ${input.length} results` : 'No results found'\n  }\n};"
+      },
+      "id": "display-results",
+      "name": "Display Results",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [600, 0]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Simple Input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Input": {
+      "main": [
+        [
+          {
+            "node": "Answer questions with a vector store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Answer questions with a vector store": {
+      "ai_tool": [
+        [
+          {
+            "node": "Display Results",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Vector Store": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Answer questions with a vector store",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ],
+      "ai_tool": [[]]
+    },
+    "Embeddings OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "simple-test-version",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "simple-test-instance"
+  },
+  "id": "simple-test-workflow",
+  "tags": []
+}

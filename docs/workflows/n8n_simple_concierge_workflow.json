@@ -1,0 +1,189 @@
+{
+  "name": "premiere_suites_simple_concierge",
+  "nodes": [
+    {
+      "parameters": {
+        "public": true,
+        "initialMessages": "Hi there! 👋\nI'm your Premier Suites Booking Concierge. I'm here to help you find the perfect accommodation for your stay.\n\nTo get started, could you please tell me your name?",
+        "options": {}
+      },
+      "id": "chat-trigger",
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [0, 0],
+      "webhookId": "simple-concierge-webhook"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Simple input processing\nconst input = $input.first().json;\nconst messageText = input.text || input.message || input.chat_message || input.prompt || input.input || input.chatInput || input.query || '';\n\nreturn {\n  json: {\n    chatInput: messageText,\n    text: messageText,\n    message: messageText\n  }\n};"
+      },
+      "id": "simple-input",
+      "name": "Simple Input",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [200, 0]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "options": {
+          "temperature": 0.7,
+          "maxTokens": 500
+        }
+      },
+      "id": "openai-model",
+      "name": "OpenAI Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [400, 0],
+      "credentials": {
+        "openAiApi": {
+          "id": "CBfciRQoF1KUjSKg",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are the Premier Suites Booking Concierge. You have two main roles:\n\n1. **Lead Qualification**: Guide potential customers through a qualification process\n2. **Information Provider**: Answer questions about Premier Suites using the available knowledge base\n\n**For Lead Qualification** (when someone wants to book):\nFollow this flow:\n1. Ask for their name (if not provided)\n2. Ask for their email address\n3. Ask which city they want to stay in\n4. Ask for their check-in and check-out dates\n5. Ask how many guests or bedrooms they need\n6. Ask for their monthly budget\n\n**For General Questions** (when someone asks about Premier Suites):\n- Use the vector store tool to find relevant information\n- Provide helpful, accurate answers about Premier Suites services, locations, policies, etc.\n- Be informative and professional\n\n**IMPORTANT RULES:**\n- Ask only ONE question at a time during qualification\n- Be friendly and professional\n- Never quote exact prices\n- Never promise discounts\n- If they mention budget < $1,500 OR stay ≤ 7 nights, politely apologize and suggest alternatives\n- Respond in plain text only (no code blocks)\n- For qualification: Always ask the next question in the flow\n- For general questions: Use the knowledge base to provide accurate information\n\n**How to determine the user's intent:**\n- If they ask questions like \"What is Premier Suites?\", \"Tell me about your services\", \"What locations do you have?\" → Use the knowledge base\n- If they say things like \"I want to book\", \"I need accommodation\", \"I'm looking for a place to stay\" → Start qualification process\n- If they provide personal information (name, email, etc.) → Continue qualification process"
+        }
+      },
+      "id": "concierge-agent",
+      "name": "Concierge Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [600, 0]
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [400, 200],
+      "id": "memory",
+      "name": "Conversation Memory"
+    },
+    {
+      "parameters": {
+        "description": "{{ $json.chatInput }}",
+        "topK": 3,
+        "scoreThreshold": 0.2
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1.1,
+      "position": [800, 200],
+      "id": "vector-store-tool",
+      "name": "FAQ Knowledge Base"
+    },
+    {
+      "parameters": {
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "premiere_suites_faqs",
+          "mode": "list",
+          "cachedResultName": "premiere_suites_faqs"
+        },
+        "options": {
+          "embeddingModel": "all-MiniLM-L6-v2"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1.3,
+      "position": [600, 400],
+      "id": "qdrant-store",
+      "name": "Qdrant Vector Store",
+      "credentials": {
+        "qdrantApi": {
+          "id": "QXNX5AQMJu9isjNk",
+          "name": "QdrantApi account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Simple Input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Input": {
+      "main": [
+        [
+          {
+            "node": "Concierge Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Concierge Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "FAQ Knowledge Base",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Conversation Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Concierge Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Vector Store": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "FAQ Knowledge Base",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FAQ Knowledge Base": {
+      "ai_tool": [
+        [
+          {
+            "node": "Concierge Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "simple-concierge-version",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "simple-concierge-instance"
+  },
+  "id": "simple-concierge-workflow",
+  "tags": []
+}

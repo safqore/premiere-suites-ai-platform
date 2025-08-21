@@ -1,0 +1,229 @@
+{
+  "name": "premiere_suites_booking_concierge",
+  "nodes": [
+    {
+      "parameters": {
+        "public": true,
+        "initialMessages": "Hi there! 👋\nI'm your Premier Suites Booking Concierge. I'm here to help you find the perfect accommodation for your stay.\n\nTo get started, could you please tell me your name?",
+        "options": {}
+      },
+      "id": "chat-trigger",
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [0, 0],
+      "webhookId": "booking-concierge-webhook"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Process chat input and maintain conversation state\nconst input = $input.first().json;\nconst messageText = input.text || input.message || input.chat_message || input.prompt || input.input || input.chatInput || input.query || '';\n\n// Get conversation history from memory\nconst conversationHistory = $('Simple Memory').first().json.messages || [];\n\n// Determine current conversation stage\nlet currentStage = 'name';\nlet collectedInfo = {};\n\n// Parse conversation history to determine stage and collected info\nfor (const msg of conversationHistory) {\n  if (msg.type === 'human') {\n    const content = msg.content;\n    \n    // Check if we have collected information\n    if (currentStage === 'name' && content && !content.includes('name')) {\n      collectedInfo.name = content;\n      currentStage = 'email';\n    } else if (currentStage === 'email' && content && content.includes('@')) {\n      collectedInfo.email = content;\n      currentStage = 'city';\n    } else if (currentStage === 'city' && content) {\n      collectedInfo.city = content;\n      currentStage = 'dates';\n    } else if (currentStage === 'dates' && content) {\n      collectedInfo.dates = content;\n      currentStage = 'guests';\n    } else if (currentStage === 'guests' && content) {\n      collectedInfo.guests = content;\n      currentStage = 'budget';\n    } else if (currentStage === 'budget' && content) {\n      collectedInfo.budget = content;\n      currentStage = 'complete';\n    }\n  }\n}\n\nreturn {\n  json: {\n    chatInput: messageText,\n    text: messageText,\n    message: messageText,\n    currentStage: currentStage,\n    collectedInfo: collectedInfo,\n    conversationHistory: conversationHistory\n  }\n};"
+      },
+      "id": "conversation-processor",
+      "name": "Conversation Processor",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [200, 0]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "options": {
+          "temperature": 0.7,
+          "maxTokens": 500
+        }
+      },
+      "id": "openai-model",
+      "name": "OpenAI Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [400, 0],
+      "credentials": {
+        "openAiApi": {
+          "id": "CBfciRQoF1KUjSKg",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Lead qualification logic\nconst input = $input.first().json;\nconst currentStage = input.currentStage;\nconst collectedInfo = input.collectedInfo;\nconst userMessage = input.chatInput;\n\n// Create system prompt based on current stage\nlet systemPrompt = `You are the Premier Suites Booking Concierge. Your role is to qualify leads by collecting information in a friendly, conversational manner. Ask ONE question at a time and be concise.\n\nCurrent stage: ${currentStage}\nCollected information: ${JSON.stringify(collectedInfo)}\n\nLead qualification flow:\n1. Name (${currentStage === 'name' ? 'CURRENT' : 'COMPLETED'})\n2. Email (${currentStage === 'email' ? 'CURRENT' : 'COMPLETED'})\n3. City (${currentStage === 'city' ? 'CURRENT' : 'COMPLETED'})\n4. Check-in and check-out dates (${currentStage === 'dates' ? 'CURRENT' : 'COMPLETED'})\n5. Number of guests or bedrooms (${currentStage === 'guests' ? 'CURRENT' : 'COMPLETED'})\n6. Monthly budget (${currentStage === 'budget' ? 'CURRENT' : 'COMPLETED'})\n\nRules:\n- Ask only ONE question at a time\n- Be friendly and professional\n- Never quote exact prices\n- Never promise discounts\n- If budget < $1,500 OR stay ≤ 7 nights, apologize and suggest alternatives\n- Respond in plain text only (no code blocks)\n\nCurrent user message: \"${userMessage}\"`;\n\n// Add stage-specific instructions\nif (currentStage === 'name') {\n  systemPrompt += '\\n\\nAsk for their name in a friendly way.';\n} else if (currentStage === 'email') {\n  systemPrompt += '\\n\\nAsk for their email address.';\n} else if (currentStage === 'city') {\n  systemPrompt += '\\n\\nAsk which city they are looking to stay in.';\n} else if (currentStage === 'dates') {\n  systemPrompt += '\\n\\nAsk for their check-in and check-out dates.';\n} else if (currentStage === 'guests') {\n  systemPrompt += '\\n\\nAsk how many guests or bedrooms they need.';\n} else if (currentStage === 'budget') {\n  systemPrompt += '\\n\\nAsk for their monthly budget. If they mention less than $1,500 or a stay of 7 nights or less, politely explain that Premier Suites specializes in longer-term stays with higher budgets and suggest alternatives like hotels or short-term rentals.';\n} else if (currentStage === 'complete') {\n  // Analyze the collected information\n  const budget = parseInt(collectedInfo.budget?.replace(/[^0-9]/g, '')) || 0;\n  const dates = collectedInfo.dates || '';\n  const stayDuration = 30; // Default assumption for monthly stays\n  \n  if (budget < 1500 || stayDuration <= 7) {\n    systemPrompt += '\\n\\nThe lead does not meet our criteria (budget < $1,500 or stay ≤ 7 nights). Politely apologize and suggest alternatives like hotels or short-term rental platforms.';\n  } else {\n    systemPrompt += '\\n\\nThe lead meets our criteria! Thank them for their information and let them know a Premier Suites representative will contact them soon to discuss their accommodation needs.';\n  }\n}\n\nreturn {\n  json: {\n    systemPrompt: systemPrompt,\n    currentStage: currentStage,\n    collectedInfo: collectedInfo,\n    userMessage: userMessage\n  }\n};"
+      },
+      "id": "lead-qualifier",
+      "name": "Lead Qualifier",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [600, 0]
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "{{ $json.systemPrompt }}"
+        }
+      },
+      "id": "concierge-agent",
+      "name": "Concierge Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [800, 0]
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [400, 200],
+      "id": "memory",
+      "name": "Conversation Memory"
+    },
+    {
+      "parameters": {
+        "description": "{{ $json.chatInput }}",
+        "topK": 3,
+        "scoreThreshold": 0.2
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1.1,
+      "position": [1000, 200],
+      "id": "vector-store-tool",
+      "name": "FAQ Knowledge Base"
+    },
+    {
+      "parameters": {
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "premiere_suites_faqs",
+          "mode": "list",
+          "cachedResultName": "premiere_suites_faqs"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1.3,
+      "position": [800, 400],
+      "id": "qdrant-store",
+      "name": "Qdrant Vector Store",
+      "credentials": {
+        "qdrantApi": {
+          "id": "QXNX5AQMJu9isjNk",
+          "name": "QdrantApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Final response processor\nconst input = $input.first().json;\nconst agentResponse = input.output || input.text || input.message || '';\nconst currentStage = input.currentStage;\nconst collectedInfo = input.collectedInfo;\n\n// Format the response\nlet finalResponse = agentResponse;\n\n// Add next question if not complete\nif (currentStage !== 'complete') {\n  const nextQuestions = {\n    'name': 'What is your email address?',\n    'email': 'Which city are you looking to stay in?',\n    'city': 'What are your check-in and check-out dates?',\n    'dates': 'How many guests or bedrooms do you need?',\n    'guests': 'What is your monthly budget?',\n    'budget': ''\n  };\n  \n  if (nextQuestions[currentStage]) {\n    finalResponse += '\\n\\n' + nextQuestions[currentStage];\n  }\n}\n\nreturn {\n  json: {\n    response: finalResponse,\n    currentStage: currentStage,\n    collectedInfo: collectedInfo\n  }\n};"
+      },
+      "id": "response-processor",
+      "name": "Response Processor",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1000, 0]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Conversation Processor",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Conversation Processor": {
+      "main": [
+        [
+          {
+            "node": "Lead Qualifier",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lead Qualifier": {
+      "main": [
+        [
+          {
+            "node": "Concierge Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Concierge Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "FAQ Knowledge Base",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Conversation Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Concierge Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Concierge Agent": {
+      "main": [
+        [
+          {
+            "node": "Response Processor",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Vector Store": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "FAQ Knowledge Base",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FAQ Knowledge Base": {
+      "ai_tool": [
+        [
+          {
+            "node": "Concierge Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "booking-concierge-version",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "booking-concierge-instance"
+  },
+  "id": "booking-concierge-workflow",
+  "tags": []
+}

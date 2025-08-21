@@ -1,0 +1,229 @@
+{
+  "name": "demo_bot",
+  "nodes": [
+    {
+      "parameters": {
+        "public": true,
+        "initialMessages": "Hi there! 👋\nI'm your Premier Suites AI Agent. I'm here to help you find the perfect accommodation for your stay.\n\nTo get started, could you please tell me your name?",
+        "options": {}
+      },
+      "id": "bf975384-8325-4e78-994a-4a80829f365b",
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [-112, -128],
+      "webhookId": "simple-concierge-webhook"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Simple input processing\nconst input = $input.first().json;\nconst messageText = input.text || input.message || input.chat_message || input.prompt || input.input || input.chatInput || input.query || '';\n\nreturn {\n  json: {\n    chatInput: messageText,\n    text: messageText,\n    message: messageText\n  }\n};"
+      },
+      "id": "901d7eeb-ae10-43a6-8ae2-3a0d0ff66444",
+      "name": "Simple Input",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [96, -128]
+    },
+    {
+      "parameters": {
+        "options": {
+          "maxTokens": 1000,
+          "temperature": 0.5
+        }
+      },
+      "id": "c71f019d-4176-473d-8186-198e851f16b6",
+      "name": "OpenAI Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [272, 192],
+      "credentials": {
+        "openAiApi": {
+          "id": "CBfciRQoF1KUjSKg",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are the Premier Suites Booking Concierge. You have two main roles:\n\t1.\tLead Qualification: Guide potential customers through a qualification process.\n\t2.\tInformation Provider: Answer questions about Premier Suites using the knowledge base (KB).\n\nDetect Intent\n\t•\tIf they say “I want to book”, “I need accommodation”, “I’m looking for a place to stay” → start/continue qualification.\n\t•\tIf they ask about Premier Suites (e.g., “What is Premier(e) Suites Alliance?”, “What locations do you have?”, “What’s your policy…”) → pause qualification, answer via KB, then resume the next unanswered qualification step.\n\t•\tIf they provide personal info (name, email, dates, city, budget, guests/bedrooms) → continue qualification.\n\nLead Qualification Flow (ask ONE question at a time, in order)\n\t1.\tName (if not provided)\n\t2.\tEmail address\n\t3.\tCity of stay\n\t4.\tCheck‑in and check‑out dates\n\t5.\tNumber of guests or bedrooms needed\n\t6.\tMonthly budget\n\nGeneral Questions (KB)\n\t•\tAlways use the KB tool to find relevant information and answer clearly and professionally.\n\t•\tBe informative, concise, and accurate.\n\nDisqualification Rules\n\t•\tIf budget < $1,500 OR stay ≤ 7 nights, politely apologize and suggest alternatives.\n\nStyle & Compliance\n\t•\tFriendly and professional.\n\t•\tAsk only one question at a time during qualification.\n\t•\tPlain text only (no code blocks).\n\t•\tNever quote exact prices.\n\t•\tNever promise discounts.\n\t•\tAfter any KB answer, resume the next qualification question.\n\nTOOLING MANDATE (KB lookup)\n\t•\tFor any general question, ALWAYS call “FAQ Knowledge Base” with the user’s exact question before answering.\n\t•\tIf the first call returns nothing, try once more with a simplified version (remove punctuation; normalize spelling).\n\t•\tIf still nothing, say: “I couldn’t find this in our FAQs.”\n\nNormalization\n\t•\tTreat “Premier” and “Premiere” as the same (normalize to “Premier Suites” when querying the KB).\n\nTool Input Guidance\n\t•\tWhen calling “FAQ Knowledge Base”, pass the full current question as the tool input.\n\t•\tOn retry, pass the simplified/normalized version.\n\nAnswer Assembly (Fallback)\n\t•\tIf the tool returns passages but not a ready answer, extract the most relevant lines and answer in your own words. Then resume the next qualification step.\n"
+        }
+      },
+      "id": "921a0286-8dbb-4364-938f-733a79c5b37b",
+      "name": "Concierge Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [496, -128]
+    },
+    {
+      "parameters": {
+        "contextWindowLength": 50
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [592, 64],
+      "id": "0fdc3ca1-6042-4694-a5cf-bd3f289b6b1d",
+      "name": "Conversation Memory"
+    },
+    {
+      "parameters": {
+        "description": "Search Premier Suites FAQ knowledge base for relevant information",
+        "topK": 5,
+        "searchType": "similarity"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1.1,
+      "position": [1056, 16],
+      "id": "b188211e-20c8-497c-8e5e-33cb12e0693e",
+      "name": "FAQ Knowledge Base"
+    },
+    {
+      "parameters": {
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "premiere_suites_faqs",
+          "mode": "list",
+          "cachedResultName": "premiere_suites_faqs"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1.3,
+      "position": [768, 352],
+      "id": "4f89c10f-973f-4d67-b58e-e5601dc35686",
+      "name": "Qdrant Vector Store",
+      "credentials": {
+        "qdrantApi": {
+          "id": "QXNX5AQMJu9isjNk",
+          "name": "QdrantApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "dimensions": 1536
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [768, 544],
+      "id": "b8543894-04d5-4bbc-8959-1bc0553ea665",
+      "name": "Embeddings OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "CBfciRQoF1KUjSKg",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.retrieverVectorStore",
+      "typeVersion": 1,
+      "position": [704, 112],
+      "id": "71b1b6b3-3746-43fd-9c43-cbc6a291d6d2",
+      "name": "Vector Store Retriever"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Simple Input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Input": {
+      "main": [
+        [
+          {
+            "node": "Concierge Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Concierge Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "FAQ Knowledge Base",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Conversation Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Concierge Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Vector Store": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Vector Store Retriever",
+            "type": "ai_vectorStore",
+            "index": 0
+          },
+          {
+            "node": "FAQ Knowledge Base",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FAQ Knowledge Base": {
+      "ai_tool": [
+        [
+          {
+            "node": "Concierge Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "1bf1bdda-0300-425a-aeaf-8f08c4bb782f",
+  "meta": {
+    "instanceId": "cdff327fdda3c4e87437d01915bda7027d610ece7a80be28ae04d1ed9bc8fc54"
+  },
+  "id": "RqbzFKM3JPvg4pSu",
+  "tags": []
+}

@@ -1,0 +1,202 @@
+{
+  "name": "premiere_suites_demo_fixed",
+  "nodes": [
+    {
+      "parameters": {
+        "public": true,
+        "initialMessages": "Hi there! 👋\nMy name is Nexa. How can I assist you today?",
+        "options": {}
+      },
+      "id": "94394701-e35a-4cfc-ab20-476977605600",
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [0, 0],
+      "webhookId": "a889d2ae-2159-402f-b326-5f61e90f602e"
+    },
+    {
+      "parameters": {
+        "model": "gpt-5-nano",
+        "options": {}
+      },
+      "id": "9a615568-8b00-4b3c-a5be-d4793d8e51f6",
+      "name": "OpenAI Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [144, 208],
+      "notesInFlow": false,
+      "credentials": {
+        "openAiApi": {
+          "id": "CBfciRQoF1KUjSKg",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "# Role\nYou are the **Premier Suites Booking Concierge**.\n\n# Instructions\nYour job:\n• Qualify a web lead by collecting — in a friendly tone and one concise question at a time — the visitor's:\n    – name\n    – email\n    – city\n    – check-in and check-out dates\n    – number of guests or bedrooms\n    – monthly budget\n• If budget < $1 500 **OR** stay ≤ 7 nights:\n    – apologise\n    – give a helpful alternative\n    – end the chat\nNever quote exact prices, never promise discounts.\nRespond in plain text only (no code blocks).\n• when you are asked a question, check the vector db for the answer and match the questions, if the match is above 70% answer exactly how the answer is in the db"
+        }
+      },
+      "id": "22b6c131-2271-41d4-abe3-be4cdc20f95a",
+      "name": "Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [224, 0]
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [320, 192],
+      "id": "e518ebcc-dc91-4b4c-80c7-cd27c411c946",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [1008, 464],
+      "id": "ff5f3d6d-c82e-4814-8818-70d6d51995ee",
+      "name": "Embeddings OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "CBfciRQoF1KUjSKg",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "description": "{{ $json.text || $json.message || $json.chat_message || $json.prompt || $json.input || $json.chatInput || '' }}",
+        "topK": 5,
+        "scoreThreshold": 0.5
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1.1,
+      "position": [736, 128],
+      "id": "18589ac8-1087-4431-a391-6b816204a069",
+      "name": "Answer questions with a vector store"
+    },
+    {
+      "parameters": {
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "premiere_suites_faqs",
+          "mode": "list",
+          "cachedResultName": "premiere_suites_faqs"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1.3,
+      "position": [368, 400],
+      "id": "b33c75fb-0d06-4afa-b1a8-0f6a03128959",
+      "name": "Qdrant Vector Store",
+      "credentials": {
+        "qdrantApi": {
+          "id": "QXNX5AQMJu9isjNk",
+          "name": "QdrantApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Debug node to see what's happening\nconst input = $input.first().json;\nconsole.log('Input received:', JSON.stringify(input, null, 2));\n\n// Check if we have text to search\nconst searchText = input.text || input.message || input.chat_message || input.prompt || input.input || input.chatInput || '';\nconsole.log('Search text:', searchText);\n\n// Return the input for debugging\nreturn {\n  json: {\n    debug: true,\n    searchText: searchText,\n    originalInput: input,\n    timestamp: new Date().toISOString()\n  }\n};"
+      },
+      "id": "debug-node",
+      "name": "Debug Input",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [400, 0]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Debug Input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Debug Input": {
+      "main": [
+        [
+          {
+            "node": "Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Answer questions with a vector store",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Answer questions with a vector store": {
+      "ai_tool": [
+        [
+          {
+            "node": "Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Vector Store": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Answer questions with a vector store",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ],
+      "ai_tool": [[]]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "0d7d0d7d-1f53-45b2-a7ad-e060d24f176e",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "cdff327fdda3c4e87437d01915bda7027d610ece7a80be28ae04d1ed9bc8fc54"
+  },
+  "id": "0QUDTFHmjVRWEfWX",
+  "tags": []
+}
