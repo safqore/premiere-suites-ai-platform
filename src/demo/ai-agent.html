@@ -136,6 +136,10 @@
                 max-height: var(--chat--textarea--max-height);
                 width: var(--chat--textarea--width);
                 margin-right: var(--chat--textarea--margin-right);
+                overflow: hidden !important; /* Hide scrollbar */
+                resize: none !important; /* Prevent manual resizing */
+                min-height: var(--chat--textarea--height);
+                box-sizing: border-box;
             }
 
             .chat-inputs {
@@ -181,6 +185,11 @@
                 background-color: #FFD13A !important;
                 border: none !important;
             }
+
+            /* Add auto-resize functionality */
+            .chat-input textarea::-webkit-scrollbar {
+                display: none !important;
+            }
         </style>
     </head>
     <body>
@@ -218,6 +227,16 @@
                     },
                 },
                 enableStreaming: false,
+            });
+
+            document.addEventListener('DOMContentLoaded', () => {
+                const textarea = document.querySelector('.chat-input textarea');
+                if (textarea) {
+                    textarea.addEventListener('input', function() {
+                        this.style.height = 'var(--chat--textarea--height)';
+                        this.style.height = this.scrollHeight + 'px';
+                    });
+                }
             });
         </script>
 
