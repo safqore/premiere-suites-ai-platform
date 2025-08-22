@@ -104,7 +104,7 @@
             import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
 
             createChat({
-                webhookUrl: 'https://safqore.app.n8n.cloud/webhook/7cd78ada-6718-4b57-bd68-9bb7925e763e/chat',
+                webhookUrl: 'http://localhost:5678/webhook/7cd78ada-6718-4b57-bd68-9bb7925e763e/chat',
                 webhookConfig: {
                     method: 'POST',
                     headers: {}
@@ -119,8 +119,8 @@
                 defaultLanguage: 'en',
                 initialMessages: [
                     'Hello, I’m your Premiere Suites AI Agent.',
-                    'I can help you with booking inquiries, property details, availability, and general guest support.',
-                    'Try asking something like ‘Show me available suites in Toronto’ or ‘What amenities are included?’ to get started.'
+                    'I can help you with booking inquiries, and general FAQs.',
+                    'Try asking something like ‘Why should I choose premiere suites?’ or ‘What is included in a furnished apartment?’ to get started.'
                 ],
                 i18n: {
                     en: {
@@ -128,7 +128,7 @@
                         subtitle: "",
                         footer: '',
                         getStarted: 'New Conversation',
-                        inputPlaceholder: 'Type your question..',
+                        inputPlaceholder: 'Send a message',
                     },
                 },
                 enableStreaming: false,
