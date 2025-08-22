@@ -1,13 +1,13 @@
-# Premiere Suites Web Scraper
+# Premiere Suites AI Platform
 
-A comprehensive web scraper for extracting property data from [Premiere Suites](https://premieresuites.com/find-your-match/) and generating structured documents for vector database ingestion.
+A comprehensive AI platform for Premiere Suites with data collection, vectorization, and intelligent concierge services. This platform extracts property data from [Premiere Suites](https://premieresuites.com/find-your-match/), processes it through AI/ML pipelines, and provides intelligent automation and concierge services.
 
 ## 🏗️ Project Structure
 
 The project follows a clean, organized structure with proper separation of concerns:
 
 ```
-premiere_suites_scraper/
+premiere_suites_ai_platform/
 ├── src/                          # Source code
 │   ├── scrapers/                # Web scraping modules
 │   │   ├── premiere_scraper.py # Main property scraper
@@ -61,15 +61,15 @@ The project follows a clean, organized structure to maintain code quality and ea
 
 ### **Source Code (`src/`)**
 
-- **`scrapers/`**: Web scraping modules for properties and FAQs
-- **`vector_db/`**: Vector database operations and integrations
-- **`n8n_integration/`**: n8n workflow management and deployment
+- **`scrapers/`**: Data collection modules for properties and FAQs
+- **`vector_db/`**: AI/ML operations with vector database integrations
+- **`n8n_integration/`**: Workflow automation and deployment
 - **`utils/`**: Utility functions and helper modules
 
 ### **Data Management (`data/`)**
 
-- **`raw/`**: Original scraped data (PDF, CSV, TXT, MD files)
-- **`processed/`**: Processed and structured data (JSON, JSONL files)
+- **`raw/`**: Original collected data (PDF, CSV, TXT, MD files)
+- **`processed/`**: AI-processed and structured data (JSON, JSONL files)
 - **`exports/`**: Files ready for external use or distribution
 
 ### **Documentation (`docs/`)**
@@ -83,7 +83,7 @@ The project follows a clean, organized structure to maintain code quality and ea
 
 ### **Scripts (`scripts/`)**
 
-- Data conversion and processing utilities
+- AI/ML data processing utilities
 - Content validation and fixing tools
 - Vectorization and database setup scripts
 - Local development environment setup
@@ -94,13 +94,13 @@ The project follows a clean, organized structure to maintain code quality and ea
 
 - Unit tests for all modules
 - Integration tests for workflows
-- Vectorization and search functionality tests
+- AI/ML functionality and search tests
 
 ### **Examples (`examples/`)**
 
-- Usage examples and tutorials
+- AI platform usage examples and tutorials
 - LangChain integration examples
-- FAQ workflow examples
+- Concierge workflow examples
 
 ## 🚀 Quick Start
 

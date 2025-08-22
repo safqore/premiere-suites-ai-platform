@@ -2,19 +2,19 @@
 
 ## Overview
 
-The Premiere Suites Scraper has been reorganized into a clean, maintainable structure following Python best practices. This document outlines the new organization and provides guidance for developers.
+The Premiere Suites AI Platform has been reorganized into a clean, maintainable structure following Python best practices. This document outlines the new organization and provides guidance for developers.
 
 ## Directory Structure
 
 ```
-premiere_suites_scraper/
+premiere_suites_ai_platform/
 ├── src/                          # Source code
 │   ├── __init__.py              # Package initialization
-│   ├── scrapers/                # Web scraping modules
+│   ├── scrapers/                # Data collection modules
 │   │   ├── __init__.py         # Scrapers package
-│   │   ├── premiere_scraper.py # Main property scraper
-│   │   └── faq_scraper.py      # FAQ scraper
-│   ├── vector_db/              # Vector database operations
+│   │   ├── premiere_scraper.py # Main property data collector
+│   │   └── faq_scraper.py      # FAQ data collector
+│   ├── vector_db/              # AI/ML operations
 │   │   ├── __init__.py         # Vector DB package
 │   │   ├── qdrant_setup.py     # Qdrant database setup
 │   │   ├── langchain_qdrant_integration.py # LangChain integration
@@ -23,10 +23,10 @@ premiere_suites_scraper/
 │   │   ├── search_properties.py # Property search
 │   │   ├── setup_faq_vectorization.py # FAQ setup
 │   │   └── cloud_setup.py      # Cloud deployment
-│   ├── n8n_integration/        # n8n workflow management
+│   ├── n8n_integration/        # Workflow automation
 │   │   ├── __init__.py         # n8n package
 │   │   ├── n8n_setup.py        # n8n setup and configuration
-│   │   ├── deploy_concierge_workflow.py # Workflow deployment
+│   │   ├── deploy_concierge_workflow.py # Concierge workflow deployment
 │   │   ├── deploy_faq_workflow.py # FAQ workflow deployment
 │   │   ├── faq_to_qdrant_workflow.py # FAQ to Qdrant workflow
 │   │   ├── debug_n8n_issue.py  # Debugging tools
@@ -46,13 +46,13 @@ premiere_suites_scraper/
 │   ├── test_vectorization_properties.py # Vectorization tests
 │   └── test_langchain_integration.py # LangChain integration tests
 ├── data/                       # Data storage
-│   ├── raw/                   # Raw scraped data
+│   ├── raw/                   # Raw collected data
 │   │   ├── .gitkeep          # Preserve directory
 │   │   ├── premiere_suites_data.pdf
 │   │   ├── premiere_suites_data.csv
 │   │   ├── premiere_suites_data.txt
 │   │   └── premiere_suites_data.md
-│   ├── processed/             # Processed data files
+│   ├── processed/             # AI-processed data files
 │   │   ├── .gitkeep          # Preserve directory
 │   │   ├── premiere_suites_data.json
 │   │   ├── premiere_suites_data.jsonl

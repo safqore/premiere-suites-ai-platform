@@ -1,13 +1,14 @@
 """
-Premiere Suites Scraper
+Premiere Suites AI Platform
 
-A comprehensive web scraping and data processing system for Premier Suites properties.
-Includes FAQ management, vector database integration, and N8N workflow automation.
+A comprehensive AI platform for Premiere Suites with data collection, vectorization, 
+and intelligent concierge services. Includes FAQ management, vector database integration, 
+and N8N workflow automation.
 """
 
-__version__ = "1.0.0"
+__version__ = "2.0.0"
 __author__ = "Premiere Suites Team"
-__description__ = "Web scraping and data processing system for Premier Suites"
+__description__ = "AI platform for Premiere Suites with data collection, vectorization, and concierge services"
 
 # Import main components for easy access
 from .src.scrapers import premiere_scraper, faq_scraper

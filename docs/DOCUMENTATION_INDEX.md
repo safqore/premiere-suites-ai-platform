@@ -1,6 +1,6 @@
 # Documentation Index
 
-This directory contains all project documentation organized by category.
+This directory contains all project documentation organized by category for the Premiere Suites AI Platform.
 
 ## 📋 Project Documentation
 

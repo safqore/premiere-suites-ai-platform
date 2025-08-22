@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Main entry point for the Premiere Suites Scraper
+Main entry point for the Premiere Suites AI Platform
 """
 
 import sys
@@ -13,15 +13,15 @@ from scrapers import PremiereSuitesScraper
 from utils import QuickStart
 
 def main():
-    """Main function to run the scraper"""
-    print("Premiere Suites Scraper")
+    """Main function to run the AI platform"""
+    print("Premiere Suites AI Platform")
     print("=" * 30)
     
     # Initialize scraper
     scraper = PremiereSuitesScraper(headless=True)
     
-    # Scrape data
-    print("Starting data extraction...")
+    # Collect data
+    print("Starting data collection...")
     properties = scraper.scrape_all()
     
     # Generate outputs
@@ -37,7 +37,7 @@ def main():
     scraper.save_to_csv(properties, f"{output_dir}/premiere_suites_data.csv")
     scraper.generate_markdown(properties, f"{output_dir}/premiere_suites_data.md")
     
-    print("Scraping completed successfully!")
+    print("Data collection completed successfully!")
     print(f"Output files saved to: {output_dir}")
 
 if __name__ == "__main__":

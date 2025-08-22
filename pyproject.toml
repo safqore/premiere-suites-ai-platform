@@ -3,16 +3,16 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "premiere-suites-scraper"
+name = "premiere-suites-ai-platform"
 version = "2.0.0"
-description = "A comprehensive web scraper for extracting property data from Premiere Suites"
+description = "A comprehensive AI platform for Premiere Suites with data collection, vectorization, and intelligent concierge services"
 readme = "README.md"
 requires-python = ">=3.8"
 license = {text = "MIT"}
 authors = [
     {name = "Your Name", email = "your.email@example.com"}
 ]
-keywords = ["web-scraping", "real-estate", "vector-database", "automation"]
+keywords = ["ai-platform", "real-estate", "vector-database", "automation", "concierge", "langchain", "qdrant"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
@@ -67,12 +67,12 @@ dev = [
 ]
 
 [project.scripts]
-premiere-scraper = "main:main"
+premiere-ai-platform = "main:main"
 
 [project.urls]
-Homepage = "https://github.com/yourusername/premiere-suites-scraper"
-Repository = "https://github.com/yourusername/premiere-suites-scraper"
-Issues = "https://github.com/yourusername/premiere-suites-scraper/issues"
+Homepage = "https://github.com/yourusername/premiere-suites-ai-platform"
+Repository = "https://github.com/yourusername/premiere-suites-ai-platform"
+Issues = "https://github.com/yourusername/premiere-suites-ai-platform/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]
