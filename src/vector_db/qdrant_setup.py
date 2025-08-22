@@ -74,10 +74,10 @@ class PremiereSuitesVectorDB:
             self.client = QdrantClient(host=qdrant_host, port=qdrant_port)
         
         # Initialize embedding model
-        logger.info(f"Loading embedding model: {embedding_model}")
+        logger.info(f"Loading embedding model: {self.embedding_model}")
         
         # Check if it's an OpenAI model
-        if embedding_model.startswith('text-embedding-'):
+        if self.embedding_model.startswith('text-embedding-'):
             # Use OpenAI embeddings
             openai_api_key = os.getenv("OPENAI_API_KEY")
             if not openai_api_key:

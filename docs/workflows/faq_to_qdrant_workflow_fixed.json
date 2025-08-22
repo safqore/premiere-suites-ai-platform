@@ -1,0 +1,276 @@
+{
+  "name": "FAQ to Qdrant Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "faq-to-qdrant",
+        "responseMode": "responseNode"
+      },
+      "id": "webhook_trigger",
+      "name": "Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "filePath": "data/processed/premiere_suites_faq_data.jsonl"
+      },
+      "id": "read_faq_file",
+      "name": "Read FAQ File",
+      "type": "n8n-nodes-base.readBinaryFile",
+      "typeVersion": 1,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Parse JSONL file content\nconst fileContent = $input.first().json.data;\nconst lines = fileContent.split('\\n').filter(line => line.trim());\n\nconst faqData = [];\nlet metadata = null;\nlet summary = null;\n\nfor (const line of lines) {\n    try {\n        const parsed = JSON.parse(line);\n        \n        if (parsed.type === 'metadata') {\n            metadata = parsed;\n        } else if (parsed.type === 'summary') {\n            summary = parsed;\n        } else if (parsed.type === 'faq') {\n            faqData.push(parsed);\n        }\n    } catch (error) {\n        console.log('Error parsing line:', line, error);\n    }\n}\n\nreturn [\n    {\n        json: {\n            metadata,\n            summary,\n            faqs: faqData,\n            total_faqs: faqData.length\n        }\n    }\n];"
+      },
+      "id": "parse_jsonl",
+      "name": "Parse JSONL",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "method": "DELETE",
+        "url": "={{ $env.QDRANT_URL }}/collections/faq_collection",
+        "authentication": "httpHeaderAuth",
+        "httpHeaderAuth": {
+          "name": "api-key",
+          "value": "={{ $env.QDRANT_API_KEY }}"
+        }
+      },
+      "id": "delete_collection",
+      "name": "Delete Collection",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [900, 300]
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "={{ $env.QDRANT_URL }}/collections/faq_collection",
+        "authentication": "httpHeaderAuth",
+        "httpHeaderAuth": {
+          "name": "api-key",
+          "value": "={{ $env.QDRANT_API_KEY }}"
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "vectors",
+              "value": "{\"size\": 1536, \"distance\": \"Cosine\"}"
+            }
+          ]
+        }
+      },
+      "id": "create_collection",
+      "name": "Create Collection",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1120, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Vectorize FAQ data\nconst faqs = $input.first().json.faqs;\nconst vectorizedFaqs = [];\n\nfor (const faq of faqs) {\n    const textForEmbedding = `Question: ${faq.question}\\nAnswer: ${faq.answer}`;\n    \n    vectorizedFaqs.push({\n        id: faq.id,\n        question: faq.question,\n        answer: faq.answer,\n        category: faq.category,\n        tags: faq.tags,\n        source_url: faq.source_url,\n        text_chunk: faq.text_chunk,\n        embedding_text: textForEmbedding\n    });\n}\n\nreturn [\n    {\n        json: {\n            vectorized_faqs: vectorizedFaqs,\n            total_count: vectorizedFaqs.length\n        }\n    }\n];"
+      },
+      "id": "vectorize_faqs",
+      "name": "Vectorize FAQs",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1340, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/embeddings",
+        "authentication": "httpHeaderAuth",
+        "httpHeaderAuth": {
+          "name": "Authorization",
+          "value": "Bearer {{ $env.OPENAI_API_KEY }}"
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "input",
+              "value": "={{ $json.embedding_text }}"
+            },
+            {
+              "name": "model",
+              "value": "text-embedding-3-small"
+            }
+          ]
+        }
+      },
+      "id": "get_embeddings",
+      "name": "Get Embeddings",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1560, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Prepare data for Qdrant upload\nconst faqs = $input.all();\nconst uploadData = [];\n\nfor (const faq of faqs) {\n    const faqData = faq.json;\n    const embedding = faqData.data[0].embedding;\n    \n    uploadData.push({\n        id: faqData.id,\n        vector: embedding,\n        payload: {\n            question: faqData.question,\n            answer: faqData.answer,\n            category: faqData.category,\n            tags: faqData.tags,\n            source_url: faqData.source_url,\n            text_chunk: faqData.text_chunk,\n            timestamp: new Date().toISOString()\n        }\n    });\n}\n\nreturn [\n    {\n        json: {\n            points: uploadData,\n            total_points: uploadData.length\n        }\n    }\n];"
+      },
+      "id": "prepare_upload_data",
+      "name": "Prepare Upload Data",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1780, 300]
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "={{ $env.QDRANT_URL }}/collections/faq_collection/points",
+        "authentication": "httpHeaderAuth",
+        "httpHeaderAuth": {
+          "name": "api-key",
+          "value": "={{ $env.QDRANT_API_KEY }}"
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "points",
+              "value": "={{ $json.points }}"
+            }
+          ]
+        }
+      },
+      "id": "upload_to_qdrant",
+      "name": "Upload to Qdrant",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [2000, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { status: 'success', message: 'FAQ data ingested successfully', collection: 'faq_collection', total_faqs: $('Parse JSONL').first().json.total_faqs, vector_size: 1536, timestamp: new Date().toISOString() } }}"
+      },
+      "id": "response",
+      "name": "Success Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [2220, 300]
+    }
+  ],
+  "connections": {
+    "webhook_trigger": {
+      "main": [
+        [
+          {
+            "node": "read_faq_file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "read_faq_file": {
+      "main": [
+        [
+          {
+            "node": "parse_jsonl",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "parse_jsonl": {
+      "main": [
+        [
+          {
+            "node": "delete_collection",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "delete_collection": {
+      "main": [
+        [
+          {
+            "node": "create_collection",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "create_collection": {
+      "main": [
+        [
+          {
+            "node": "vectorize_faqs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "vectorize_faqs": {
+      "main": [
+        [
+          {
+            "node": "get_embeddings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get_embeddings": {
+      "main": [
+        [
+          {
+            "node": "prepare_upload_data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "prepare_upload_data": {
+      "main": [
+        [
+          {
+            "node": "upload_to_qdrant",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "upload_to_qdrant": {
+      "main": [
+        [
+          {
+            "node": "response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "1",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "id": "faq-to-qdrant-workflow",
+  "tags": ["faq", "qdrant", "vector-database"]
+}
+
+

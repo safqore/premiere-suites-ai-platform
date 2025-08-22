@@ -82,6 +82,8 @@ target/
 profile_default/
 ipython_config.py
 
+
+
 # pyenv
 #   For a library or package, you might want to ignore these files since the code is
 #   intended to run in multiple environments; otherwise, check them in:
@@ -260,12 +262,12 @@ $RECYCLE.BIN/
 
 # Project specific
 # Data files (keep structure but ignore content)
-data/raw/*
-data/processed/*
-data/exports/*
-!data/raw/.gitkeep
-!data/processed/.gitkeep
-!data/exports/.gitkeep
+# data/raw/*
+# data/processed/*
+# data/exports/*
+# !data/raw/.gitkeep
+# !data/processed/.gitkeep
+# !data/exports/.gitkeep
 
 # Logs
 logs/
@@ -303,8 +305,8 @@ chroma_db/
 faiss_index/
 
 # n8n workflow exports (keep only templates)
-docs/workflows/*.json
-!docs/workflows/templates/
+# docs/workflows/*.json
+# !docs/workflows/templates/
 
 # Generated documentation
 docs/_build/

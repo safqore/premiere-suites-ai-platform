@@ -1,6 +1,6 @@
 # Premiere Suites Scraper Makefile
 
-.PHONY: help setup install test run clean lint format
+.PHONY: help setup install test run clean lint format faq-workflow deploy-faq test-faq
 
 # Default target
 help:
@@ -12,6 +12,12 @@ help:
 	@echo "  clean    - Clean up generated files"
 	@echo "  lint     - Run linting"
 	@echo "  format   - Format code"
+	@echo ""
+	@echo "FAQ Workflow Commands:"
+	@echo "  faq-workflow - Create FAQ to Qdrant n8n workflow"
+	@echo "  deploy-faq   - Deploy FAQ workflow to n8n"
+	@echo "  test-faq     - Test FAQ workflow"
+	@echo "  faq-setup    - Complete FAQ workflow setup (create + deploy + test)"
 
 # Set up the project
 setup:
@@ -55,3 +61,21 @@ format:
 
 # Quick start (setup + run)
 quickstart: setup run
+
+# FAQ to Qdrant Workflow
+faq-workflow:
+	@echo "Creating FAQ to Qdrant n8n workflow..."
+	python src/n8n_integration/faq_to_qdrant_workflow.py
+
+# Deploy FAQ workflow to n8n
+deploy-faq:
+	@echo "Deploying FAQ workflow to n8n..."
+	python src/n8n_integration/deploy_faq_workflow.py
+
+# Test FAQ workflow
+test-faq:
+	@echo "Testing FAQ workflow..."
+	python src/n8n_integration/test_faq_workflow.py
+
+# Complete FAQ workflow setup (create + deploy + test)
+faq-setup: faq-workflow deploy-faq test-faq

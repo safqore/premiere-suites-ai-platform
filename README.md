@@ -4,39 +4,116 @@ A comprehensive web scraper for extracting property data from [Premiere Suites](
 
 ## 🏗️ Project Structure
 
+The project follows a clean, organized structure with proper separation of concerns:
+
 ```
 premiere_suites_scraper/
-├── src/                    # Source code
-│   ├── scrapers/          # Web scraping modules
-│   │   ├── premiere_scraper.py
-│   │   └── faq_scraper.py
-│   ├── vector_db/         # Vector database operations
-│   │   ├── qdrant_setup.py
-│   │   ├── vectorize_faq_data.py
-│   │   ├── search_faqs.py
-│   │   └── search_properties.py
-│   ├── n8n_integration/   # n8n workflow management
-│   │   ├── n8n_setup.py
-│   │   └── deploy_concierge_workflow.py
-│   └── utils/             # Utility functions
-│       ├── map_faq_sections.py
-│       └── quick_start.py
-├── tests/                 # Test files
-├── data/                  # Data storage
-│   ├── raw/              # Raw scraped data
-│   ├── processed/        # Processed data files
-│   └── exports/          # Export files
-├── docs/                  # Documentation
-│   ├── guides/           # User guides
-│   └── workflows/        # n8n workflow files
-├── config/               # Configuration files
-├── scripts/              # Setup and utility scripts
-├── main.py               # Main entry point
-├── requirements.txt      # Python dependencies
-└── Makefile             # Development tasks
+├── src/                          # Source code
+│   ├── scrapers/                # Web scraping modules
+│   │   ├── premiere_scraper.py # Main property scraper
+│   │   └── faq_scraper.py      # FAQ scraper
+│   ├── vector_db/              # Vector database operations
+│   │   ├── qdrant_setup.py     # Qdrant database setup
+│   │   ├── langchain_qdrant_integration.py # LangChain integration
+│   │   ├── langchain_faq_integration.py # FAQ LangChain integration
+│   │   ├── search_faqs.py      # FAQ search functionality
+│   │   └── search_properties.py # Property search
+│   ├── n8n_integration/        # n8n workflow management
+│   │   ├── n8n_setup.py        # n8n setup and configuration
+│   │   ├── deploy_concierge_workflow.py # Workflow deployment
+│   │   ├── deploy_faq_workflow.py # FAQ workflow deployment
+│   │   └── faq_to_qdrant_workflow.py # FAQ to Qdrant workflow
+│   └── utils/                  # Utility functions
+│       ├── map_faq_sections.py # FAQ section mapping
+│       └── quick_start.py      # Quick start utilities
+├── tests/                      # Test files
+├── data/                       # Data storage
+│   ├── raw/                   # Raw scraped data (PDF, CSV, TXT, MD)
+│   ├── processed/             # Processed data files (JSON, JSONL)
+│   └── exports/               # Export files
+├── docs/                       # Documentation
+│   ├── guides/                # User guides and tutorials
+│   ├── workflows/             # n8n workflow files
+│   └── *.md                   # Project documentation summaries
+├── scripts/                    # Utility scripts
+│   ├── convert_jsonl_to_json.py # Data format conversion
+│   ├── check_and_fix_pagecontent.py # Content validation
+│   ├── vectorize_faq_data.py  # FAQ vectorization
+│   └── start_qdrant_local.py  # Local Qdrant startup
+├── examples/                   # Example usage and tutorials
+├── config/                     # Configuration files
+├── web/                        # Web interface files
+│   ├── premiere_suites_demo.html # Demo interface
+│   ├── test_webhook.html      # Webhook testing interface
+│   └── simple_webhook_test.html # Simple webhook test
+├── logs/                       # Log files
+├── __init__.py                # Root package initialization
+├── main.py                    # Main entry point
+├── requirements.txt           # Python dependencies
+├── pyproject.toml            # Modern Python project config
+├── Makefile                  # Development tasks
+└── README.md                 # Project overview
 ```
 
+## 📁 File Organization
+
+The project follows a clean, organized structure to maintain code quality and ease of development:
+
+### **Source Code (`src/`)**
+
+- **`scrapers/`**: Web scraping modules for properties and FAQs
+- **`vector_db/`**: Vector database operations and integrations
+- **`n8n_integration/`**: n8n workflow management and deployment
+- **`utils/`**: Utility functions and helper modules
+
+### **Data Management (`data/`)**
+
+- **`raw/`**: Original scraped data (PDF, CSV, TXT, MD files)
+- **`processed/`**: Processed and structured data (JSON, JSONL files)
+- **`exports/`**: Files ready for external use or distribution
+
+### **Documentation (`docs/`)**
+
+- **`guides/`**: User guides, tutorials, and setup instructions
+- **`workflows/`**: n8n workflow JSON files
+- **`PROJECT_STRUCTURE.md`**: Detailed project structure documentation
+- **`PROJECT_REORGANIZATION_SUMMARY.md`**: Summary of project reorganization
+- **`PROJECT_LAYOUT_FIXES.md`**: Documentation of layout improvements
+- **`*.md`**: Project documentation summaries and completion reports
+
+### **Scripts (`scripts/`)**
+
+- Data conversion and processing utilities
+- Content validation and fixing tools
+- Vectorization and database setup scripts
+- Local development environment setup
+- **`update_file_references.py`**: Migration script to update file paths to new structure
+- **`convert_text_chunks_to_pagecontent.py`**: Converts `text_chunk` fields to `pageContent` for consistency
+
+### **Tests (`tests/`)**
+
+- Unit tests for all modules
+- Integration tests for workflows
+- Vectorization and search functionality tests
+
+### **Examples (`examples/`)**
+
+- Usage examples and tutorials
+- LangChain integration examples
+- FAQ workflow examples
+
 ## 🚀 Quick Start
+
+### Migration from Old Structure
+
+If you're updating from the previous structure where files were in the root directory, run the migration script:
+
+```bash
+# Update file references to new organized structure
+python scripts/update_file_references.py
+```
+
+This script will automatically update any hardcoded file paths in your Python files to reference the new organized structure.
 
 ### Option 1: Automated Setup
 
@@ -124,34 +201,45 @@ make lint
 
 ## 📊 Output Files
 
-The scraper generates the following files in `data/processed/`:
+The scraper generates the following files organized by type:
 
-### 1. `premiere_suites_data.pdf`
+### **Raw Data (`data/raw/`)**
 
-**Primary file for vector database ingestion**
+- **`premiere_suites_data.pdf`**: Original PDF document
+- **`premiere_suites_data.csv`**: Raw CSV data
+- **`premiere_suites_data.txt`**: Plain text format
+- **`premiere_suites_data.md`**: Markdown format
 
-- Structured PDF document with property information
-- Optimized for text extraction and vector embedding
-- Includes summary statistics and detailed property listings
-- Suitable for n8n automation workflows
+### **Processed Data (`data/processed/`)**
 
-### 2. `premiere_suites_data.json`
+- **`premiere_suites_data.json`**: Structured JSON data with complete property information
+- **`premiere_suites_data.jsonl`**: Line-delimited JSON format for streaming (with `pageContent` field)
+- **`premiere_suites_faq_data.jsonl`**: FAQ data in JSONL format (with `pageContent` field)
+- **`premiere_suites_faq_data.json`**: FAQ data in JSON format (with `pageContent` field)
+- **`premiere_suites_chunks.txt`**: Text chunks for vectorization
 
-- Raw structured data in JSON format
-- Complete property information with all extracted fields
-- Useful for data analysis and processing
+### **Key Files**
 
-### 3. `premiere_suites_data.csv`
+1. **`data/raw/premiere_suites_data.pdf`** - Primary file for vector database ingestion
 
-- Tabular data format
-- Compatible with spreadsheet applications
-- Easy to import into databases
+   - Structured PDF document with property information
+   - Optimized for text extraction and vector embedding
+   - Includes summary statistics and detailed property listings
+   - Suitable for n8n automation workflows
 
-### 4. `premiere_suites_data.md`
+2. **`data/processed/premiere_suites_data.json`** - Raw structured data in JSON format
 
-- Markdown format for easy reading
-- Alternative format for vector database ingestion
-- Human-readable structure
+   - Complete property information with all extracted fields
+   - Useful for data analysis and processing
+
+3. **`data/raw/premiere_suites_data.csv`** - Tabular data format
+
+   - Compatible with spreadsheet applications
+   - Easy to import into databases
+
+4. **`data/raw/premiere_suites_data.md`** - Markdown format for easy reading
+   - Alternative format for vector database ingestion
+   - Human-readable structure
 
 ## 🔧 Configuration
 

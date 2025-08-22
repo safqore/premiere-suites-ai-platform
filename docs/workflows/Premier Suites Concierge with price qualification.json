@@ -1,0 +1,522 @@
+{
+  "name": "Premier Suites Concierge v1",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "concierge",
+        "responseMode": "responseNode",
+        "options": {
+          "responseData": "={{$json.reply}}",
+          "responseCode": 200
+        }
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [-600, 0],
+      "name": "Webhook"
+    },
+    {
+      "parameters": {
+        "functionCode": "const body = $json;\nconst text = (body.text || '').trim();\nconst sessionId = body.sessionId || body.userId || 'anon';\n\n// GLOBAL static store per workflow (persists across executions)\nconst store = this.getWorkflowStaticData('global');\nstore.stateMap = store.stateMap || {};\nlet state = store.stateMap[sessionId] || {\n  mode: 'FAQ_MODE',\n  stage: 'ask_name',\n  lead: {\n    name: '', email: '', city: '', arrival_iso: '', length_nights: null, bedrooms: null,\n    pets: undefined, parking: undefined, budget_type: '', budget_value: null, phone: '',\n    arrival_raw: '', length_raw: '', budget_raw: ''\n  },\n  qualified: true, reason: ''\n};\n\nconst bookingIntent = /\\b(book|long\\s*stay|availability|monthly|serviced\\s*apartment|move\\s*in|suite|apartment)\\b/i.test(text);\nif (bookingIntent || state.mode === 'QUALIFY_MODE') state.mode = 'QUALIFY_MODE'; else state.mode = 'FAQ_MODE';\n\n// Save session baseline back (others will update too)\nstore.stateMap[sessionId] = state;\n\nreturn [{ json: { text, sessionId, state } }];"
+      },
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 2,
+      "position": [-350, 0],
+      "name": "Router (set mode)"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{$json.state.mode === 'FAQ_MODE'}}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [-150, 0],
+      "name": "IF FAQ_MODE?"
+    },
+    {
+      "parameters": {
+        "model": "text-embedding-3-small",
+        "input": "={{$json.text}}"
+      },
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 3,
+      "position": [50, -200],
+      "name": "OpenAI Embeddings",
+      "credentials": {
+        "openAiApi": "YOUR_OPENAI_CREDENTIAL"
+      }
+    },
+    {
+      "parameters": {
+        "functionCode": "// Normalize OpenAI embedding output to a plain array on $json.embedding\n// n8n OpenAI Embeddings outputs { data: [{ embedding: [...] }], ... }\nconst emb = $json.data?.[0]?.embedding || $json.embedding || [];\nreturn [{ json: { ...$json, embedding: emb, userText: $items('Router (set mode)')[0].json.text, sessionId: $items('Router (set mode)')[0].json.sessionId } }];"
+      },
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 2,
+      "position": [260, -200],
+      "name": "Pick Embedding"
+    },
+    {
+      "parameters": {
+        "authentication": "none",
+        "requestMethod": "POST",
+        "url": "https://YOUR_QDRANT_HOST/collections/YOUR_FAQ_COLLECTION/points/search",
+        "jsonParameters": true,
+        "options": {
+          "headers": {
+            "Content-Type": "application/json",
+            "api-key": "YOUR_QDRANT_API_KEY"
+          }
+        },
+        "queryParametersUi": {
+          "parameter": []
+        },
+        "bodyParametersJson": "={\n  \"vector\": {{$json.embedding}},\n  \"top\": 3,\n  \"with_payload\": true,\n  \"score_threshold\": 0.75\n}"
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [480, -200],
+      "name": "Qdrant Search (FAQ)"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{$json.result && $json.result[0] ? $json.result[0].score : 0}}",
+              "operation": "largerEqual",
+              "value2": 0.75
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [700, -200],
+      "name": "IF score ≥ 0.75?"
+    },
+    {
+      "parameters": {
+        "functionCode": "const top = $json.result?.[0];\nconst answer = top?.payload?.answer_text || top?.payload?.text || '';\nreturn [{ json: { reply: answer, verbatim: true, mode: 'FAQ_MODE', sessionId: $items('Pick Embedding')[0].json.sessionId } }];"
+      },
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 2,
+      "position": [900, -320],
+      "name": "Return Verbatim"
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "systemMessage": "You are a classifier. Is the user's last question related to staying at serviced apartments (booking, availability, rooms, policies)? Reply ONLY \"yes\" or \"no\".",
+        "temperature": 0,
+        "messages": [
+          {
+            "text": "User question: {{$items(\"Router (set mode)\")[0].json.text}}",
+            "type": "user"
+          }
+        ]
+      },
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 3,
+      "position": [900, -80],
+      "name": "Related-to-stay Classifier",
+      "credentials": {
+        "openAiApi": "YOUR_OPENAI_CREDENTIAL"
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json.choices && $json.choices[0] ? $json.choices[0].message?.content?.trim().toLowerCase() : ''}}",
+              "operation": "contains",
+              "value2": "yes"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [1120, -80],
+      "name": "IF related?"
+    },
+    {
+      "parameters": {
+        "functionCode": "return [{ json: { reply: \"I don’t have that in my current FAQ. Would you like a member of our team to follow up?\", mode: 'FAQ_MODE' } }];"
+      },
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 2,
+      "position": [1320, -180],
+      "name": "Reply: in-FAQ follow-up"
+    },
+    {
+      "parameters": {
+        "functionCode": "return [{ json: { reply: \"I’m sorry, I don’t know.\", mode: 'FAQ_MODE' } }];"
+      },
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 2,
+      "position": [1320, 20],
+      "name": "Reply: don’t know"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{$json.state.mode === 'QUALIFY_MODE'}}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [50, 220],
+      "name": "IF QUALIFY_MODE?"
+    },
+    {
+      "parameters": {
+        "functionCode": "const store = this.getWorkflowStaticData('global');\nconst { sessionId } = $json;\nlet state = store.stateMap[sessionId];\nconst text = ($json.text || '').trim();\n\nfunction ask(stage){\n  const q = {\n    ask_name: 'May I have your name?',\n    ask_email: 'What’s your email address?',\n    ask_city: 'Which city would you like to stay in?',\n    ask_arrival: 'What’s your expected arrival date? (DD/MM/YYYY or MM/DD/YYYY)',\n    ask_length: 'How long is your stay (number of nights or months)?',\n    ask_bedrooms: 'How many bedrooms do you need?',\n    ask_pets: 'Are you bringing any pets? (Yes/No)',\n    ask_parking: 'Do you need parking? (Yes/No)',\n    ask_budget: 'What’s your budget (nightly or monthly)?',\n    ask_phone: 'If you’d like a call, please share your phone number (optional).'\n  }; return q[stage];\n}\n\n// capture current answer\nswitch (state.stage) {\n  case 'ask_name': if (text && text.toLowerCase() !== 'start') state.lead.name = text; break;\n  case 'ask_email': if (/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(text)) state.lead.email = text; break;\n  case 'ask_city': if (text) state.lead.city = text; break;\n  case 'ask_arrival': if (text) state.lead.arrival_raw = text; break;\n  case 'ask_length': if (text) state.lead.length_raw = text; break;\n  case 'ask_bedrooms': if (/\\d+/.test(text)) state.lead.bedrooms = parseInt(text,10); break;\n  case 'ask_pets': if (/^y(es)?/i.test(text)) state.lead.pets = true; if (/^n(o)?/i.test(text)) state.lead.pets = false; break;\n  case 'ask_parking': if (/^y(es)?/i.test(text)) state.lead.parking = true; if (/^n(o)?/i.test(text)) state.lead.parking = false; break;\n  case 'ask_budget': if (text) state.lead.budget_raw = text; break;\n  case 'ask_phone': if (text) state.lead.phone = text; break;\n}\n\nfunction nextStage(s){\n  const order = ['ask_name','ask_email','ask_city','ask_arrival','ask_length','ask_bedrooms','ask_pets','ask_parking','ask_budget','ask_phone','done'];\n  const i = order.indexOf(s.stage);\n  const filled = {\n    ask_name: !!s.lead.name,\n    ask_email: !!s.lead.email,\n    ask_city: !!s.lead.city,\n    ask_arrival: !!s.lead.arrival_iso,\n    ask_length: !!s.lead.length_nights,\n    ask_bedrooms: Number.isInteger(s.lead.bedrooms),\n    ask_pets: typeof s.lead.pets === 'boolean',\n    ask_parking: typeof s.lead.parking === 'boolean',\n    ask_budget: !!s.lead.budget_value && !!s.lead.budget_type,\n    ask_phone: true\n  };\n  const cur = i === -1 ? 'ask_name' : order[i];\n  if (filled[cur]) return order[i+1] || 'done';\n  return cur;\n}\n\nstate.stage = nextStage(state);\nlet reply = state.stage === 'done' ? 'thank you for providing all the information, one of the sales team member would be touch shortly' : ask(state.stage);\n\nstore.stateMap[sessionId] = state;\nreturn [{ json: { state, reply, sessionId } }];"
+      },
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 2,
+      "position": [260, 220],
+      "name": "Question Picker"
+    },
+    {
+      "parameters": {
+        "functionCode": "const store = this.getWorkflowStaticData('global');\nconst { sessionId } = $json;\nlet state = store.stateMap[sessionId];\n\nfunction toISO(input){\n  if (!input) return null;\n  const cleaned = input.replace(/[.\\-]/g,'/').trim();\n  const m = cleaned.match(/^(\\d{1,2})\\/(\\d{1,2})\\/(\\d{4})$/);\n  if(!m) return null;\n  let a = parseInt(m[1],10); // dd or mm\n  let b = parseInt(m[2],10); // mm or dd\n  const y = parseInt(m[3],10);\n  function valid(d,m,y){\n    const dt = new Date(Date.UTC(y, m-1, d));\n    return dt.getUTCFullYear()===y && (dt.getUTCMonth()+1)===m && dt.getUTCDate()===d;\n  }\n  if (valid(a,b,y)) return new Date(Date.UTC(y,b-1,a)).toISOString().slice(0,10);\n  if (valid(b,a,y)) return new Date(Date.UTC(y,a-1,b)).toISOString().slice(0,10);\n  return null;\n}\n\nif (state.lead.arrival_raw && !state.lead.arrival_iso) {\n  const iso = toISO(state.lead.arrival_raw);\n  if (iso) state.lead.arrival_iso = iso;\n}\n\nstore.stateMap[sessionId] = state;\nreturn [{ json: { ...$json, state } }];"
+      },
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 2,
+      "position": [470, 220],
+      "name": "Date Normalizer (UK/US)"
+    },
+    {
+      "parameters": {
+        "functionCode": "const store = this.getWorkflowStaticData('global');\nconst { sessionId } = $json;\nlet state = store.stateMap[sessionId];\n\nif (state.lead.length_raw && !state.lead.length_nights) {\n  const t = state.lead.length_raw.toLowerCase();\n  const m = t.match(/(\\d+)\\s*(night|nights|month|months|m)?/);\n  if (m) {\n    const val = parseInt(m[1],10);\n    const unit = (m[2]||'nights').toLowerCase();\n    state.lead.length_nights = /month/.test(unit) || unit==='m' ? val*30 : val;\n  }\n}\n\nif (state.lead.budget_raw && !state.lead.budget_value) {\n  const t = state.lead.budget_raw.toLowerCase();\n  const num = parseFloat(t.replace(/[^\\d.]/g,''));\n  const isMonthly = /(month|monthly|mo)/.test(t);\n  const isNightly = /(night|nightly)/.test(t);\n  if (!isNaN(num)) {\n    state.lead.budget_value = num;\n    state.lead.budget_type = isMonthly ? 'monthly' : (isNightly ? 'nightly' : (state.lead.length_nights >= 30 ? 'monthly' : 'nightly'));\n  }\n}\n\nstore.stateMap[sessionId] = state;\nreturn [{ json: { ...$json, state } }];"
+      },
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 2,
+      "position": [680, 220],
+      "name": "Length & Budget Parser"
+    },
+    {
+      "parameters": {
+        "functionCode": "const store = this.getWorkflowStaticData('global');\nconst { sessionId } = $json;\nlet state = store.stateMap[sessionId];\n\nlet issues = [];\nlet qualified = true;\n\n// Budget checks (internal thresholds)\nif (state.lead.budget_type === 'monthly' && state.lead.budget_value < 1500) {\n  qualified = false;\n  issues.push('your monthly budget is below our minimum');\n}\nif (state.lead.budget_type === 'nightly' && state.lead.budget_value < 80) {\n  qualified = false;\n  issues.push('your nightly budget is below our minimum');\n}\n\n// Stay length check\nif (state.lead.length_nights && state.lead.length_nights <= 7) {\n  qualified = false;\n  issues.push('your stay is shorter than our minimum required length');\n}\n\nlet reply = $json.reply || '';\n\nif (!qualified) {\n  const reasonText = issues.length === 1 ? issues[0] : issues.slice(0, -1).join(', ') + ' and ' + issues.slice(-1);\n  reply = `I’m really sorry, but I can see that ${reasonText}.\nOur suites are designed for longer stays with higher budgets.\nFor shorter or lower-budget trips, you may find better options on platforms like Airbnb or Booking.com.\nThank you so much for considering Premier Suites.`;\n\n  state.stage = 'done';\n  state.qualified = false;\n  state.reason = reasonText;\n} else {\n  if (state.stage === 'done') {\n    reply = 'thank you for providing all the information, one of the sales team member would be touch shortly';\n  }\n}\n\nstore.stateMap[sessionId] = state;\nreturn [{ json: { ...$json, state, reply } }];"
+      },
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 2,
+      "position": [900, 220],
+      "name": "Lead Filter"
+    },
+    {
+      "parameters": {
+        "functionCode": "let reply = ($json.reply || '').replace(/\\s+/g,' ').trim();\nconst mode = $json.state?.mode; const verbatim = $json.verbatim === true;\nif (!(mode === 'FAQ_MODE' && verbatim)) {\n  if (/^thank you for providing/.test(reply)) {\n    // keep exact closing line\n  } else if (reply && /^[A-Za-z]/.test(reply)) {\n    reply = 'Thanks! ' + reply;\n  }\n}\nreturn [{ json: { ...$json, reply } }];"
+      },
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 2,
+      "position": [1520, 0],
+      "name": "Tone Wrapper"
+    },
+    {
+      "parameters": {
+        "responseBody": "={{$json.reply}}",
+        "responseCode": 200
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [1720, 0],
+      "name": "Respond"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json.state?.stage}}",
+              "operation": "equals",
+              "value2": "ask_arrival"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [470, 400],
+      "name": "IF ask_arrival?"
+    },
+    {
+      "parameters": {
+        "functionCode": "return [{ json: { reply: 'Please pick your arrival date.', action: { type: 'open_date_picker', minDate: 'today', maxDate: '+18m', locale: 'en-GB' } } }];"
+      },
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 2,
+      "position": [680, 400],
+      "name": "Emit Date Picker Action"
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Router (set mode)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Router (set mode)": {
+      "main": [
+        [
+          {
+            "node": "IF FAQ_MODE?",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "IF QUALIFY_MODE?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF FAQ_MODE?": {
+      "main": [
+        [
+          {
+            "node": "OpenAI Embeddings",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "OpenAI Embeddings": {
+      "main": [
+        [
+          {
+            "node": "Pick Embedding",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pick Embedding": {
+      "main": [
+        [
+          {
+            "node": "Qdrant Search (FAQ)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Search (FAQ)": {
+      "main": [
+        [
+          {
+            "node": "IF score ≥ 0.75?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF score ≥ 0.75?": {
+      "main": [
+        [
+          {
+            "node": "Return Verbatim",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Related-to-stay Classifier",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Related-to-stay Classifier": {
+      "main": [
+        [
+          {
+            "node": "IF related?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF related?": {
+      "main": [
+        [
+          {
+            "node": "Reply: in-FAQ follow-up",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Reply: don’t know",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF QUALIFY_MODE?": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Question Picker",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Question Picker": {
+      "main": [
+        [
+          {
+            "node": "Date Normalizer (UK/US)",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "IF ask_arrival?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date Normalizer (UK/US)": {
+      "main": [
+        [
+          {
+            "node": "Length & Budget Parser",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Length & Budget Parser": {
+      "main": [
+        [
+          {
+            "node": "Lead Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lead Filter": {
+      "main": [
+        [
+          {
+            "node": "Tone Wrapper",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Return Verbatim": {
+      "main": [
+        [
+          {
+            "node": "Tone Wrapper",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reply: in-FAQ follow-up": {
+      "main": [
+        [
+          {
+            "node": "Tone Wrapper",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reply: don’t know": {
+      "main": [
+        [
+          {
+            "node": "Tone Wrapper",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tone Wrapper": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF ask_arrival?": {
+      "main": [
+        [
+          {
+            "node": "Emit Date Picker Action",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Emit Date Picker Action": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {},
+  "meta": {
+    "templateCredsSetup": true
+  }
+}

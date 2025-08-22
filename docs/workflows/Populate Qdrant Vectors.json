@@ -1,0 +1,362 @@
+{
+  "name": "Populate Qdrant Vectors",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -224,
+        96
+      ],
+      "id": "45f07d0e-0311-4a76-ab44-0b3ff3951aa1",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "operation": "deleteCollection",
+        "collectionName": {
+          "__rl": true,
+          "value": "premiere_suites_faqs_n8n",
+          "mode": "list",
+          "cachedResultName": "premiere_suites_faqs_n8n"
+        },
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-qdrant.qdrant",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "c9ac7c19-3e8d-4cb2-bc46-bf208bfdd3a9",
+      "name": "Delete Collection",
+      "credentials": {
+        "qdrantRestApi": {
+          "id": "ODtyAnka3SbF4RHs",
+          "name": "Qdrant account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "collectionExists",
+        "collectionName": "premiere_suites_faqs_n8n",
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-qdrant.qdrant",
+      "typeVersion": 1,
+      "position": [
+        0,
+        192
+      ],
+      "id": "7cc83c58-1a1e-417d-a1c9-8b4eec0cbcef",
+      "name": "Does Collection Exist?",
+      "credentials": {
+        "qdrantRestApi": {
+          "id": "ODtyAnka3SbF4RHs",
+          "name": "Qdrant account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "dc0a2aa2-88df-4071-9315-da91d8025af4",
+              "leftValue": "={{ $json.result.exists }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        224,
+        192
+      ],
+      "id": "db60cd68-1628-4a0a-8f8c-f36b60a8da85",
+      "name": "If Exists"
+    },
+    {
+      "parameters": {
+        "operation": "createCollection",
+        "collectionName": "premiere_suites_faqs_n8n",
+        "vectors": "{ \"size\": 1536, \"distance\": \"Cosine\" }",
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-qdrant.qdrant",
+      "typeVersion": 1,
+      "position": [
+        448,
+        272
+      ],
+      "id": "694b603d-b741-48b3-b321-816cd9bdbea3",
+      "name": "Create Collection",
+      "notesInFlow": true,
+      "credentials": {
+        "qdrantRestApi": {
+          "id": "ODtyAnka3SbF4RHs",
+          "name": "Qdrant account"
+        }
+      },
+      "notes": "Creates collection only when absent."
+    },
+    {
+      "parameters": {
+        "fileSelector": "/Users/abbadminhas/Downloads/drive-download-20250820T162053Z-1-001/premiere_suites_faq_data.json",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        672,
+        192
+      ],
+      "id": "2787ed19-0514-411c-ae29-0fa3a1c8e5ee",
+      "name": "Read File to Vectorise"
+    },
+    {
+      "parameters": {
+        "operation": "fromJson",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        896,
+        192
+      ],
+      "id": "40f44973-219c-4e78-86c6-1e559adc227d",
+      "name": "Extract Raw JSON"
+    },
+    {
+      "parameters": {
+        "jsCode": "const faqs = $input.first().json.data.faqs;\nreturn faqs.map((faq, index) => ({ json: { ...faq, faq_index: index } }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1120,
+        192
+      ],
+      "id": "5c5e0b66-2b3f-47f6-9bd0-d7497dc1fe43",
+      "name": "Extract FAQs List"
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "premiere_suites_faqs_n8n",
+          "mode": "list",
+          "cachedResultName": "premiere_suites_faqs_n8n"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1.3,
+      "position": [
+        1344,
+        192
+      ],
+      "id": "32079ef4-6df4-41a8-a1d8-17e664d8d192",
+      "name": "Qdrant Vector Store",
+      "credentials": {
+        "qdrantApi": {
+          "id": "Rm21k4YKqNKkjc4C",
+          "name": "QdrantApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "dimensions": 1536
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1296,
+        416
+      ],
+      "id": "2421846a-70cc-497e-967d-5af59a40dd7e",
+      "name": "Embeddings OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "zbPim8HFLYuSwimv",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonMode": "expressionData",
+        "jsonData": "={{ $json.text_chunk }}\n{{ $json.question }}\n{{ $json.answer }}\n{{ $json.category }}\n{{ $json.tags }}\n{{ $json.source_url }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1.1,
+      "position": [
+        1488,
+        416
+      ],
+      "id": "261a3731-7b09-4dcb-96f7-8cba92d6e924",
+      "name": "Default Data Loader"
+    },
+    {
+      "parameters": {
+        "content": "## Considerations \n- Agree data to be stored in vector database as part of requirements\n- Update / setup mappings accordingly within this flow",
+        "height": 112,
+        "width": 496
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1248,
+        64
+      ],
+      "typeVersion": 1,
+      "id": "c2f69faf-2a78-4d36-9da1-354206727654",
+      "name": "Sticky Note"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Delete Collection",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Does Collection Exist?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Does Collection Exist?": {
+      "main": [
+        [
+          {
+            "node": "If Exists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If Exists": {
+      "main": [
+        [
+          {
+            "node": "Read File to Vectorise",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create Collection",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Collection": {
+      "main": [
+        [
+          {
+            "node": "Read File to Vectorise",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read File to Vectorise": {
+      "main": [
+        [
+          {
+            "node": "Extract Raw JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Raw JSON": {
+      "main": [
+        [
+          {
+            "node": "Extract FAQs List",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract FAQs List": {
+      "main": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Default Data Loader": {
+      "ai_document": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "4a49689d-7958-4ed5-a486-5f6a8e674762",
+  "meta": {
+    "instanceId": "9f2a2f7a1ab90f16851d96be056bf107ed6605402b9f7d7d5d8768ec8bbda1f7"
+  },
+  "id": "DhSyuG5dh0X2vE3C",
+  "tags": []
+}
