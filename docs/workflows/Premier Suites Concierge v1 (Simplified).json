@@ -1,0 +1,190 @@
+{
+  "name": "Premier Suites Concierge v1 (Simplified)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "concierge",
+        "responseMode": "responseNode",
+        "options": {
+          "responseData": "={{$json.reply}}",
+          "responseCode": 200
+        }
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [-400, 0],
+      "name": "Webhook"
+    },
+    {
+      "parameters": {
+        "functionCode": "try {\n  const body = $json || {};\n  const text = (body.text || '').trim();\n  const sessionId = body.sessionId || body.userId || 'anon';\n  \n  // Simple mode detection\n  const bookingIntent = /\\b(book|long\\s*stay|availability|monthly|serviced\\s*apartment|move\\s*in|suite|apartment)\\b/i.test(text);\n  const mode = bookingIntent ? 'QUALIFY_MODE' : 'FAQ_MODE';\n  \n  return [{json: {text, sessionId, mode}}];\n} catch(err) {\n  return [{json: {...$json, reply: 'Sorry, something went wrong. Please try again.'}}];\n}"
+      },
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 2,
+      "position": [-200, 0],
+      "name": "Router"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{$json.mode === 'FAQ_MODE'}}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "name": "IF FAQ_MODE?"
+    },
+    {
+      "parameters": {
+        "functionCode": "return [{ json: { reply: \"I'm here to help with your questions about Premier Suites. What would you like to know?\" } }];"
+      },
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 2,
+      "position": [200, -100],
+      "name": "FAQ Response"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{$json.mode === 'QUALIFY_MODE'}}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [0, 100],
+      "name": "IF QUALIFY_MODE?"
+    },
+    {
+      "parameters": {
+        "functionCode": "return [{ json: { reply: \"Great! I'd be happy to help you with your booking. May I have your name?\" } }];"
+      },
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 2,
+      "position": [200, 100],
+      "name": "Qualify Response"
+    },
+    {
+      "parameters": {
+        "functionCode": "let reply = ($json.reply || '').trim();\nif (reply && /^[A-Za-z]/.test(reply)) {\n  reply = 'Thanks! ' + reply;\n}\nreturn [{json: {...$json, reply}}];"
+      },
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 2,
+      "position": [400, 0],
+      "name": "Tone Wrapper"
+    },
+    {
+      "parameters": {
+        "responseBody": "={{$json.reply}}",
+        "responseCode": 200
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [600, 0],
+      "name": "Respond"
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Router",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Router": {
+      "main": [
+        [
+          {
+            "node": "IF FAQ_MODE?",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "IF QUALIFY_MODE?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF FAQ_MODE?": {
+      "main": [
+        [
+          {
+            "node": "FAQ Response",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "FAQ Response": {
+      "main": [
+        [
+          {
+            "node": "Tone Wrapper",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF QUALIFY_MODE?": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Qualify Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qualify Response": {
+      "main": [
+        [
+          {
+            "node": "Tone Wrapper",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tone Wrapper": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {},
+  "meta": {
+    "templateCredsSetup": true
+  }
+}

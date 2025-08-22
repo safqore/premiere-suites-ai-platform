@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Webhook Test</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+      }
+      .test {
+        margin: 20px 0;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+      button {
+        padding: 8px 16px;
+        background: #2c5aa0;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 5px;
+      }
+      .result {
+        margin-top: 10px;
+        padding: 10px;
+        background: #f8f9fa;
+        border-radius: 4px;
+        font-family: monospace;
+        font-size: 12px;
+        white-space: pre-wrap;
+      }
+      .error {
+        background: #f8d7da;
+        color: #721c24;
+      }
+      .success {
+        background: #d4edda;
+        color: #155724;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Simple Webhook Test</h1>
+
+    <div class="test">
+      <h3>Test 1: Minimal payload</h3>
+      <button onclick="testMinimal()">Test with just "text"</button>
+      <div id="result1" class="result"></div>
+    </div>
+
+    <div class="test">
+      <h3>Test 2: Different payload format</h3>
+      <button onclick="testAlternative()">
+        Test with "message" instead of "text"
+      </button>
+      <div id="result2" class="result"></div>
+    </div>
+
+    <div class="test">
+      <h3>Test 3: Empty payload</h3>
+      <button onclick="testEmpty()">Test with empty payload</button>
+      <div id="result3" class="result"></div>
+    </div>
+
+    <script>
+      const webhookUrl =
+        "https://safqore.app.n8n.cloud/webhook/7cd78ada-6718-4b57-bd68-9bb7925e763e/chat";
+      // Generate a unique session ID for testing
+      const sessionId = "test-session-" + Date.now();
+
+      async function testWebhook(payload, resultId) {
+        const resultDiv = document.getElementById(resultId);
+        resultDiv.textContent = "Testing...";
+        resultDiv.className = "result";
+
+        try {
+          const response = await fetch(webhookUrl, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+          });
+
+          const responseText = await response.text();
+
+          resultDiv.textContent = `Status: ${response.status}\nResponse: ${responseText}`;
+
+          if (response.ok) {
+            resultDiv.className = "result success";
+          } else {
+            resultDiv.className = "result error";
+          }
+        } catch (error) {
+          resultDiv.textContent = `Error: ${error.message}`;
+          resultDiv.className = "result error";
+        }
+      }
+
+      function testMinimal() {
+        testWebhook({ text: "hello", sessionId: sessionId }, "result1");
+      }
+
+      function testAlternative() {
+        testWebhook({ message: "hello", sessionId: sessionId }, "result2");
+      }
+
+      function testEmpty() {
+        testWebhook({ sessionId: sessionId }, "result3");
+      }
+    </script>
+  </body>
+</html>

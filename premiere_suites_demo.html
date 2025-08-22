@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Premiere Suites - Demo with AI Chat Bot</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background-image: url("https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        position: relative;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      /* Chat Bot Styles */
+      .chat-bot {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1001;
+      }
+
+      .chat-toggle {
+        width: 60px;
+        height: 60px;
+        background: #2c5aa0;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 1.5rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
+      }
+
+      .chat-toggle:hover {
+        transform: scale(1.1);
+      }
+
+      .chat-window {
+        position: fixed;
+        bottom: 90px;
+        right: 20px;
+        width: 350px;
+        height: 500px;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        display: none;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      .chat-header {
+        background: #2c5aa0;
+        color: white;
+        padding: 1rem;
+        text-align: center;
+        font-weight: bold;
+      }
+
+      .chat-messages {
+        flex: 1;
+        padding: 1rem;
+        overflow-y: auto;
+        background: #f8f9fa;
+      }
+
+      .message {
+        margin-bottom: 1rem;
+        padding: 0.8rem;
+        border-radius: 10px;
+        max-width: 80%;
+      }
+
+      .message.user {
+        background: #2c5aa0;
+        color: white;
+        margin-left: auto;
+      }
+
+      .message.bot {
+        background: white;
+        border: 1px solid #ddd;
+      }
+
+      .chat-input-container {
+        padding: 1rem;
+        border-top: 1px solid #ddd;
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .chat-input {
+        flex: 1;
+        padding: 0.5rem;
+        border: 1px solid #ddd;
+        border-radius: 20px;
+        outline: none;
+      }
+
+      .chat-send {
+        padding: 0.5rem 1rem;
+        background: #2c5aa0;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+      }
+
+      .chat-send:hover {
+        background: #1e3a8a;
+      }
+
+      .typing-indicator {
+        display: none;
+        padding: 0.5rem;
+        color: #666;
+        font-style: italic;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .search-form {
+          flex-direction: column;
+        }
+
+        .chat-window {
+          width: 90vw;
+          right: 5vw;
+          left: 5vw;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Empty body - just background and chat bot -->
+
+    <!-- Chat Bot -->
+    <div class="chat-bot">
+      <button class="chat-toggle" onclick="toggleChat()">💬</button>
+      <div class="chat-window" id="chatWindow">
+        <div class="chat-header">Premier Suites AI Agent</div>
+        <div class="chat-messages" id="chatMessages">
+          <div class="message bot">
+            Hi there! 👋<br />
+            I'm your Premier Suites AI Agent. I'm here to help you find the
+            perfect accommodation for your stay.<br /><br />
+            To get started, could you please tell me your name?
+          </div>
+        </div>
+        <div class="typing-indicator" id="typingIndicator">AI is typing...</div>
+        <div class="chat-input-container">
+          <input
+            type="text"
+            class="chat-input"
+            id="chatInput"
+            placeholder="Type your message..."
+            onkeypress="handleKeyPress(event)"
+          />
+          <button class="chat-send" onclick="sendMessage()">Send</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let chatOpen = false;
+      const webhookUrl =
+        "https://safqore.app.n8n.cloud/webhook/7cd78ada-6718-4b57-bd68-9bb7925e763e/chat";
+      // Generate a unique session ID for this chat session
+      const sessionId =
+        "session-" + Date.now() + "-" + Math.random().toString(36).substr(2, 9);
+
+      function toggleChat() {
+        const chatWindow = document.getElementById("chatWindow");
+        chatOpen = !chatOpen;
+        chatWindow.style.display = chatOpen ? "flex" : "none";
+
+        if (chatOpen) {
+          document.getElementById("chatInput").focus();
+        }
+      }
+
+      function handleKeyPress(event) {
+        if (event.key === "Enter") {
+          sendMessage();
+        }
+      }
+
+      async function sendMessage() {
+        const input = document.getElementById("chatInput");
+        const message = input.value.trim();
+
+        if (!message) return;
+
+        // Add user message to chat
+        addMessage(message, "user");
+        input.value = "";
+
+        // Show typing indicator
+        showTypingIndicator();
+
+        try {
+          console.log("Sending message to:", webhookUrl);
+          console.log("Message payload:", { text: message });
+
+          // Send message to n8n webhook
+          const response = await fetch(webhookUrl, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            mode: "cors",
+            body: JSON.stringify({
+              text: message,
+              sessionId: sessionId,
+            }),
+          });
+
+          console.log("Response status:", response.status);
+          console.log("Response headers:", response.headers);
+
+          if (!response.ok) {
+            const errorText = await response.text();
+            console.error("Response error text:", errorText);
+            throw new Error(
+              `HTTP error! status: ${response.status}, message: ${errorText}`
+            );
+          }
+
+          const data = await response.json();
+          console.log("Response data:", data);
+
+          // Hide typing indicator
+          hideTypingIndicator();
+
+          // Add bot response to chat
+          if (data.text) {
+            addMessage(data.text, "bot");
+          } else if (data.message) {
+            addMessage(data.message, "bot");
+          } else if (data.response) {
+            addMessage(data.response, "bot");
+          } else {
+            console.log("No text/message/response found in data:", data);
+            addMessage(
+              "I apologize, but I encountered an error processing your request. Please try again.",
+              "bot"
+            );
+          }
+        } catch (error) {
+          console.error("Detailed error:", error);
+          hideTypingIndicator();
+
+          if (
+            error.name === "TypeError" &&
+            error.message.includes("Failed to fetch")
+          ) {
+            addMessage(
+              "Connection error: Unable to reach the chat service. Please check your internet connection and try again.",
+              "bot"
+            );
+          } else {
+            addMessage(
+              `Error: ${error.message}. Please try again later.`,
+              "bot"
+            );
+          }
+        }
+      }
+
+      function addMessage(text, sender) {
+        const messagesContainer = document.getElementById("chatMessages");
+        const messageDiv = document.createElement("div");
+        messageDiv.className = `message ${sender}`;
+        messageDiv.innerHTML = text.replace(/\n/g, "<br>");
+        messagesContainer.appendChild(messageDiv);
+
+        // Scroll to bottom
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      }
+
+      function showTypingIndicator() {
+        document.getElementById("typingIndicator").style.display = "block";
+        const messagesContainer = document.getElementById("chatMessages");
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      }
+
+      function hideTypingIndicator() {
+        document.getElementById("typingIndicator").style.display = "none";
+      }
+    </script>
+  </body>
+</html>

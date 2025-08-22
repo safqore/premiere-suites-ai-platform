@@ -16,7 +16,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Simple input processing\nconst input = $input.first().json;\nconst messageText = input.text || input.message || input.chat_message || input.prompt || input.input || input.chatInput || input.query || '';\n\nreturn {\n  json: {\n    chatInput: messageText,\n    text: messageText,\n    message: messageText\n  }\n};"
+        "jsCode": "// Simple input processing with session ID\nconst input = $input.first().json;\nconst messageText = input.text || input.message || input.chat_message || input.prompt || input.input || input.chatInput || input.query || '';\n\n// Generate a session ID if not provided\nconst sessionId = input.sessionId || 'default-session-' + Date.now();\n\nreturn {\n  json: {\n    chatInput: messageText,\n    text: messageText,\n    message: messageText,\n    sessionId: sessionId\n  }\n};"
       },
       "id": "901d7eeb-ae10-43a6-8ae2-3a0d0ff66444",
       "name": "Simple Input",

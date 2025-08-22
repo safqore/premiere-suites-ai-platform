@@ -1,0 +1,47 @@
+{
+  "name": "simple_test_workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "public": true,
+        "initialMessages": "Hello! I'm a simple test bot. How can I help you?",
+        "options": {}
+      },
+      "id": "test-webhook-trigger",
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [0, 0],
+      "webhookId": "simple-test-webhook"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Simple echo response\nconst input = $input.first().json;\nconst messageText = input.text || input.message || 'Hello';\n\nreturn {\n  json: {\n    text: `You said: ${messageText}. This is a test response from the webhook.`\n  }\n};"
+      },
+      "id": "simple-echo",
+      "name": "Simple Echo",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [200, 0]
+    }
+  ],
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Simple Echo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "test-version",
+  "id": "simple-test-workflow"
+}
