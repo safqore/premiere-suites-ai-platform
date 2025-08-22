@@ -42,12 +42,17 @@ premiere_suites_scraper/
 │   └── start_qdrant_local.py  # Local Qdrant startup
 ├── examples/                   # Example usage and tutorials
 ├── config/                     # Configuration files
+├── web/                        # Web interface files
+│   ├── premiere_suites_demo.html # Demo interface
+│   ├── test_webhook.html      # Webhook testing interface
+│   └── simple_webhook_test.html # Simple webhook test
 ├── logs/                       # Log files
-├── main.py                     # Main entry point
-├── requirements.txt            # Python dependencies
-├── pyproject.toml             # Modern Python project config
-├── Makefile                   # Development tasks
-└── README.md                  # Project overview
+├── __init__.py                # Root package initialization
+├── main.py                    # Main entry point
+├── requirements.txt           # Python dependencies
+├── pyproject.toml            # Modern Python project config
+├── Makefile                  # Development tasks
+└── README.md                 # Project overview
 ```
 
 ## 📁 File Organization
@@ -71,6 +76,9 @@ The project follows a clean, organized structure to maintain code quality and ea
 
 - **`guides/`**: User guides, tutorials, and setup instructions
 - **`workflows/`**: n8n workflow JSON files
+- **`PROJECT_STRUCTURE.md`**: Detailed project structure documentation
+- **`PROJECT_REORGANIZATION_SUMMARY.md`**: Summary of project reorganization
+- **`PROJECT_LAYOUT_FIXES.md`**: Documentation of layout improvements
 - **`*.md`**: Project documentation summaries and completion reports
 
 ### **Scripts (`scripts/`)**

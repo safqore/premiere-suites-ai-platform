@@ -98,6 +98,17 @@ premiere_suites_scraper/
 ├── config/                     # Configuration files
 │   ├── docker-compose.yml     # Docker configuration
 │   └── env.example            # Environment template
+├── web/                        # Web interface files
+│   ├── premiere_suites_demo.html # Demo interface
+│   ├── test_webhook.html      # Webhook testing interface
+│   └── simple_webhook_test.html # Simple webhook test
+├── logs/                       # Application logs
+├── __init__.py                # Root package initialization
+├── main.py                    # Main application entry point
+├── requirements.txt           # Python dependencies
+├── pyproject.toml            # Project configuration
+├── Makefile                  # Build and deployment commands
+└── README.md                 # Project documentation
 ├── logs/                       # Log files
 │   └── .gitkeep              # Preserve directory
 ├── main.py                     # Main entry point
