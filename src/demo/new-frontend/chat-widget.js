@@ -509,7 +509,7 @@
 
   window.getLLMResponse = async function(userMessage) {
   try {
-    // persistent sessionId across reloads
+    // keep a persistent session id
     let sessionId = localStorage.getItem('safqore_sessionId');
     if (!sessionId) {
       sessionId = (typeof crypto !== 'undefined' && crypto.randomUUID) ? crypto.randomUUID() : `sess-${Date.now()}-${Math.floor(Math.random()*1e6)}`;
@@ -517,13 +517,8 @@
     }
 
     const payload = [
-      {
-        sessionId,
-        action: "sendMessage",
-        chatInput: userMessage
-      }
+      { sessionId, action: "sendMessage", chatInput: userMessage }
     ];
-
     const url = 'http://localhost:5678/webhook-test/chat-interface';
 
     const res = await fetch(url, {
@@ -533,29 +528,14 @@
       credentials: 'omit'
     });
 
-    const text = await res.text();
-
-    // n8n expected shape: [ { "output": "..." } ]
-    try {
-      const parsed = JSON.parse(text);
-      if (Array.isArray(parsed) && parsed.length) {
-        const first = parsed[0];
-        if (first && typeof first.output === 'string') return first.output;
-        if (first && typeof first.reply === 'string') return first.reply;
-        if (first && typeof first.message === 'string') return first.message;
-      }
-      if (parsed && typeof parsed === 'object') {
-        if (typeof parsed.output === 'string') return parsed.output;
-        if (typeof parsed.reply === 'string') return parsed.reply;
-        if (typeof parsed.message === 'string') return parsed.message;
-      } else if (typeof parsed === 'string') {
-        return parsed;
-      }
-    } catch (e) {
-      // not JSON — fall through
+    // n8n returns JSON in the shape: [ { "output": "..." } ]
+    const parsed = await res.json();
+    if (Array.isArray(parsed) && parsed.length && typeof parsed[0].output === 'string') {
+      return parsed[0].output;
     }
+    if (parsed && typeof parsed.output === 'string') return parsed.output;
 
-    return text || "Sorry, I didn't understand that.";
+    return "Sorry, I didn't understand that.";
   } catch (err) {
     console.error('Error calling backend API:', err);
     return "An error occurred while fetching a response.";
