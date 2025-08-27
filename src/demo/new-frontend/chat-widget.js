@@ -382,10 +382,9 @@
       <div class="chat-body">
         <div class="chat-message bot">
           <span>
-            <b>Welcome to Animal Defenders International!</b><br><br>
-            I'm here to help with questions about animal welfare, our campaigns, 
-            rescues, and how you can get involved.<br><br>
-            How can I assist you today?
+            <b>Welcome to Premiere Suites</b><br><br>
+            I can help you with booking inquiries, and general FAQs.<br><br>
+            Try asking something like "Why should I choose premiere suites?" or "What is included in a furnished apartment?" to get started.
           </span>
         </div>
       </div>
