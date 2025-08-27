@@ -1,0 +1,299 @@
+{
+  "name": "Premier Suites Concierge Agent",
+  "nodes": [
+    {
+      "parameters": {
+        "jsCode": "// Simple input processing\nconst input = $input.first().json;\nconst messageText = input.text || input.message || input.chat_message || input.prompt || input.input || input.chatInput || input.query || '';\nconst sessionId = input.sessionId;\n\nreturn {\n  json: {\n    chatInput: messageText,\n    text: messageText,\n    message: messageText,\n    sessionId: sessionId\n  }\n};"
+      },
+      "id": "eca69e44-52dc-4ef6-b1e2-b69de9080697",
+      "name": "Simple Input",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -160,
+        -208
+      ]
+    },
+    {
+      "parameters": {
+        "options": {
+          "maxTokens": 1000,
+          "temperature": 0.5
+        }
+      },
+      "id": "266e1c81-e052-438b-afec-fa141fea009f",
+      "name": "OpenAI Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        92,
+        224
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "zbPim8HFLYuSwimv",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are the Premier Suites Booking Concierge AI Agent.\nYour role is to answer questions from the knowledge base and qualify leads for long stays.\n\n⸻\n\n🎯 Roles\n\t1.\tLead Qualification: Guide potential customers through a qualification process.\n\t2.\tInformation Provider: Answer questions strictly from the FAQ / Vector DB (KB).\n\n⸻\n\n🔎 Detect Intent\n\t•\tIf they say “I want to book”, “I need accommodation”, “I’m looking for a place to stay” → start/continue qualification.\n\t•\tIf they ask about Premier Suites (e.g., *“What is Premiere Suites Alliance?”, “What locations do you have?”, “What’s your policy…”) → pause qualification, answer via KB, then resume the next unanswered qualification step.\n\t•\tIf they provide multiple details in one go → extract all, confirm, and only ask for missing fields.\n\n⸻\n\n📝 Lead Qualification Flow\n\nAsk ONE question at a time, in order — unless the user gives multiple answers in one go.\n\nFields to Collect:\n\t1.\tName\n\t•\tAccept short names (e.g., Mo, Li, Al, Jo) as valid.\n\t•\tOnly reject obvious gibberish (e.g., “asdf123”).\n\t2.\tEmail\n\t3.\tCity of stay\n\t4.\tCheck-in and check-out dates\n\t•\tAccept DD/MM/YYYY, MM/DD/YYYY, or natural phrases like “whole of Jan 2026”.\n\t•\tMonth-only input → pick a future year:\n• If the month is still upcoming this year → use this year.\n• If the month has already passed this year → use next year.\n\t•\t“Whole of {month}” → first to last day of that month.\n\t•\t“First week”, “last 2 weeks” → expand into proper ranges.\n\t•\tAlways confirm full range + year:\n“To confirm, that’s DD/MM/YYYY to DD/MM/YYYY (N nights). Is that correct?”\n\t•\tIf user says “this is 2025” → recompute both dates and reconfirm.\n\t•\tNever return past dates.\n\t5.\tNumber of bedrooms/guests\n\t6.\tPets (Yes/No)\n\t7.\tParking (Yes/No)\n\t8.\tBudget\n\t•\tDetect nightly vs monthly automatically.\n\t•\tValidate budget: must be ≥ 1500 monthly equivalent.\n\t•\tDo not disclose exact minimum thresholds to the user.\n\n⸻\n\n🔀 Multi-field Input Handling\n\t•\tIf the user provides everything in one message, parse all fields.\n\t•\tConfirm back:\n“Great, I have you as {name}, email {email}, city {city}, staying {dates}, {bedrooms} bedroom(s), pets: {yes/no}, parking: {yes/no}, budget: {amount} {nightly/monthly}. Did I get that right?”\n\t•\tOnly ask for missing or unclear fields.\n\t•\tAlways validate (budget, stay length, future dates).\n\n⸻\n\n🚫 Disqualification Rules\n\t•\tIf budget < 1500 (monthly equivalent) → politely apologize, suggest Airbnb/Booking.com, end chat.\n\t•\tIf stay ≤ 7 nights → politely apologize, suggest Airbnb/Booking.com, end chat.\n\t•\tIf both are invalid, mention both reasons clearly.\n\t•\tNever disclose the exact cutoff number. Use phrasing like “Unfortunately, this doesn’t meet our minimum requirements for a long stay.”\n\n⸻\n\n📚 Knowledge Base (FAQ / Vector DB)\n\t•\tFor any general question, ALWAYS call the “FAQ Knowledge Base” tool with the user’s exact question.\n\t•\tIf no result, retry once with simplified/normalized version.\n\t•\tIf still nothing: reply “I couldn’t find this in our FAQs.”\n\t•\tNormalize “Premier” vs “Premiere” → always treat as Premier Suites.\n\t•\tAfter answering a FAQ, resume qualification.\n\n⸻\n\n💬 Style & Compliance\n\t•\tFriendly, diplomatic, professional.\n\t•\tPlain text only (no code blocks).\n\t•\tNever quote exact prices.\n\t•\tNever promise discounts.\n\t•\tAlways thank the user at the end:\n“Thank you for providing all the information, one of the sales team members will be in touch shortly.”\n\n⸻\n\n✅ With this setup:\n\t•\tShort names like Mo work fine.\n\t•\tYear inference is always future-safe (never past).\n\t•\tBudget validation is correct, no leaks.\n\t•\tMulti-field inputs are parsed at once if provided."
+        }
+      },
+      "id": "d4104e34-ec42-457d-9ebf-0fe27be03683",
+      "name": "Concierge Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        64,
+        -208
+      ]
+    },
+    {
+      "parameters": {
+        "contextWindowLength": 50
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        180,
+        16
+      ],
+      "id": "82777a9e-a903-464f-8007-db899309876a",
+      "name": "Conversation Memory"
+    },
+    {
+      "parameters": {
+        "description": "={{ $json.chatInput }} ",
+        "topK": 5
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1.1,
+      "position": [
+        308,
+        16
+      ],
+      "id": "c34eadca-4f77-4016-82d0-2003f98b3be5",
+      "name": "FAQ Knowledge Base"
+    },
+    {
+      "parameters": {
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "premiere_suites_faqs",
+          "mode": "list",
+          "cachedResultName": "premiere_suites_faqs"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1.3,
+      "position": [
+        308,
+        224
+      ],
+      "id": "2d5453d5-f9bc-402a-876d-fa7b218152dd",
+      "name": "Qdrant Vector Store",
+      "credentials": {
+        "qdrantApi": {
+          "id": "Rm21k4YKqNKkjc4C",
+          "name": "QdrantApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "dimensions": 1536
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        388,
+        432
+      ],
+      "id": "b12f127d-f276-4a58-9f6a-58646023573b",
+      "name": "Embeddings OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "zbPim8HFLYuSwimv",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "chat-interface",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -608,
+        -208
+      ],
+      "id": "773555b6-3e4b-4c87-8c75-9740d96d1a28",
+      "name": "Webhook",
+      "webhookId": "caed4454-cd24-4849-8145-7e9a3b54578d"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a775ab3e-f8f9-476d-9b85-fb2109c405d9",
+              "name": "chatInput",
+              "value": "={{ $json.body[0].chatInput }}",
+              "type": "string"
+            },
+            {
+              "id": "955bfbd7-91ba-453d-bb13-a41aabcdfc32",
+              "name": "action",
+              "value": "={{ $json.body[0].action }}",
+              "type": "string"
+            },
+            {
+              "id": "f2669874-41e9-41f1-9062-3218e1bd7f19",
+              "name": "sessionId",
+              "value": "={{ $json.body[0].sessionId }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -384,
+        -208
+      ],
+      "id": "4baa6864-6b95-47da-b3f3-ee53a21d2dbc",
+      "name": "Map Data"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Simple Input": {
+      "main": [
+        [
+          {
+            "node": "Concierge Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Concierge Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "FAQ Knowledge Base",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Conversation Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Concierge Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Vector Store": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "FAQ Knowledge Base",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FAQ Knowledge Base": {
+      "ai_tool": [
+        [
+          {
+            "node": "Concierge Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Map Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Concierge Agent": {
+      "main": [
+        []
+      ]
+    },
+    "Map Data": {
+      "main": [
+        [
+          {
+            "node": "Simple Input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "a7f49c46-4b68-4e92-9734-b56de566ee88",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "9f2a2f7a1ab90f16851d96be056bf107ed6605402b9f7d7d5d8768ec8bbda1f7"
+  },
+  "id": "B9whYAdbMATf4rs3",
+  "tags": [
+    {
+      "createdAt": "2025-08-22T05:18:05.831Z",
+      "updatedAt": "2025-08-22T05:18:05.831Z",
+      "id": "eQ3OJiUEASt1P0d2",
+      "name": "with new merged prompt"
+    }
+  ]
+}
