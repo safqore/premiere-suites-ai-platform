@@ -478,7 +478,7 @@
   
     const timestamp = document.createElement('div');
     timestamp.className = 'message-timestamp-bot';
-    timestamp.innerHTML = `ADI AI Assistant - ${new Date().toLocaleString('en-US', {
+    timestamp.innerHTML = `Premiere Suites AI Assistant - ${new Date().toLocaleString('en-US', {
       weekday: 'short',
       hour: '2-digit',
       minute: '2-digit',
