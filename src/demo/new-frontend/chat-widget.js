@@ -535,16 +535,19 @@
 
     const text = await res.text();
 
-    // best-effort parse if n8n returned JSON
+    // n8n expected shape: [ { "output": "..." } ]
     try {
       const parsed = JSON.parse(text);
-      // common shapes: { reply: "..."} or string or array with messages
+      if (Array.isArray(parsed) && parsed.length) {
+        const first = parsed[0];
+        if (first && typeof first.output === 'string') return first.output;
+        if (first && typeof first.reply === 'string') return first.reply;
+        if (first && typeof first.message === 'string') return first.message;
+      }
       if (parsed && typeof parsed === 'object') {
-        if (parsed.reply && typeof parsed.reply === 'string') return parsed.reply;
-        if (parsed.message && typeof parsed.message === 'string') return parsed.message;
-        if (Array.isArray(parsed) && parsed.length && typeof parsed[0] === 'string') return parsed[0];
-        // try to stringify useful data field
-        if (parsed.data) return typeof parsed.data === 'string' ? parsed.data : JSON.stringify(parsed.data);
+        if (typeof parsed.output === 'string') return parsed.output;
+        if (typeof parsed.reply === 'string') return parsed.reply;
+        if (typeof parsed.message === 'string') return parsed.message;
       } else if (typeof parsed === 'string') {
         return parsed;
       }
