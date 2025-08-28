@@ -375,7 +375,7 @@
     <div class="chat-window" id="chat-window">
       <div class="chat-header">
         <div class="header-text">
-          <h2>Premier Suites - AI Assistant 🐾</h2>
+          <h2>Premier Suites - AI Assistant</h2>
         </div>
         <button id="close-chat" class="close-btn">&times;</button>
       </div>
