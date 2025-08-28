@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Premier Suites Homepage</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      height: 90%;
+    }
+    img {
+      width: 100%;
+      display: block;
+    }
+    .image-container {
+      position: relative;
+      width: 100%;
+      height: 100vh; /* Full viewport height */
+      overflow: hidden; /* Prevent scrolling on the image */
+    }
+    .homepage-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Maintain aspect ratio while covering container */
+      object-position: top center; /* Align to top */
+    }
+    /* For desktop - constrain max width */
+    @media (min-width: 768px) {
+      .image-container {
+        max-width: 1200px; /* Adjust as needed */
+        margin: 0 auto;
+        height: auto;
+        min-height: 100vh;
+      }
+      
+      .homepage-image {
+        object-fit: contain; /* Show full image on desktop */
+      }
+    }
+
+    #chat-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+    iframe {
+      position: fixed;
+      bottom: 70px;
+      right: 20px;
+      width: 350px;
+      height: 500px;
+      border: none;
+      display: none;
+      z-index: 1000;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body>
+  <div class="image-container">
+    <img src="/Users/abbadminhas/Developer/Code/premiere-suites-ai-platform/src/demo/premieresuites-website.png" alt="Premier Suites Homepage" class="homepage-image" />
+  </div>
+  
+  <!-- Include the chat widget -->
+  <script src="/Users/abbadminhas/Developer/Code/premiere-suites-ai-platform/src/demo/chat-widget.js" defer></script>
+</body>
+</html>
