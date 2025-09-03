@@ -1,0 +1,54 @@
+# fly.toml app configuration file generated for n8n-premiere-suites on 2025-09-03T06:32:28+01:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'n8n-premiere-suites'
+primary_region = 'lhr'
+
+[build]
+  image = "n8nio/n8n:latest"
+
+[env]
+  N8N_PORT = "5678"
+  N8N_PROTOCOL = "https"
+  N8N_HOST = "n8n-premiere-suites.fly.dev"
+  N8N_PUBLIC_URL = "https://n8n-premiere-suites.fly.dev"
+  N8N_DIAGNOSTICS_ENABLED = "false"
+  # Let the browser call n8n directly (optional if you’ll proxy via Vercel)
+  N8N_CORS_ALLOW_ORIGIN = "https://premiere-demo.safqore.com,https://premiere-demo.vercel.app"
+
+[[mounts]]
+  source = "n8n_data"
+  destination = "/home/node/.n8n"
+
+[[services]]
+  internal_port = 5678
+  protocol = "tcp"
+
+  [[services.ports]]
+    port = 80
+    handlers = ["http"]
+
+  [[services.ports]]
+    port = 443
+    handlers = ["tls", "http"]
+
+  [[services.tcp_checks]]
+    interval = "15s"
+    timeout = "2s"
+    grace_period = "20s"
+    restart_limit = 0
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = 'stop'
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
