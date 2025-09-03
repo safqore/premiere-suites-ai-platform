@@ -519,7 +519,7 @@
     const payload = [
       { sessionId, action: "sendMessage", chatInput: userMessage }
     ];
-    const url = 'http://localhost:5678/webhook-test/chat-interface';
+    const url = 'https://n8n-premiere-suites.fly.dev:5678/webhook/chat-interface';
 
     const res = await fetch(url, {
       method: 'POST',
