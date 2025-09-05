@@ -105,7 +105,7 @@
   /* Header with primary blue background */
   #safqore-chat-wrapper .chat-header {
     background: #ffc000;
-    color: #fff;
+    color: #333333;
     font-family: "Arial", sans-serif;
     font-size: 1.1rem;
     padding: 16px;
@@ -355,13 +355,13 @@
   }
 
   #safqore-chat-wrapper .powered-by a {
-    color: #4CAF50;
+    color: #000546;
     text-decoration: none;
   }
 
   #safqore-chat-wrapper .powered-by a:hover {
     text-decoration: underline;
-    color: #45a049;
+    color: #000546;
   }
   `;
   document.head.appendChild(style);
@@ -384,7 +384,7 @@
           <span>
             <b>Welcome to Premiere Suites</b><br><br>
             I can help you with booking inquiries, and general FAQs.<br><br>
-            Try asking something like "Why should I choose premiere suites?" or "What is included in a furnished apartment?" to get started.
+            You can ask me things like ‘What’s included in a furnished apartment?’ or, if you’re ready, just share your booking details and I’ll get started.
           </span>
         </div>
       </div>
