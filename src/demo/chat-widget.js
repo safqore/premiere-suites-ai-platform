@@ -45,7 +45,7 @@
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background: #ffc000;
+    background: #ffc416;
     color: white;
     border: none;
     padding: 12px 20px;
@@ -104,7 +104,7 @@
 
   /* Header with primary blue background */
   #safqore-chat-wrapper .chat-header {
-    background: #ffc000;
+    background: #ffc416;
     color: #333333;
     font-family: "Arial", sans-serif;
     font-size: 1.1rem;
@@ -162,7 +162,7 @@
 
   #safqore-chat-wrapper .chat-message.user span {
     display: inline-block;
-    background: #ffc000;
+    background: #ffc416;
     color: #333;
     padding: 10px 15px;
     border-radius: 12px 12px 0 12px;
@@ -264,7 +264,7 @@
 
   /* Send button - using orange from CTA */
   #safqore-chat-wrapper .send-btn {
-    background: #ffc000;
+    background: #ffc416;
     border: none;
     cursor: pointer;
     color: white;
