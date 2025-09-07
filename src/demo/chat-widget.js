@@ -370,7 +370,7 @@
   wrapper.id = 'safqore-chat-wrapper';
   wrapper.innerHTML = `
     <div class="chat-bubble" id="chat-bubble">
-      <span class="icon">💬</span>Any Questions? Let's Chat!
+      <span class="icon">💬</span>Questions? Ask our AI Assistant
     </div>
     <div class="chat-window" id="chat-window">
       <div class="chat-header">
