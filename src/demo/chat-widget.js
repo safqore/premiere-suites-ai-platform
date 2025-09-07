@@ -46,7 +46,7 @@
     bottom: 20px;
     right: 20px;
     background: #ffc416;
-    color: white;
+    color: #000; /* changed from white */
     border: none;
     padding: 12px 20px;
     border-radius: 8px;
@@ -125,7 +125,7 @@
     right: 8px;
     background: transparent;
     border: none;
-    color: #fff;
+    color: #000; /* changed from #fff */
     font-size: 2.4rem;
     cursor: pointer;
     opacity: 0.8;
