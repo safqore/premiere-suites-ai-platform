@@ -9,38 +9,18 @@
       margin: 0;
       padding: 0;
       font-family: sans-serif;
-      height: 90%;
-    }
-    img {
-      width: 100%;
-      display: block;
     }
     .image-container {
-      position: relative;
       width: 100%;
-      height: 100vh; /* Full viewport height */
-      overflow: hidden; /* Prevent scrolling on the image */
+      /* Optional: constrain extreme wide monitors; remove if not desired */
+      max-width: 1920px;
+      margin: 0 auto;
     }
     .homepage-image {
       width: 100%;
-      height: 100%;
-      object-fit: cover; /* Maintain aspect ratio while covering container */
-      object-position: top center; /* Align to top */
+      height: auto;
+      display: block;
     }
-    /* For desktop - constrain max width */
-    @media (min-width: 768px) {
-      .image-container {
-        max-width: 1200px; /* Adjust as needed */
-        margin: 0 auto;
-        height: auto;
-        min-height: 100vh;
-      }
-      
-      .homepage-image {
-        object-fit: contain; /* Show full image on desktop */
-      }
-    }
-
     #chat-toggle {
       position: fixed;
       bottom: 20px;
@@ -69,9 +49,29 @@
 </head>
 <body>
   <div class="image-container">
-    <img src="premieresuites-website.png" alt="Premier Suites Homepage" class="homepage-image" />
+    <img
+      src="images/premieresuites-website-1920.jpg"
+      srcset="
+        images/premieresuites-website-640.jpg 640w,
+        images/premieresuites-website-720.jpg 720w,
+        images/premieresuites-website-960.jpg 960w,
+        images/premieresuites-website-1280.jpg 1280w,
+        images/premieresuites-website-1440.jpg 1440w,
+        images/premieresuites-website-1600.jpg 1600w,
+        images/premieresuites-website-1920.jpg 1920w,
+        images/premieresuites-website-2560.jpg 2560w,
+        images/premieresuites-website-2880.jpg 2880w,
+        images/premieresuites-website-3200.jpg 3200w
+      "
+      sizes="100vw"
+      alt="Premier Suites Homepage demo"
+      class="homepage-image"
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+    />
   </div>
-  
+
   <!-- Include the chat widget -->
   <script src="chat-widget.js" defer></script>
 </body>
