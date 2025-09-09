@@ -33,7 +33,7 @@ jobs:
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
       VERCEL_PROJECT_NAME: ${{ secrets.VERCEL_PROJECT_NAME }}
       # Pin the Vercel CLI version instead of using 'latest'. Update intentionally as needed.
-      VERCEL_CLI_VERSION: 35.2.3
+      VERCEL_CLI_VERSION: 47.0.5
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
