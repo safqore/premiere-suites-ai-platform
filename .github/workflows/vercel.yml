@@ -77,8 +77,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
-          cache-dependency-path: ${{ env.DEPLOY_PATH }}/package-lock.json
+          # No caching configured because the deploy path currently has no package.json/package-lock.json.
+          # Add caching fields back if you introduce a build step with dependencies.
 
       - name: Deploy to Vercel
         id: deploy
