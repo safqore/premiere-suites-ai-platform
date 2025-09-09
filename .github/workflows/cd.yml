@@ -1,0 +1,59 @@
+name: Deploy N8N and Frontend to Render
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+concurrency:
+  group: cd-n8n-frontend-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  sanity:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Print environment
+        run: |
+          echo "✅ GitHub Actions is working."
+          echo "Repo: $GITHUB_REPOSITORY"
+          echo "Commit: $GITHUB_SHA"
+
+  preflight:
+    runs-on: ubuntu-latest
+    needs: sanity
+    steps:
+      - name: Validate required secrets
+        run: |
+          missing=0
+          for var in RENDER_API_KEY RENDER_N8N_SERVICE_ID RENDER_FRONTEND_SERVICE_ID; do
+            if [ -z "${!var}" ]; then
+              echo "❌ Missing secret: $var"
+              missing=1
+            else
+              echo "✅ $var present"
+            fi
+          done
+          if [ "$missing" -eq 1 ]; then
+            echo "One or more required secrets are missing. Configure them in the repository settings."
+            exit 1
+          fi
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+          RENDER_N8N_SERVICE_ID: ${{ secrets.RENDER_N8N_SERVICE_ID }}
+          RENDER_FRONTEND_SERVICE_ID: ${{ secrets.RENDER_FRONTEND_SERVICE_ID }}
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: preflight
+    if: ${{ github.event_name == 'push' }}
+    steps:
+      - name: Placeholder
+        run: |
+          echo "Next step: Implement Render deploy via API (curl) for N8N & frontend."
+          echo "Will use RENDER_API_KEY + service IDs."
