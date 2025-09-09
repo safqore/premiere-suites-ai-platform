@@ -1,0 +1,18 @@
+name: Check Actions Runs
+
+on:
+  workflow_dispatch:    # Allows manual run from Actions tab
+  push:
+    branches: [ main ]  # Runs on push to main (adjust if needed)
+
+jobs:
+  sanity:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Print environment
+        run: |
+          echo "✅ GitHub Actions is working."
+          echo "Repo: $GITHUB_REPOSITORY"
+          echo "Commit: $GITHUB_SHA"
