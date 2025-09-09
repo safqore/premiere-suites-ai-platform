@@ -1,0 +1,115 @@
+name: Deploy N8N to Render
+
+on:
+	# Manual trigger for now; can add push/tags later.
+	workflow_dispatch:
+		inputs:
+			environment:
+				description: "Target environment (production | staging | preview)"
+				required: false
+				default: production
+				type: choice
+				options:
+					- production
+					- staging
+					- preview
+			dry_run:
+				description: "If 'true', only simulate deployment"
+				required: false
+				default: 'true'
+				type: choice
+				options: ['true','false']
+
+concurrency:
+	group: render-deploy-${{ github.ref }}
+	cancel-in-progress: true
+
+permissions:
+	contents: read
+
+jobs:
+	deploy:
+		name: Simulate Render Deployment
+		runs-on: ubuntu-latest
+		# Placeholder outputs; will populate when real deployment call added.
+		outputs:
+			deployment_url: ${{ steps.simulate.outputs.deployment_url }}
+		env:
+			# Expected secrets (add them in repo/org settings when ready)
+			RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+			RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
+		steps:
+			- name: Checkout repository
+				uses: actions/checkout@v4
+
+			- name: Preflight & Inputs
+				id: preflight
+				shell: bash
+				run: |
+					set -euo pipefail
+					REQ_ENV="${{ github.event.inputs.environment || 'production' }}"
+					DRY_RUN_FLAG="${{ github.event.inputs.dry_run || 'true' }}"
+					case "$REQ_ENV" in
+						production|staging|preview) ;;
+						*) echo "Invalid environment: $REQ_ENV" >&2; exit 1;;
+					esac
+					echo "ENVIRONMENT=$REQ_ENV" >> "$GITHUB_ENV"
+					echo "DRY_RUN_FLAG=$DRY_RUN_FLAG" >> "$GITHUB_ENV"
+					echo "environment=$REQ_ENV" >> "$GITHUB_OUTPUT"
+					echo "dry_run=$DRY_RUN_FLAG" >> "$GITHUB_OUTPUT"
+					echo "✅ Preflight complete (environment=$REQ_ENV dry_run=$DRY_RUN_FLAG)"
+
+			- name: Show (masked) secret presence
+				shell: bash
+				run: |
+					# We intentionally do NOT fail if secrets are missing yet; this is an initial scaffold.
+						if [ -n "${RENDER_API_KEY:-}" ]; then echo "RENDER_API_KEY: present"; else echo "RENDER_API_KEY: (not set)"; fi
+						if [ -n "${RENDER_SERVICE_ID:-}" ]; then echo "RENDER_SERVICE_ID: present"; else echo "RENDER_SERVICE_ID: (not set)"; fi
+					echo "(Values remain masked by GitHub)"
+
+			- name: Simulate deployment
+				id: simulate
+				shell: bash
+				run: |
+					set -euo pipefail
+					echo "--- Simulation Step ---"
+					echo "Would invoke Render API to deploy/update N8N service." \
+							 "(service_id=${RENDER_SERVICE_ID:-<unset>} env=$ENVIRONMENT dry_run=$DRY_RUN_FLAG)"
+					# Placeholder: fabricate a URL for now when service id exists.
+					if [ -n "${RENDER_SERVICE_ID:-}" ]; then
+						FAKE_URL="https://$RENDER_SERVICE_ID.onrender.com"
+					else
+						FAKE_URL="https://example-n8n-placeholder.onrender.com"
+					fi
+					echo "deployment_url=$FAKE_URL" >> "$GITHUB_OUTPUT"
+					echo "DEPLOYMENT_URL=$FAKE_URL" >> "$GITHUB_ENV"
+					echo "✅ Simulation complete. (url=$FAKE_URL)"
+
+			- name: Summary
+				if: always()
+				shell: bash
+				run: |
+					{
+						echo "### Render Deployment (Simulated)"
+						echo "- Environment: $ENVIRONMENT"
+						echo "- Dry Run: $DRY_RUN_FLAG"
+						echo "- Service ID (present?): $([ -n "${RENDER_SERVICE_ID:-}" ] && echo yes || echo no)"
+						echo "- Deployment URL (simulated): ${DEPLOYMENT_URL:-n/a}" \
+						;
+						echo "\n> This workflow currently only simulates deployment. Replace the 'Simulate deployment' step with real API calls (curl) or use a Render CLI wrapper when ready."
+					} >> "$GITHUB_STEP_SUMMARY"
+
+			- name: Next Steps (log only)
+				shell: bash
+				run: |
+					cat <<'EOS'
+					Roadmap to real Render deployment:
+					1. Add required secrets: RENDER_API_KEY, RENDER_SERVICE_ID.
+					2. Replace simulation step with:
+						 - curl POST to trigger deploy (Render Deploy Hook) OR
+						 - Poll service status until live.
+					3. Capture real URL from Render response.
+					4. Add optional diff/changeset context to summary.
+					5. (Later) Add automatic triggers on changes to n8n workflows folder.
+					EOS
+
