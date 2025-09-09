@@ -1,0 +1,71 @@
+name: Deploy Vercel
+
+on:
+  workflow_dispatch:
+    inputs:
+      deploy_path:
+        description: 'Relative path to the application root to deploy'
+        required: false
+        default: 'src/demo'
+
+concurrency:
+  group: vercel-deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      # Required secrets (validated explicitly below)
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_PROJECT_NAME: ${{ secrets.VERCEL_PROJECT_NAME }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate required secrets & deployment path
+        id: preflight
+        run: |
+          missing=0
+          for var in VERCEL_TOKEN VERCEL_PROJECT_NAME; do
+            if [ -z "${!var}" ]; then
+              echo "❌ Missing secret: $var" >&2
+              missing=1
+            else
+              echo "✅ $var present"
+            fi
+          done
+          DEPLOY_PATH="${{ github.event.inputs.deploy_path || 'src/demo' }}"
+          echo "Chosen deploy path: $DEPLOY_PATH"
+          if [ ! -d "$DEPLOY_PATH" ]; then
+            echo "❌ Deploy path does not exist: $DEPLOY_PATH" >&2
+            exit 1
+          fi
+          # Export for later steps
+          echo "DEPLOY_PATH=$DEPLOY_PATH" >> $GITHUB_ENV
+
+          if [ "$missing" -eq 1 ]; then
+            echo "One or more required secrets are missing. Configure them in the repository settings." >&2
+            exit 1
+          fi
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Deploy to Vercel (production)
+        run: |
+          cd "$DEPLOY_PATH"
+          echo "Installing Vercel CLI..."
+          npm install -g vercel@latest
+          echo "Deploying project '$VERCEL_PROJECT_NAME' from $DEPLOY_PATH ..."
+          vercel --token "$VERCEL_TOKEN" --prod --yes --name "$VERCEL_PROJECT_NAME"
+          # Ensure repository is not polluted by local link folder
+          rm -rf .vercel || true
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_PROJECT_NAME: ${{ secrets.VERCEL_PROJECT_NAME }}
