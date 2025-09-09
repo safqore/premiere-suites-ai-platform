@@ -31,7 +31,7 @@ jobs:
       - name: Validate required secrets
         run: |
           missing=0
-          for var in RENDER_API_KEY RENDER_N8N_SERVICE_ID VERCEL_TOKEN VERCEL_PROJECT_ID; do
+          for var in RENDER_API_KEY RENDER_N8N_SERVICE_ID VERCEL_TOKEN VERCEL_PROJECT_NAME; do
             if [ -z "${!var}" ]; then
               echo "❌ Missing secret: $var"
               missing=1
@@ -48,6 +48,7 @@ jobs:
           RENDER_N8N_SERVICE_ID: ${{ secrets.RENDER_N8N_SERVICE_ID }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_PROJECT_NAME: ${{ secrets.VERCEL_PROJECT_NAME }}
 
   deploy:
     runs-on: ubuntu-latest
@@ -64,12 +65,17 @@ jobs:
 
       - name: Deploy demo frontend to Vercel
         run: |
-          # Install vercel CLI and deploy from the demo folder. The demo contains a .vercel/project.json
-          npm install -g vercel
-          vercel --token "$VERCEL_TOKEN" --prod --confirm
+          # Install Vercel CLI, deploy from the demo folder and remove any ephemeral .vercel link created by the CLI.
+          # Use the provided project name so we don't rely on a committed .vercel folder.
+          npm install -g vercel@latest
+          # Deploy non-interactively to the named project. --yes replaces deprecated --confirm.
+          vercel --token "$VERCEL_TOKEN" --prod --yes --name "$VERCEL_PROJECT_NAME"
+          # The CLI may create a local .vercel link during the run; remove it so the repo never relies on it.
+          rm -rf .vercel || true
         working-directory: src/demo
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_PROJECT_NAME: ${{ secrets.VERCEL_PROJECT_NAME }}
 
       - name: Deploy N8N to Render (placeholder)
         run: |
