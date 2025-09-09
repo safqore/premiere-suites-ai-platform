@@ -92,34 +92,41 @@ jobs:
         run: |
           set -euo pipefail
           echo "Deploying project '$VERCEL_PROJECT_NAME' (env=$ENVIRONMENT) from $PWD using vercel@$VERCEL_CLI_VERSION ..."
-          # Single invocation (modern CLI uses --json). Capture stderr for diagnostics.
-          DEPLOY_JSON=$(npx --yes vercel@"$VERCEL_CLI_VERSION" \
+          # Older pinned CLI (35.x) does not support --output/--json; fall back to plain text parsing.
+          # Strategy:
+          #  1. Try 'vercel deploy' (newer syntax) capturing output.
+          #  2. If non‑zero exit or no URL, retry without 'deploy'.
+          #  3. Parse the last vercel.app URL from combined output.
+          set +e
+          RAW_OUTPUT=$(npx --yes vercel@"$VERCEL_CLI_VERSION" deploy \
             --token "$VERCEL_TOKEN" \
             ${PROD_FLAG:-} \
             --yes \
-            --name "$VERCEL_PROJECT_NAME" \
-            --json 2>vercel_stderr.log || true)
+            --name "$VERCEL_PROJECT_NAME" 2>&1)
+          STATUS=$?
+          if [ $STATUS -ne 0 ] || ! echo "$RAW_OUTPUT" | grep -Eo 'https://[^ ]+vercel\.app' >/dev/null 2>&1; then
+            echo "First attempt (with 'deploy' subcommand) did not yield a URL, retrying without subcommand..." >&2
+            RAW_OUTPUT=$(npx --yes vercel@"$VERCEL_CLI_VERSION" \
+              --token "$VERCEL_TOKEN" \
+              ${PROD_FLAG:-} \
+              --yes \
+              --name "$VERCEL_PROJECT_NAME" 2>&1)
+            STATUS=$?
+          fi
+          set -e
+          echo "$RAW_OUTPUT" | sed -e 's/^/[vercel] /'
 
-          if [ -z "$DEPLOY_JSON" ] || echo "$DEPLOY_JSON" | jq -e '.error' >/dev/null 2>&1; then
-            echo "❌ Deployment failed" >&2
-            sed 's/^/  /' vercel_stderr.log >&2 || true
-            # Show parsed error if present
-            if echo "$DEPLOY_JSON" | jq -e '.error' >/dev/null 2>&1; then
-              echo "$DEPLOY_JSON" | jq '.error' >&2 || true
-            else
-              echo "$DEPLOY_JSON" >&2 || true
-            fi
+          if [ $STATUS -ne 0 ]; then
+            echo "❌ Deployment command failed (exit $STATUS)" >&2
+            exit $STATUS
+          fi
+
+            URL=$(echo "$RAW_OUTPUT" | grep -Eo 'https://[^ ]+vercel\.app' | tail -n1)
+          if [ -z "$URL" ]; then
+            echo "❌ Could not find deployment URL in Vercel output" >&2
             exit 1
           fi
-          rm -f vercel_stderr.log || true
-
-          # Extract URL (jq is available on ubuntu-latest)
-          URL=$(echo "$DEPLOY_JSON" | jq -r '.url // .deployment.url // empty')
-          if [[ -z "$URL" || "$URL" == "null" ]]; then
-            echo "❌ Could not parse deployment URL" >&2
-            echo "$DEPLOY_JSON" >&2
-            exit 1
-          fi
+          FULL_URL="$URL"
           FULL_URL="https://$URL"
           echo "deployment_url=$FULL_URL" >> "$GITHUB_OUTPUT"
           echo "DEPLOYMENT_URL=$FULL_URL" >> "$GITHUB_ENV"
