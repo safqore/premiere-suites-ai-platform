@@ -92,13 +92,26 @@ jobs:
         run: |
           set -euo pipefail
           echo "Deploying project '$VERCEL_PROJECT_NAME' (env=$ENVIRONMENT) from $PWD using vercel@$VERCEL_CLI_VERSION ..."
-          # Use npx with a pinned version to avoid global install pollution.
+          # Single invocation (modern CLI uses --json). Capture stderr for diagnostics.
           DEPLOY_JSON=$(npx --yes vercel@"$VERCEL_CLI_VERSION" \
             --token "$VERCEL_TOKEN" \
             ${PROD_FLAG:-} \
             --yes \
             --name "$VERCEL_PROJECT_NAME" \
-            --output json)
+            --json 2>vercel_stderr.log || true)
+
+          if [ -z "$DEPLOY_JSON" ] || echo "$DEPLOY_JSON" | jq -e '.error' >/dev/null 2>&1; then
+            echo "❌ Deployment failed" >&2
+            sed 's/^/  /' vercel_stderr.log >&2 || true
+            # Show parsed error if present
+            if echo "$DEPLOY_JSON" | jq -e '.error' >/dev/null 2>&1; then
+              echo "$DEPLOY_JSON" | jq '.error' >&2 || true
+            else
+              echo "$DEPLOY_JSON" >&2 || true
+            fi
+            exit 1
+          fi
+          rm -f vercel_stderr.log || true
 
           # Extract URL (jq is available on ubuntu-latest)
           URL=$(echo "$DEPLOY_JSON" | jq -r '.url // .deployment.url // empty')
