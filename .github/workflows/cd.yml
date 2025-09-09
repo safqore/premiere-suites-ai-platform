@@ -1,4 +1,4 @@
-name: Deploy N8N and Frontend to Render
+name: Deploy N8N (Render) and Frontend (Vercel)
 
 on:
   push:
