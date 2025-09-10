@@ -31,7 +31,7 @@ jobs:
     env:
       # Required secrets (validated below)
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-      VERCEL_PROJECT_NAME: ${{ secrets.VERCEL_PROJECT_NAME }}
+      VERCEL_PROJECT_NAME: ${{ vars.VERCEL_PROJECT_NAME }} # repository variable
       # Pin the Vercel CLI version instead of using 'latest'. Update intentionally as needed.
       VERCEL_CLI_VERSION: 47.0.5
     steps:
@@ -86,7 +86,7 @@ jobs:
         working-directory: ${{ env.DEPLOY_PATH }}
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          VERCEL_PROJECT_NAME: ${{ secrets.VERCEL_PROJECT_NAME }}
+          VERCEL_PROJECT_NAME: ${{ vars.VERCEL_PROJECT_NAME }}
           VERCEL_CLI_VERSION: ${{ env.VERCEL_CLI_VERSION }}
           PROD_FLAG: ${{ env.PROD_FLAG }}
         run: |
