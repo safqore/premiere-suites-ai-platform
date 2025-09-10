@@ -92,11 +92,7 @@ jobs:
         run: |
           set -euo pipefail
           echo "Deploying project '$VERCEL_PROJECT_NAME' (env=$ENVIRONMENT) from $PWD using vercel@$VERCEL_CLI_VERSION ..."
-          # Older pinned CLI (35.x) does not support --output/--json; fall back to plain text parsing.
-          # Strategy:
-          #  1. Try 'vercel deploy' (newer syntax) capturing output.
-          #  2. If non‑zero exit or no URL, retry without 'deploy'.
-          #  3. Parse the last vercel.app URL from combined output.
+          # Attempt with explicit 'deploy' subcommand (modern CLI). Fallback to legacy invocation if needed.
           set +e
           RAW_OUTPUT=$(npx --yes vercel@"$VERCEL_CLI_VERSION" deploy \
             --token "$VERCEL_TOKEN" \
@@ -114,6 +110,7 @@ jobs:
             STATUS=$?
           fi
           set -e
+
           echo "$RAW_OUTPUT" | sed -e 's/^/[vercel] /'
 
           if [ $STATUS -ne 0 ]; then
@@ -121,15 +118,20 @@ jobs:
             exit $STATUS
           fi
 
-            URL=$(echo "$RAW_OUTPUT" | grep -Eo 'https://[^ ]+vercel\.app' | tail -n1)
+          URL=$(echo "$RAW_OUTPUT" | grep -Eo 'https://[^ ]+vercel\.app' | tail -n1)
           if [ -z "$URL" ]; then
             echo "❌ Could not find deployment URL in Vercel output" >&2
             exit 1
           fi
-          FULL_URL="$URL"
-          FULL_URL="https://$URL"
+
+          # Ensure protocol only once (fixes previous double https:// bug)
+          case "$URL" in
+            https://*) FULL_URL="$URL" ;;
+            *) FULL_URL="https://$URL" ;;
+          esac
+
           echo "deployment_url=$FULL_URL" >> "$GITHUB_OUTPUT"
-          echo "DEPLOYMENT_URL=$FULL_URL" >> "$GITHUB_ENV"
+            echo "DEPLOYMENT_URL=$FULL_URL" >> "$GITHUB_ENV"
           echo "✅ Deployed: $FULL_URL"
 
           # Clean any local .vercel metadata to avoid polluting repo (defensive)
