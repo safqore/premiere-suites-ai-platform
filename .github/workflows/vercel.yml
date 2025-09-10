@@ -1,4 +1,4 @@
-name: Deploy Vercel Frontend
+name: Deploy Web Frontend to Vercel
 
 on:
   workflow_dispatch:
