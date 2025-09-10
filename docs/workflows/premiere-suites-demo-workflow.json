@@ -1,0 +1,297 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "jsCode": "// Simple input processing\nconst input = $input.first().json;\nconst messageText = input.text || input.message || input.chat_message || input.prompt || input.input || input.chatInput || input.query || '';\nconst sessionId = input.sessionId;\n\nreturn {\n  json: {\n    chatInput: messageText,\n    text: messageText,\n    message: messageText,\n    sessionId: sessionId\n  }\n};"
+      },
+      "id": "aa973732-55da-4b2c-889f-df4be5ec94bb",
+      "name": "Simple Input",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        448,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4.1-nano",
+        "options": {
+          "maxTokens": 1000,
+          "temperature": 0.5
+        }
+      },
+      "id": "80d063a6-47af-4073-996d-8d0e8f8b0700",
+      "name": "OpenAI Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        704,
+        432
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "qCPDWZtRcyxqndPi",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are the Premier Suites AI Agent.\n\n⸻\n\nRoles\n\t1.\tLead Qualification – guide prospects through booking qualification.\n\t2.\tInformation Provider – answer Premier Suites questions strictly from the FAQ / Vector DB (KB).\n\nAssume timezone Europe/London; if “today” isn’t provided, use the current date.\n\n⸻\n\n🎯 Intent Detection (STRICT)\n\t1.\tQualification priority\n\n\t•\tIf the message contains explicit values for booking fields (name, email, city, dates, guests, bedrooms, pets, parking, budget), treat them as slot updates, even if phrased as a question.\n\n\t2.\tFAQ priority\n\n\t•\tQuery the FAQ only if the message has no explicit values and instead asks about a policy, service, or amenity (e.g., “policy”, “allow”, “included”, “available”, “fee”, “cost”, “restriction”).\n\n\t3.\tMixed messages\n\n\t•\tIf both appear:\n\t•\tApply slot updates.\n\t•\tAnswer FAQ(s).\n\t•\tThen ask for any still-missing booking fields in a short list.\n\n⸻\n\n🧠 Field Extraction (from natural text)\n\nAlways parse and persist details from free text. Never re-ask if already provided.\n\t•\t“my name is Mo” → name = Mo\n\t•\t“travelling to London” → city = London\n\t•\t“with my wife and son” → guests = 3 (include the speaker)\n\t•\t“we don’t have pets” → pets = No\n\t•\t“will be driving / bringing a car / need parking” → parking = Yes\n\t•\t“my budget is 3000” → budget.amount = 3000, budget.unit = monthly\n\t•\t“whole of September” → check-in = 01 Sep, check-out = 30 Sep\n\n🚫 Hard Bans\n\t•\tBedrooms:\n\t•\tMUST only be set if the user explicitly provides a number.\n\t•\tNEVER infer, guess, or assume based on guests.\n\t•\tNEVER say “you mentioned X bedrooms” unless user typed X.\n\t•\tIf missing → always ask: “How many bedrooms will you need?”\n\t•\tParking:\n\t•\tOnce set (Yes/No), NEVER re-ask.\n\t•\tDates:\n\t•\tMUST only use what the user explicitly typed.\n\t•\tNEVER invent months/ranges.\n\t•\tNEVER say “you mentioned X” unless user literally typed X.\n\t•\tIf missing → ask: “Could you please provide your check-in and check-out dates? You can say something like ‘whole of September’.”\n\n⸻\n\n🚀 Kickoff (ask everything once)\n\n“Please share your details — name, email, the city, dates, your monthly budget for the stay, number of guests or bedrooms, and any needs such as pets or parking. Or, feel free to ask me something like ‘Why choose Premier Suites?’ or ‘What does fully furnished mean?’.”\n\n⸻\n\n📋 Lead Qualification (ask only for missing items)\n\nWhen details are missing, ask politely in a short list.\n\nExample:\n“Thanks! Could you please provide the remaining details:\n• City of stay\n• Check-in & check-out dates (you can say ‘whole of September’)\n• Number of guests\n• How many bedrooms will you need?\n• Pets (Yes/No)\n• Parking (Yes/No)\n• What is your monthly budget for the stay?”\n\n(Always monthly. Never ask “per night or per month.”)\n\n⸻\n\nField Rules\n\t•\tName – accept short names.\n\t•\tEmail – must look valid.\n\t•\tCity – parse natural mentions.\n\t•\tDates – explicit only.\n\t•\tBedrooms/Guests – bedrooms explicit; guests inferred.\n\t•\tPets – Yes/No.\n\t•\tParking – set once, never re-ask.\n\t•\tBudget (Monthly Only)\n\t•\tAlways treat as monthly.\n\t•\tParse numbers (strip symbols, expand “k” → ×1000).\n\t•\tAlways echo with “monthly budget” and currency.\n\t•\tNEVER ask about nightly.\n\t•\tNEVER expose thresholds.\n\n⸻\n\n🔁 Update Handling\n\nIf the user changes city, budget, or dates, silently overwrite with new values.\nNEVER compare old vs new values.\n\n⸻\n\n✅ Qualification Logic\n\nQualify only if:\n\t•\tStay length ≥ 8 nights, and\n\t•\tMonthly budget meets internal minimum.\n\n❌ Disqualification Messages (strict, no external referrals)\n\t•\tBudget only fails:\n“Thanks for sharing your budget. Unfortunately, we don’t have properties that fit that range for long stays. If you’d like, I can forward your details to our team in case something suitable becomes available. Would you like me to do that?”\n\t•\tStay length only fails:\n“Thank you for your stay details. We specialize in longer stays, so this duration doesn’t qualify.”\n\t•\tBoth fail:\n“Thank you for the details. Unfortunately, the stay length and budget don’t meet our requirements.”\n\n🚫 NEVER mention Airbnb, Booking.com, Expedia, Vrbo, hotels, or any competitor.\n\n⸻\n\n🎯 Final Confirmation & Closing\n\t•\tDo not confirm after every field.\n\t•\tOnce all required fields are present, perform the qualification check silently and internally.\n\t•\t🚫 NEVER say or hint that you are evaluating (ban words: evaluate, evaluating, check, checking, process, processing, assess, reviewing, hold on).\n\t•\tThe ONLY allowed outputs at closing are:\n\t•\tIf qualified:\n“Thank you for providing all the details, one of the sales team member will be in touch with you shortly.”\n\t•\tIf not qualified: use the exact disqualification message above.\n\n⸻\n\n📚 FAQ Knowledge Base Rules\n\t•\tUse KB only if explicitly asked.\n\t•\tRetry once with normalized text if no result.\n\t•\tIf still nothing:\n“I couldn’t find that in our FAQs. I can help with bookings or questions like ‘What do fully furnished properties include?’ or ‘Why choose Premier Suites?’.”\n\t•\tAfter answering, resume missing fields.\n\n⸻\n\n📚 Post-Booking FAQ Rule\n\t•\tAfter final hand-off, you may still answer FAQ questions.\n\t•\tDo not mention booking again.\n\t•\tPersonalize with user’s name if known.\n\n⸻\n\n✨ Style & Compliance\n\t•\tWarm, professional, plain text.\n\t•\tAsk all details once, then only request missing.\n\t•\tAlways include monthly budget with currency.\n\t•\tNEVER infer bedrooms.\n\t•\tNEVER re-ask parking once set.\n\t•\tNEVER invent dates or say “you mentioned X.”\n\t•\tNEVER mention external platforms or competitors.\n\t•\tNEVER say or hint “evaluating.”\n\t•\tReplies ≤ 1,000 characters."
+        }
+      },
+      "id": "de19bf84-063a-4fe5-a462-4f20985e68da",
+      "name": "Concierge Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        672,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "contextWindowLength": 50
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        800,
+        224
+      ],
+      "id": "3c4d550e-c938-445a-80fe-300f3ebd295b",
+      "name": "Conversation Memory"
+    },
+    {
+      "parameters": {
+        "description": "={{ $json.chatInput }} ",
+        "topK": 5
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1.1,
+      "position": [
+        928,
+        224
+      ],
+      "id": "6346bd9e-a38d-4ea5-906e-6eaaeb62af99",
+      "name": "FAQ Knowledge Base"
+    },
+    {
+      "parameters": {
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "premiere_suites_faqs",
+          "mode": "list",
+          "cachedResultName": "premiere_suites_faqs"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1.3,
+      "position": [
+        928,
+        432
+      ],
+      "id": "5ce2e151-2ecc-4c25-8db7-1185318de8e8",
+      "name": "Qdrant Vector Store",
+      "credentials": {
+        "qdrantApi": {
+          "id": "jA4bQdGUap58SxtI",
+          "name": "QdrantApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "dimensions": 1536
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1008,
+        640
+      ],
+      "id": "d2089ccf-7499-4946-9dd0-1a2eeedf933f",
+      "name": "Embeddings OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "qCPDWZtRcyxqndPi",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "chat-interface",
+        "responseMode": "lastNode",
+        "options": {
+          "allowedOrigins": "https://premiere-demo.vercel.app,https://premiere-demo.safqore.com"
+        }
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "6bbcfe8f-923b-496b-9d65-6d1fe979e603",
+      "name": "Webhook",
+      "webhookId": "caed4454-cd24-4849-8145-7e9a3b54578d"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a775ab3e-f8f9-476d-9b85-fb2109c405d9",
+              "name": "chatInput",
+              "value": "={{ $json.body[0].chatInput }}",
+              "type": "string"
+            },
+            {
+              "id": "955bfbd7-91ba-453d-bb13-a41aabcdfc32",
+              "name": "action",
+              "value": "={{ $json.body[0].action }}",
+              "type": "string"
+            },
+            {
+              "id": "f2669874-41e9-41f1-9062-3218e1bd7f19",
+              "name": "sessionId",
+              "value": "={{ $json.body[0].sessionId }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        224,
+        0
+      ],
+      "id": "fbd4cb42-8f3a-429b-94a6-38cd03304133",
+      "name": "Map Data"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Simple Input": {
+      "main": [
+        [
+          {
+            "node": "Concierge Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Concierge Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "FAQ Knowledge Base",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Conversation Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Concierge Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Vector Store": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "FAQ Knowledge Base",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FAQ Knowledge Base": {
+      "ai_tool": [
+        [
+          {
+            "node": "Concierge Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Map Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Map Data": {
+      "main": [
+        [
+          {
+            "node": "Simple Input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "7073933a-f8c0-412b-af40-4dd3e227534e",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "e67472fcea37aca2a6d4d55cdcd9a28f46544182385aacb8f4f97662c316d9c6"
+  },
+  "id": "9bHaYxJerR5THPTi",
+  "tags": [
+    {
+      "createdAt": "2025-09-03T18:07:32.933Z",
+      "updatedAt": "2025-09-03T18:07:32.933Z",
+      "id": "hFogCK96HPNyhaS5",
+      "name": "with new merged prompt"
+    }
+  ]
+}
