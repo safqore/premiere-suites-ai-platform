@@ -14,3 +14,11 @@ concurrency:
 
 permissions:
   contents: read
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print hello world
+        run: echo "hello world"
+
