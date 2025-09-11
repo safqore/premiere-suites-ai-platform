@@ -1,0 +1,16 @@
+name: Deploy N8N Backend via Render CLI
+
+on:
+  workflow_dispatch:
+    inputs:
+      workflow_n8n_path:
+        description: 'N8N workflow to deploy'
+        required: false
+        default: 'docs/workflows/premiere-suites-demo-workflow.json'
+
+concurrency:
+  group: render-deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
