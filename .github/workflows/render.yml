@@ -16,9 +16,21 @@ permissions:
   contents: read
 
 jobs:
-  hello:
+  deploy:
     runs-on: ubuntu-latest
+    env:
+      RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+      RENDER_SERVICE_ID: ${{ vars.RENDER_SERVICE_ID }}
     steps:
-      - name: Print hello world
-        run: echo "hello world"
-
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Preflight: verify Render API key and Service ID
+        run: |
+          if [ -z "${RENDER_API_KEY}" ]; then
+            echo "RENDER_API_KEY is not set. Failing."
+            exit 1
+          fi
+          if [ -z "${RENDER_SERVICE_ID}" ]; then
+            echo "RENDER_SERVICE_ID is not set. Failing."
+            exit 1
+          fi
