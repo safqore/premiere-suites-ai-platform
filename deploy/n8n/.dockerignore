@@ -1,0 +1,8 @@
+# Limit context to only what is required for n8n image
+# (Render build context will be deploy/n8n)
+*.md
+*.log
+.git
+.gitignore
+.vscode
+.env*

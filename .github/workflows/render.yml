@@ -49,3 +49,22 @@ jobs:
           echo "workflow_path=$WORKFLOW_PATH" >> "$GITHUB_OUTPUT"
 
           echo "✅ Preflight complete: workflow_path=$WORKFLOW_PATH"
+
+      - name: Install Render CLI
+        run: |
+          curl -fsSL https://render.com/static/render-cli/install.sh | bash
+          echo "$HOME/.render/bin" >> "$GITHUB_PATH"
+
+      - name: Show Render CLI version
+        run: render --version
+
+      - name: Render login
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+        run: render login --api-key "$RENDER_API_KEY"
+
+      - name: Trigger redeploy
+        run: |
+          echo "Redeploying service $RENDER_SERVICE_ID ..."
+          render services deploy "$RENDER_SERVICE_ID" --wait
+          echo "Redeploy complete."
