@@ -51,7 +51,7 @@ jobs:
           set -euo pipefail
           echo "Downloading Render CLI v${RENDER_CLI_VERSION}"
           curl -L "https://github.com/render-oss/cli/releases/download/v${RENDER_CLI_VERSION}/cli_${RENDER_CLI_VERSION}_linux_amd64.zip" -o render.zip
-          unzip -q render.zip
+          unzip -o -q render.zip
           chmod +x "cli_v${RENDER_CLI_VERSION}"
           sudo mv "cli_v${RENDER_CLI_VERSION}" /usr/local/bin/render
           render --version
