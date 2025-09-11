@@ -23,8 +23,9 @@ jobs:
       RENDER_SERVICE_ID: ${{ vars.RENDER_SERVICE_ID }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: Preflight: verify Render API key and Service ID
+        uses: actions/checkout@
+
+      - name: Preflight (secrets, variables)
         run: |
           if [ -z "${RENDER_API_KEY}" ]; then
             echo "RENDER_API_KEY is not set. Failing."
