@@ -25,13 +25,27 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Preflight (secrets, variables)
+      - name: Preflight (secrets, path)
+        id: preflight
+        shell: bash
         run: |
-          if [ -z "${RENDER_API_KEY}" ]; then
-            echo "RENDER_API_KEY is not set. Failing."
+          set -euo pipefail
+
+          # Fail fast if credentials/vars are missing
+          : "${RENDER_API_KEY:?Missing RENDER_API_KEY secret}"
+          : "${RENDER_SERVICE_ID:?Missing RENDER_SERVICE_ID variable}"
+
+          # Resolve workflow path input (fallback to existing default)
+          WORKFLOW_PATH="${{ github.event.inputs.workflow_n8n_path || 'docs/workflows/premiere-suites-demo-workflow.json' }}"
+          WORKFLOW_PATH="${WORKFLOW_PATH%/}" # strip trailing slash, if any
+
+          if [[ ! -f "$WORKFLOW_PATH" ]]; then
+            echo "❌ Workflow file does not exist: $WORKFLOW_PATH" >&2
             exit 1
           fi
-          if [ -z "${RENDER_SERVICE_ID}" ]; then
-            echo "RENDER_SERVICE_ID is not set. Failing."
-            exit 1
-          fi
+
+          # Export values for later steps
+          echo "WORKFLOW_PATH=$WORKFLOW_PATH" >> "$GITHUB_ENV"
+          echo "workflow_path=$WORKFLOW_PATH" >> "$GITHUB_OUTPUT"
+
+          echo "✅ Preflight complete: workflow_path=$WORKFLOW_PATH"
