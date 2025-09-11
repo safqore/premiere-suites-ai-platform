@@ -21,6 +21,7 @@ jobs:
     env:
       RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
       RENDER_SERVICE_ID: ${{ vars.RENDER_SERVICE_ID }}
+      RENDER_CLI_VERSION: 2.1.5
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -30,33 +31,30 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-
-          # Fail fast if credentials/vars are missing
           : "${RENDER_API_KEY:?Missing RENDER_API_KEY secret}"
           : "${RENDER_SERVICE_ID:?Missing RENDER_SERVICE_ID variable}"
 
-          # Resolve workflow path input (fallback to existing default)
           WORKFLOW_PATH="${{ github.event.inputs.workflow_n8n_path || 'docs/workflows/premiere-suites-demo-workflow.json' }}"
-          WORKFLOW_PATH="${WORKFLOW_PATH%/}" # strip trailing slash, if any
+          WORKFLOW_PATH="${WORKFLOW_PATH%/}"
 
           if [[ ! -f "$WORKFLOW_PATH" ]]; then
             echo "❌ Workflow file does not exist: $WORKFLOW_PATH" >&2
             exit 1
           fi
 
-          # Export values for later steps
           echo "WORKFLOW_PATH=$WORKFLOW_PATH" >> "$GITHUB_ENV"
           echo "workflow_path=$WORKFLOW_PATH" >> "$GITHUB_OUTPUT"
-
           echo "✅ Preflight complete: workflow_path=$WORKFLOW_PATH"
 
-      - name: Install Render CLI
+      - name: Install Render CLI (pinned)
         run: |
-          curl -fsSL https://render.com/static/render-cli/install.sh | bash
-          echo "$HOME/.render/bin" >> "$GITHUB_PATH"
-
-      - name: Show Render CLI version
-        run: render --version
+          set -euo pipefail
+          echo "Downloading Render CLI v${RENDER_CLI_VERSION}"
+          curl -L "https://github.com/render-oss/cli/releases/download/v${RENDER_CLI_VERSION}/cli_${RENDER_CLI_VERSION}_linux_amd64.zip" -o render.zip
+          unzip -q render.zip
+          chmod +x "cli_v${RENDER_CLI_VERSION}"
+          sudo mv "cli_v${RENDER_CLI_VERSION}" /usr/local/bin/render
+          render --version
 
       - name: Render login
         env:
@@ -65,6 +63,4 @@ jobs:
 
       - name: Trigger redeploy
         run: |
-          echo "Redeploying service $RENDER_SERVICE_ID ..."
-          render services deploy "$RENDER_SERVICE_ID" --wait
-          echo "Redeploy complete."
+          echo "Deploying service $RENDER_SERVICE_ID ..."
