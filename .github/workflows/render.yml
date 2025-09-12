@@ -56,10 +56,10 @@ jobs:
           sudo mv "cli_v${RENDER_CLI_VERSION}" /usr/local/bin/render
           render --version
 
-      - name: Render login
+      - name: Render login (non-interactive)
         env:
           RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
-        run: render login --api-key "$RENDER_API_KEY"
+        run: render login --confirm
 
       - name: Trigger redeploy
         run: |
