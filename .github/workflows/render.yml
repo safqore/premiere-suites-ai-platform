@@ -59,7 +59,7 @@ jobs:
       - name: Render login (non-interactive)
         env:
           RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
-        run: render login --confirm
+        run: render login --confirm -o json
 
       - name: Trigger redeploy
         run: |
