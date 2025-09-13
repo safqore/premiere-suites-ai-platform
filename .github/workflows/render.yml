@@ -120,9 +120,9 @@ jobs:
 
           if [[ -z "${DEPLOY_ID:-}" || "$DEPLOY_ID" == "null" ]]; then
             echo "Deploy ID not found in response; listing latest deploys for service..."
-            LAST_DEPLOY_LIST=$(render deploys list --service "$RENDER_SERVICE_ID" --limit 1 -o json || true)
-            echo "$LAST_DEPLOY_LIST" | jq . || echo "$LAST_DEPLOY_LIST"
-            FALLBACK_ID=$(echo "$LAST_DEPLOY_LIST" | jq -r '.[0].id // empty')
+            LAST_DEPLOY_LIST=$(run_list_json "${LIST_CMD_SINGLE[@]}")
+             echo "$LAST_DEPLOY_LIST" | jq . || echo "$LAST_DEPLOY_LIST"
+             FALLBACK_ID=$(echo "$LAST_DEPLOY_LIST" | jq -r '.[0].id // empty')
             if [[ -n "${FALLBACK_ID:-}" ]]; then
               DEPLOY_ID="$FALLBACK_ID"
               echo "Using fallback deploy id: $DEPLOY_ID"
@@ -136,6 +136,24 @@ jobs:
 
           echo "Deploy ID: $DEPLOY_ID"
           echo "Polling deploy status..."
+
+          # Determine list command syntax compatibility (old vs new CLI)
+          if render deploys list --help 2>&1 | grep -q -- '--service'; then
+            echo "Detected new deploys list syntax (supports --service / --limit)."
+            LIST_CMD_BASE=(render deploys list --service "$RENDER_SERVICE_ID")
+            LIST_CMD_SINGLE=(render deploys list --service "$RENDER_SERVICE_ID" --limit 1)
+            LIST_CMD_POLL=(render deploys list --service "$RENDER_SERVICE_ID" --limit 50)
+          else
+            echo "Detected legacy deploys list syntax (positional serviceID, no --limit)."
+            LIST_CMD_BASE=(render deploys list "$RENDER_SERVICE_ID")
+            LIST_CMD_SINGLE=(render deploys list "$RENDER_SERVICE_ID")
+            LIST_CMD_POLL=(render deploys list "$RENDER_SERVICE_ID")
+          fi
+
+          # Helper to run list command with JSON output
+          run_list_json () {
+            "${@}" -o json 2>&1 || true
+          }
 
           : "${RENDER_POLL_MAX_ATTEMPTS:=180}"
           : "${RENDER_POLL_INTERVAL_SECONDS:=5}"
@@ -160,7 +178,7 @@ jobs:
             if [[ "$USE_GET" -eq 1 ]]; then
               RAW_OUTPUT=$(render deploys get "$DEPLOY_ID" --confirm -o json 2>&1 || true)
             else
-              RAW_OUTPUT=$(render deploys list --service "$RENDER_SERVICE_ID" --limit 20 -o json 2>&1 || true)
+              RAW_OUTPUT=$(run_list_json "${LIST_CMD_POLL[@]}")
             fi
 
             # Validate JSON
