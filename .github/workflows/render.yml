@@ -23,7 +23,7 @@ jobs:
       RENDER_SERVICE_ID: ${{ vars.RENDER_SERVICE_ID }}
       RENDER_CLI_VERSION: 2.1.5
       DOCKERFILE_PATH: deploy/n8n/Dockerfile
-      DOCKER_CONTEXT: .
+      DOCKER_BUILD_CONTEXT: .
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -84,12 +84,12 @@ jobs:
       - name: Local Docker build validation
         run: |
           set -euo pipefail
-          echo "Validating Docker build using $DOCKERFILE_PATH ..."
+          echo "Validating Docker build using $DOCKERFILE_PATH (context: $DOCKER_BUILD_CONTEXT) ..."
           if [[ ! -f "$DOCKERFILE_PATH" ]]; then
             echo "❌ Dockerfile not found at $DOCKERFILE_PATH" >&2
             exit 1
           fi
-          docker build --pull -f "$DOCKERFILE_PATH" -t n8n-workflow-test:validation "$DOCKER_CONTEXT"
+          docker build --pull -f "$DOCKERFILE_PATH" -t n8n-workflow-test:validation "$DOCKER_BUILD_CONTEXT"
           echo "✅ Local Docker build succeeded."
 
       - name: Trigger redeploy
