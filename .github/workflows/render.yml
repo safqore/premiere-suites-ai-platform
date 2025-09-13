@@ -97,19 +97,42 @@ jobs:
           set -euo pipefail
           echo "Triggering Render deploy for $RENDER_SERVICE_ID ..."
           DEPLOY_JSON=$(render services deploy "$RENDER_SERVICE_ID" --confirm -o json)
-          echo "$DEPLOY_JSON" | jq . >/dev/null 2>&1 || { echo "❌ Unexpected deploy JSON"; echo "$DEPLOY_JSON"; exit 1; }
-          DEPLOY_ID=$(echo "$DEPLOY_JSON" | jq -r '.deploy.id')
-          if [[ -z "$DEPLOY_ID" || "$DEPLOY_ID" == "null" ]]; then
-            echo "❌ Could not obtain deploy id"
+          # Pretty print for logs (non-fatal if formatting fails)
+          echo "$DEPLOY_JSON" | jq . || echo "Raw deploy JSON (non-object/array pretty print failed): $DEPLOY_JSON"
+
+          # Extract deploy id supporting multiple possible shapes:
+          # 1) { "deploy": { "id": "..." }, ... }
+          # 2) { "deployId": "..." }
+          # 3) { "id": "...", "type":"deploy"... }
+          # 4) [ { "deploy": { "id": "..." } } ]
+          # 5) [ { "deployId": "..." } ]
+          DEPLOY_ID=$(echo "$DEPLOY_JSON" | jq -r '
+            if type=="array" then
+              (.[0].deploy.id? // .[0].deployId? // .[0].id? )
+            else
+              (.deploy.id? // .deployId? // .id?)
+            end
+          ')
+
+          if [[ -z "${DEPLOY_ID:-}" || "$DEPLOY_ID" == "null" ]]; then
+            echo "❌ Could not obtain deploy id from JSON"
             echo "$DEPLOY_JSON"
             exit 1
           fi
-          echo "Deploy ID: $DEPLOY_ID"
+
+            echo "Deploy ID: $DEPLOY_ID"
           echo "Polling deploy status..."
           for i in $(seq 1 180); do
             STATUS_JSON=$(render deploys get "$DEPLOY_ID" --confirm -o json || true)
-            STATUS=$(echo "$STATUS_JSON" | jq -r '.deploy.status // empty')
-            PHASE=$(echo "$STATUS_JSON" | jq -r '.deploy.phase // empty')
+            echo "$STATUS_JSON" | jq -r '.deploy.status?,.deploy.phase?' >/dev/null 2>&1 || true
+            STATUS=$(echo "$STATUS_JSON" | jq -r '
+              if type=="array" then (.[0].deploy.status? // .[0].status? // empty)
+              else (.deploy.status? // .status? // empty)
+              end')
+            PHASE=$(echo "$STATUS_JSON" | jq -r '
+              if type=="array" then (.[0].deploy.phase? // .[0].phase? // empty)
+              else (.deploy.phase? // .phase? // empty)
+              end')
             echo "[$(date -u +%H:%M:%S)] status=$STATUS phase=$PHASE"
             case "$STATUS" in
               live)
@@ -118,6 +141,7 @@ jobs:
                 ;;
               failed|canceled)
                 echo "❌ Deploy failed."
+                echo "$STATUS_JSON"
                 exit 1
                 ;;
             esac
