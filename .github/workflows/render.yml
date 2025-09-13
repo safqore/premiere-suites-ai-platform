@@ -108,7 +108,7 @@ jobs:
           fi
 
           echo "Raw deploy response:"
-            echo "$DEPLOY_JSON" | jq . || echo "$DEPLOY_JSON"
+          echo "$DEPLOY_JSON" | jq . || echo "$DEPLOY_JSON"
 
           DEPLOY_ID=$(echo "$DEPLOY_JSON" | jq -r '
             if type=="array" then
@@ -137,29 +137,55 @@ jobs:
           echo "Deploy ID: $DEPLOY_ID"
           echo "Polling deploy status..."
 
-          # Tunables (optional)
           : "${RENDER_POLL_MAX_ATTEMPTS:=180}"
           : "${RENDER_POLL_INTERVAL_SECONDS:=5}"
 
+          # Detect if 'render deploys get' subcommand exists in this CLI version.
+          echo "Probing 'render deploys get' support..."
+          PROBE_OUTPUT=$(render deploys get "$DEPLOY_ID" --confirm -o json 2>&1 || true)
+          if echo "$PROBE_OUTPUT" | jq -e . >/dev/null 2>&1; then
+            USE_GET=1
+            echo "'render deploys get' supported."
+          elif grep -q 'Manage service deploys' <<<"$PROBE_OUTPUT"; then
+            USE_GET=0
+            echo "'render deploys get' not available; will fallback to 'deploys list' polling."
+          else
+            # Unknown probe result, fallback to list.
+            USE_GET=0
+            echo "Unrecognized probe output; falling back to list polling."
+          fi
+
           consecutive_non_json=0
           for i in $(seq 1 "$RENDER_POLL_MAX_ATTEMPTS"); do
-            RAW_OUTPUT=$(render deploys get "$DEPLOY_ID" --confirm -o json 2>&1 || true)
+            if [[ "$USE_GET" -eq 1 ]]; then
+              RAW_OUTPUT=$(render deploys get "$DEPLOY_ID" --confirm -o json 2>&1 || true)
+            else
+              RAW_OUTPUT=$(render deploys list --service "$RENDER_SERVICE_ID" --limit 20 -o json 2>&1 || true)
+            fi
 
             # Validate JSON
             if ! echo "$RAW_OUTPUT" | jq -e . >/dev/null 2>&1; then
               ((consecutive_non_json+=1))
-              echo "Non-JSON response (attempt $i, consecutive_non_json=$consecutive_non_json):"
+              echo "Non-JSON response (attempt $i, consecutive_non_json=$consecutive_non_json)"
               echo "----- BEGIN RAW -----"
               echo "$RAW_OUTPUT"
               echo "-----  END RAW  -----"
 
-              # Treat common transient errors as retryable
+              # If we were using get and it's actually a help screen, switch strategy.
+              if [[ "$USE_GET" -eq 1 ]] && grep -q 'Manage service deploys' <<< "$RAW_OUTPUT"; then
+                echo "Switching to list-based polling (get unsupported)."
+                USE_GET=0
+                consecutive_non_json=0
+                sleep 1
+                continue
+              fi
+
               if grep -qiE 'timeout|temporar|rate|limit|429|5[0-9]{2}|unavailable|network' <<< "$RAW_OUTPUT"; then
                 sleep $(( RENDER_POLL_INTERVAL_SECONDS + (consecutive_non_json>5 ? 5 : consecutive_non_json) ))
                 continue
               fi
 
-              if (( consecutive_non_json >= 3 )); then
+              if (( consecutive_non_json >= 5 )); then
                 echo "❌ Aborting: repeated non-JSON responses."
                 exit 1
               fi
@@ -167,17 +193,22 @@ jobs:
               continue
             fi
 
-            # Reset counter after good JSON
             consecutive_non_json=0
 
-            STATUS=$(echo "$RAW_OUTPUT" | jq -r '
-              if type=="array" then (.[0].deploy.status? // .[0].status? // empty)
-              else (.deploy.status? // .status? // empty)
-              end')
-            PHASE=$(echo "$RAW_OUTPUT" | jq -r '
-              if type=="array" then (.[0].deploy.phase? // .[0].phase? // empty)
-              else (.deploy.phase? // .phase? // empty)
-              end')
+            if [[ "$USE_GET" -eq 1 ]]; then
+              DEPLOY_OBJ="$RAW_OUTPUT"
+            else
+              # Select the deploy object with our ID
+              DEPLOY_OBJ=$(echo "$RAW_OUTPUT" | jq --arg id "$DEPLOY_ID" -c 'map(select(.id==$id))[0]')
+              if [[ -z "$DEPLOY_OBJ" || "$DEPLOY_OBJ" == "null" ]]; then
+                echo "Deploy not yet visible in list (attempt $i)."
+                sleep "$RENDER_POLL_INTERVAL_SECONDS"
+                continue
+              fi
+            fi
+
+            STATUS=$(echo "$DEPLOY_OBJ" | jq -r '.deploy.status? // .status? // empty')
+            PHASE=$(echo "$DEPLOY_OBJ" | jq -r '.deploy.phase? // .phase? // empty')
 
             printf '[%s] status=%s phase=%s (attempt %s/%s)\n' "$(date -u +%H:%M:%S)" "${STATUS:-unknown}" "${PHASE:-unknown}" "$i" "$RENDER_POLL_MAX_ATTEMPTS"
 
@@ -188,18 +219,18 @@ jobs:
                 ;;
               failed|canceled)
                 echo "❌ Deploy failed."
-                echo "$RAW_OUTPUT" | jq . || echo "$RAW_OUTPUT"
+                echo "$DEPLOY_OBJ" | jq . || echo "$DEPLOY_OBJ"
                 exit 1
-                ;;
-              *)
-                # continue polling
                 ;;
             esac
 
             if [[ $i -eq "$RENDER_POLL_MAX_ATTEMPTS" ]]; then
               echo "❌ Timeout waiting for deploy to finish."
-              echo "Last response:"
-              echo "$RAW_OUTPUT" | jq . || echo "$RAW_OUTPUT"
+              if [[ "$USE_GET" -eq 1 ]]; then
+                echo "$RAW_OUTPUT" | jq . || echo "$RAW_OUTPUT"
+              else
+                echo "$DEPLOY_OBJ" | jq . || echo "$DEPLOY_OBJ"
+              fi
               exit 1
             fi
             sleep "$RENDER_POLL_INTERVAL_SECONDS"
