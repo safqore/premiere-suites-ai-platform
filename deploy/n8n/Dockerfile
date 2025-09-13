@@ -1,9 +1,12 @@
+# Base official n8n image (pick a fixed version for reproducibility)
 FROM n8nio/n8n:latest
+# Switch to root to create directories, then revert (official image runs as node)
+USER root
+RUN mkdir -p /app/workflows
+COPY docs/workflows/premiere-suites-demo-workflow.json /app/workflows/premiere-suites-demo-workflow.json
+# (No import yet; that will come in Step 3)
 
-# Build context is deploy/n8n, so reach back to repo root with ../.. as needed.
-# Copy only the demo workflow for now. You can switch to copying the entire workflows dir later.
-COPY ../../docs/workflows/premiere-suites-demo-workflow.json /app/workflows/premiere-suites-demo-workflow.json
+# Back to the non-root user used by the base image
+USER node
 
-# Environment-based import handled by Render service env vars:
-#   N8N_IMPORT_EXPORT_DIR=/app/workflows
-#   N8N_IMPORT_WORKFLOWS=all
+# Use the base image's default entrypoint/cmd for now

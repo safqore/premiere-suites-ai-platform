@@ -22,6 +22,8 @@ jobs:
       RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
       RENDER_SERVICE_ID: ${{ vars.RENDER_SERVICE_ID }}
       RENDER_CLI_VERSION: 2.1.5
+      DOCKERFILE_PATH: deploy/n8n/Dockerfile
+      DOCKER_CONTEXT: .
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -79,6 +81,50 @@ jobs:
       - name: List Render services
         run: render services --output json --confirm
 
+      - name: Local Docker build validation
+        run: |
+          set -euo pipefail
+          echo "Validating Docker build using $DOCKERFILE_PATH ..."
+          if [[ ! -f "$DOCKERFILE_PATH" ]]; then
+            echo "❌ Dockerfile not found at $DOCKERFILE_PATH" >&2
+            exit 1
+          fi
+            # Build with explicit file and context
+          docker build --pull -f "$DOCKERFILE_PATH" -t n8n-workflow-test:validation "$DOCKER_CONTEXT"
+          echo "✅ Local Docker build succeeded."
+
       - name: Trigger redeploy
         run: |
-          echo "Deploying service $RENDER_SERVICE_ID ..."
+          set -euo pipefail
+          echo "Triggering Render deploy for $RENDER_SERVICE_ID ..."
+          DEPLOY_JSON=$(render services deploy "$RENDER_SERVICE_ID" --confirm -o json)
+          echo "$DEPLOY_JSON" | jq . >/dev/null 2>&1 || { echo "❌ Unexpected deploy JSON"; echo "$DEPLOY_JSON"; exit 1; }
+          DEPLOY_ID=$(echo "$DEPLOY_JSON" | jq -r '.deploy.id')
+          if [[ -z "$DEPLOY_ID" || "$DEPLOY_ID" == "null" ]]; then
+            echo "❌ Could not obtain deploy id"
+            echo "$DEPLOY_JSON"
+            exit 1
+          fi
+          echo "Deploy ID: $DEPLOY_ID"
+          echo "Polling deploy status..."
+          for i in $(seq 1 180); do
+            STATUS_JSON=$(render deploys get "$DEPLOY_ID" --confirm -o json || true)
+            STATUS=$(echo "$STATUS_JSON" | jq -r '.deploy.status // empty')
+            PHASE=$(echo "$STATUS_JSON" | jq -r '.deploy.phase // empty')
+            echo "[$(date -u +%H:%M:%S)] status=$STATUS phase=$PHASE"
+            case "$STATUS" in
+              live)
+                echo "✅ Deploy succeeded."
+                break
+                ;;
+              failed|canceled)
+                echo "❌ Deploy failed."
+                exit 1
+                ;;
+            esac
+            sleep 5
+            if [[ $i -eq 180 ]]; then
+              echo "❌ Timeout waiting for deploy to finish."
+              exit 1
+            fi
+          done
