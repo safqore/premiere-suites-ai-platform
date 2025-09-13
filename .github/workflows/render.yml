@@ -78,8 +78,8 @@ jobs:
           echo "Setting Render workspace to $RENDER_WORKSPACE_ID"
           render workspace set "$RENDER_WORKSPACE_ID" --confirm -o json
 
-      - name: List Render services
-        run: render services --output json --confirm
+      - name: Setup Buildx
+        uses: docker/setup-buildx-action@v3
 
       - name: Local Docker build validation
         run: |
@@ -89,7 +89,6 @@ jobs:
             echo "❌ Dockerfile not found at $DOCKERFILE_PATH" >&2
             exit 1
           fi
-            # Build with explicit file and context
           docker build --pull -f "$DOCKERFILE_PATH" -t n8n-workflow-test:validation "$DOCKER_CONTEXT"
           echo "✅ Local Docker build succeeded."
 
