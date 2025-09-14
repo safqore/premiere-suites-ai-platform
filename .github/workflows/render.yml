@@ -48,6 +48,17 @@ jobs:
           echo "workflow_path=$WORKFLOW_PATH" >> "$GITHUB_OUTPUT"
           echo "✅ Preflight complete: workflow_path=$WORKFLOW_PATH"
 
+      - name: Local Docker build validation (Preflight)
+        run: |
+          set -euo pipefail
+          echo "Validating Docker build using $DOCKERFILE_PATH (context: $DOCKER_BUILD_CONTEXT) ..."
+          if [[ ! -f "$DOCKERFILE_PATH" ]]; then
+            echo "❌ Dockerfile not found at $DOCKERFILE_PATH" >&2
+            exit 1
+          fi
+          docker build --pull -f "$DOCKERFILE_PATH" -t n8n-workflow-test:validation "$DOCKER_BUILD_CONTEXT"
+          echo "✅ Local Docker build succeeded."
+
       - name: Install Render CLI (pinned)
         run: |
           set -euo pipefail
@@ -81,17 +92,8 @@ jobs:
       - name: Setup Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Local Docker build validation
-        run: |
-          set -euo pipefail
-          echo "Validating Docker build using $DOCKERFILE_PATH (context: $DOCKER_BUILD_CONTEXT) ..."
-          if [[ ! -f "$DOCKERFILE_PATH" ]]; then
-            echo "❌ Dockerfile not found at $DOCKERFILE_PATH" >&2
-            exit 1
-          fi
-          docker build --pull -f "$DOCKERFILE_PATH" -t n8n-workflow-test:validation "$DOCKER_BUILD_CONTEXT"
-          echo "✅ Local Docker build succeeded."
-
+      # Render CLI does not allow setting up service (RENDER_SERVICE_ID) via CLI. 
+      # Set this up via web front end first in order to use here
       - name: Trigger redeploy
         run: |
           set -euo pipefail
