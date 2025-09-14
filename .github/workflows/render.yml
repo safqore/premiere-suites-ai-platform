@@ -155,7 +155,7 @@ jobs:
             "${@}" -o json 2>&1 || true
           }
 
-          : "${RENDER_POLL_MAX_ATTEMPTS:=10}"
+          : "${RENDER_POLL_MAX_ATTEMPTS:=180}"
           : "${RENDER_POLL_INTERVAL_SECONDS:=5}"
 
           # Detect if 'render deploys get' subcommand exists in this CLI version.
