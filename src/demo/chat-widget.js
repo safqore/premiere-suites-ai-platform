@@ -519,7 +519,7 @@
     const payload = [
       { sessionId, action: "sendMessage", chatInput: userMessage }
     ];
-    const url = 'https://abbadminhas.app.n8n.cloud/webhook/chat-interface';
+    const url = 'https://premiere-suites-n8n-backend.onrender.com/webhook/chat-interface';
 
     const res = await fetch(url, {
       method: 'POST',
